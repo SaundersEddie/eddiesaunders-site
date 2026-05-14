@@ -1,14 +1,81 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const musicAreas = [
+  {
+    title: "Guitar projects",
+    text: "Builds, setups, repairs, experiments, parts, notes, and the path from instrument tinkering to actually making noise with it.",
+  },
+  {
+    title: "Recordings",
+    text: "Sketches, tracks, demos, ideas, and finished pieces when they are ready to escape the hard drive.",
+  },
+  {
+    title: "Gear notes",
+    text: "Practical notes on instruments, pedals, recording setups, software, and the stuff that helps ideas turn into sound.",
+  },
+  {
+    title: "Writing room",
+    text: "Song ideas, lyric fragments, riffs, structure notes, and musical scraps that may become something less suspicious later.",
+  },
+];
+
+const projectItems = [
+  {
+    title: "Build notes",
+    text: "Documentation for guitar and music-related builds as they develop.",
+  },
+  {
+    title: "Coming tracks",
+    text: "A future home for finished recordings, demos, or embedded players.",
+  },
+  {
+    title: "Studio experiments",
+    text: "Recording workflow, software tests, tone chasing, and other productive nonsense.",
+  },
+];
 ---
 
-<BaseLayout title="Creations | Eddie Saunders">
-  <section class="page-hero">
-    <p class="eyebrow">Workshop</p>
-    <h1>Creations</h1>
+<BaseLayout
+  title="Music | Eddie Saunders"
+  description="Music projects, guitar builds, recordings, gear notes, and creative experiments by Eddie Saunders."
+>
+  <section class="page-hero music-hero">
+    <p class="eyebrow">Music</p>
+    <h1>Noise with intent</h1>
     <p>
-      Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces
-      from the workshop.
+      Guitar projects, recordings, ideas, gear notes, and the slow process of
+      turning parts, practice, and half-finished riffs into actual music.
     </p>
+  </section>
+
+  <section class="content-grid">
+    {musicAreas.map((item) => (
+      <article class="content-card">
+        <h2>{item.title}</h2>
+        <p>{item.text}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="music-panel">
+    <div class="music-panel-copy">
+      <p class="eyebrow">In progress</p>
+      <h2>Music section warming up</h2>
+      <p>
+        This page can grow into a home for recordings, guitar builds, embedded
+        videos, gear notes, song sketches, and project writeups. For now, it has
+        a proper room in the house instead of a “coming soon” sticky note.
+      </p>
+    </div>
+
+    <div class="music-project-list">
+      {projectItems.map((item) => (
+        <article>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
   </section>
 </BaseLayout>

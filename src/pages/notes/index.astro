@@ -1,14 +1,84 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const noteCategories = [
+  {
+    title: "Project notes",
+    text: "Build logs, lessons learned, design choices, mistakes worth remembering, and project updates.",
+  },
+  {
+    title: "Workshop notes",
+    text: "Craft builds, 3D print tests, laser settings, CNC experiments, materials, finishes, and process notes.",
+  },
+  {
+    title: "Garden notes",
+    text: "Planting records, seasonal observations, varieties, experiments, harvest notes, and growing lessons.",
+  },
+  {
+    title: "Code notes",
+    text: "Small technical writeups, snippets, setup notes, deployment reminders, and things future Eddie will thank past Eddie for writing down.",
+  },
+];
+
+const sampleNotes = [
+  {
+    title: "Why this site exists",
+    category: "Project notes",
+    date: "Coming soon",
+  },
+  {
+    title: "Serial numbered products and handmade history",
+    category: "Workshop notes",
+    date: "Coming soon",
+  },
+  {
+    title: "Building small tools that actually get used",
+    category: "Code notes",
+    date: "Coming soon",
+  },
+];
 ---
 
-<BaseLayout title="Creations | Eddie Saunders">
-  <section class="page-hero">
-    <p class="eyebrow">Workshop</p>
-    <h1>Creations</h1>
+<BaseLayout
+  title="Notes | Eddie Saunders"
+  description="Project notes, build logs, garden records, code notes, and workshop updates from Eddie Saunders."
+>
+  <section class="page-hero notes-hero">
+    <p class="eyebrow">Notes</p>
+    <h1>Useful notes, not content sludge</h1>
     <p>
-      Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces
-      from the workshop.
+      Project logs, workshop notes, garden records, code writeups, and the things
+      worth keeping somewhere more useful than a random text file named final-final-v3.
     </p>
+  </section>
+
+  <section class="content-grid">
+    {noteCategories.map((item) => (
+      <article class="content-card">
+        <h2>{item.title}</h2>
+        <p>{item.text}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="notes-panel">
+    <div>
+      <p class="eyebrow">Future archive</p>
+      <h2>Planned notes</h2>
+      <p>
+        This section can later become a proper blog using Markdown or MDX. For
+        now, it establishes the structure without forcing a fake pile of posts.
+      </p>
+    </div>
+
+    <div class="notes-list">
+      {sampleNotes.map((item) => (
+        <article>
+          <span>{item.category}</span>
+          <h3>{item.title}</h3>
+          <p>{item.date}</p>
+        </article>
+      ))}
+    </div>
   </section>
 </BaseLayout>

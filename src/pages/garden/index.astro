@@ -1,14 +1,80 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const gardenAreas = [
+  {
+    title: "Backyard growing",
+    text: "Vegetables, herbs, containers, raised beds, starts, failures, wins, and the endless yearly argument with weather.",
+  },
+  {
+    title: "Seasonal notes",
+    text: "What was planted, what worked, what bolted, what got eaten, and what deserves another shot next season.",
+  },
+  {
+    title: "Vegetables",
+    text: "Tomatoes, peppers, greens, roots, beans, squash, and anything else that looks promising enough to take over the yard.",
+  },
+  {
+    title: "Garden experiments",
+    text: "Over-planting, thinning for true baby vegetables, soil tweaks, varieties, spacing tests, and practical backyard trials.",
+  },
+];
+
+const logItems = [
+  {
+    label: "Spring",
+    text: "Seed starts, bed prep, early greens, cool-weather crops, and the first round of optimism.",
+  },
+  {
+    label: "Summer",
+    text: "Tomatoes, peppers, watering, heat management, and pretending the weeds are not winning.",
+  },
+  {
+    label: "Fall",
+    text: "Second chances, cleanup, cool-weather crops, notes, and planning what to change next year.",
+  },
+];
 ---
 
-<BaseLayout title="Creations | Eddie Saunders">
-  <section class="page-hero">
-    <p class="eyebrow">Workshop</p>
-    <h1>Creations</h1>
+<BaseLayout
+  title="Garden | Eddie Saunders"
+  description="Backyard garden notes, vegetables, seasonal growing logs, and experiments from Eddie Saunders."
+>
+  <section class="page-hero garden-hero">
+    <p class="eyebrow">Garden</p>
+    <h1>Backyard growing notes</h1>
     <p>
-      Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces
-      from the workshop.
+      A place for garden experiments, seasonal notes, vegetables, lessons learned,
+      and the annual reminder that nature does not care about your spreadsheet.
     </p>
+  </section>
+
+  <section class="content-grid">
+    {gardenAreas.map((item) => (
+      <article class="content-card">
+        <h2>{item.title}</h2>
+        <p>{item.text}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="garden-log">
+    <div>
+      <p class="eyebrow">Garden log</p>
+      <h2>Season by season</h2>
+      <p>
+        Eventually this can become a proper growing log with photos, notes,
+        dates, varieties, harvests, and lessons worth remembering.
+      </p>
+    </div>
+
+    <div class="garden-log-list">
+      {logItems.map((item) => (
+        <article>
+          <strong>{item.label}</strong>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
   </section>
 </BaseLayout>

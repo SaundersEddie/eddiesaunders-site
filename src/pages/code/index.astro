@@ -1,14 +1,84 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const codeAreas = [
+  {
+    title: "Web projects",
+    text: "Astro sites, browser games, static builds, deployment experiments, and practical web work that stays lean.",
+  },
+  {
+    title: "Small tools",
+    text: "Python utilities, automation helpers, image tools, scripts, and projects built to solve real annoyances.",
+  },
+  {
+    title: "Games",
+    text: "Small browser games, Unity prototypes, C64-style learning builds, scoreboards, and gameplay experiments.",
+  },
+  {
+    title: "AI experiments",
+    text: "Carefully scoped AI helpers, summarizers, content tools, and experiments that earn their keep instead of waving jazz hands.",
+  },
+];
+
+const projectLinks = [
+  {
+    label: "eddiesgames.xyz",
+    text: "Small browser games and web game experiments.",
+    href: "https://eddiesgames.xyz",
+  },
+  {
+    label: "Image background remover",
+    text: "A practical Python tool project for turning images into transparent PNGs.",
+    href: "#",
+  },
+  {
+    label: "Automation notes",
+    text: "Python, APIs, OpenAI experiments, Playwright study, and useful workflow ideas.",
+    href: "#",
+  },
+];
 ---
 
-<BaseLayout title="Creations | Eddie Saunders">
-  <section class="page-hero">
-    <p class="eyebrow">Workshop</p>
-    <h1>Creations</h1>
+<BaseLayout
+  title="Code | Eddie Saunders"
+  description="Code projects, web experiments, games, tools, automation, and AI experiments by Eddie Saunders."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Code</p>
+    <h1>Software that does something</h1>
     <p>
-      Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces
-      from the workshop.
+      Web projects, small tools, games, automation experiments, and practical
+      code built to solve a problem, test an idea, or make the next job easier.
     </p>
+  </section>
+
+  <section class="content-grid">
+    {codeAreas.map((item) => (
+      <article class="content-card">
+        <h2>{item.title}</h2>
+        <p>{item.text}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="code-feature">
+    <div>
+      <p class="eyebrow">Featured code</p>
+      <h2>Projects, experiments, and useful little machines.</h2>
+      <p>
+        This section can eventually link to live projects, GitHub repositories,
+        writeups, build notes, and lessons learned from the stuff that worked —
+        plus the stuff that needed a firm talking-to.
+      </p>
+    </div>
+
+    <div class="code-link-list">
+      {projectLinks.map((item) => (
+        <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined}>
+          <strong>{item.label}</strong>
+          <span>{item.text}</span>
+        </a>
+      ))}
+    </div>
   </section>
 </BaseLayout>
