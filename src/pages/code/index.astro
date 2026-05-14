@@ -1,6 +1,37 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/pages/contact.css";
+import "../../styles/pages/code.css";
+
+const featuredProjects = [
+  {
+    title: "eddiesgames.xyz",
+    type: "Live site",
+    status: "Active",
+    href: "https://eddiesgames.xyz",
+    text: "Small browser games, daily scoreboards, share features, and standalone web game experiments.",
+  },
+  {
+    title: "Image Background Remover",
+    type: "Python tool",
+    status: "In progress",
+    href: "",
+    text: "A local desktop tool concept for turning images into transparent-background PNGs, with future GUI and SVG workflow ideas.",
+  },
+  {
+    title: "Weather Summary Tool",
+    type: "Python / AI",
+    status: "Prototype",
+    href: "",
+    text: "A small Open-Meteo and AI summarizer experiment for turning weather data into readable daily summaries.",
+  },
+  {
+    title: "WMATA Incident Summarizer",
+    type: "Python / AI",
+    status: "Prototype",
+    href: "",
+    text: "A modular API and summarization experiment for turning transit incident data into cleaner human-readable updates.",
+  },
+];
 
 const codeAreas = [
   {
@@ -62,6 +93,37 @@ const projectLinks = [
     ))}
   </section>
 
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Featured projects</p>
+      <h2>Useful little machines</h2>
+      <p>
+        A mix of live sites, small tools, experiments, game projects, and practical
+        code built to solve real problems or test useful ideas.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {featuredProjects.map((item) => (
+        item.href ? (
+          <a class="project-card" href={item.href} target="_blank" rel="noreferrer">
+            <p class="project-type">{item.type}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span>{item.status}</span>
+          </a>
+        ) : (
+          <article class="project-card">
+            <p class="project-type">{item.type}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span>{item.status}</span>
+          </article>
+        )
+      ))}
+    </div>
+  </section>
+<!-- 
   <section class="code-feature">
     <div>
       <p class="eyebrow">Featured code</p>
@@ -81,5 +143,5 @@ const projectLinks = [
         </a>
       ))}
     </div>
-  </section>
+  </section> -->
 </BaseLayout>
