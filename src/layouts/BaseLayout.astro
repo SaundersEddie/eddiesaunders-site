@@ -1,0 +1,32 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const {
+  title = "Eddie Saunders",
+  description = "The personal hub of Eddie Saunders: code, craft, music, garden notes, and numbered handmade creations.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <div class="site-shell">
+      <SiteHeader />
+
+      <main>
+        <slot />
+      </main>
+
+      <SiteFooter />
+    </div>
+  </body>
+</html>

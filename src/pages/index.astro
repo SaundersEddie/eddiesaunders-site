@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const focusAreas = [
+  {
+    title: "Code",
+    text: "Software projects, web experiments, small games, tools, and the occasional useful rabbit hole.",
+    href: "/code/",
+  },
+  {
+    title: "Creations",
+    text: "Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces from the workshop.",
+    href: "/creations/",
+  },
+  {
+    title: "Music",
+    text: "Guitar builds, recordings, ideas, and music projects as they make their way out of the noise.",
+    href: "/music/",
+  },
+  {
+    title: "Garden",
+    text: "Backyard growing, seasonal notes, vegetables, experiments, and the small wins that make it worth doing.",
+    href: "/garden/",
+  },
+];
+
+const featuredItems = [
+  "Serial numbered handmade product registry",
+  "Brindle Besties craft and workshop projects",
+  "eddiesgames.xyz browser games and coding experiments",
+];
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Personal hub / workshop notebook / creative archive</p>
+
+      <h1>Eddie Saunders</h1>
+
+      <p class="hero-lede">
+        Code. Craft. Music. Garden. A home for the projects, notes, handmade work,
+        and numbered creations that do not fit neatly into one tidy box.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="/creations/">View Creations</a>
+        <a class="button secondary" href="/registry/">Product Registry</a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Current focus">
+      <p class="card-kicker">Current focus</p>
+      <h2>Making useful things</h2>
+      <p>
+        Software tools, workshop builds, garden notes, and creative projects —
+        built properly, documented honestly, and improved one version at a time.
+      </p>
+    </aside>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Main areas</p>
+      <h2>What lives here</h2>
+    </div>
+
+    <div class="focus-grid">
+      {focusAreas.map((item) => (
+        <a class="focus-card" href={item.href}>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span>Explore {item.title}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="split-section">
+    <div>
+      <p class="eyebrow">Featured</p>
+      <h2>Built, grown, played, written, or figured out the hard way.</h2>
+    </div>
+
+    <div class="feature-list">
+      {featuredItems.map((item) => (
+        <article>
+          <span></span>
+          <p>{item}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="callout">
+    <div>
+      <p class="eyebrow">Next up</p>
+      <h2>Product registry</h2>
+      <p>
+        A simple index for serial numbered handmade pieces, with materials,
+        dates, notes, photos, and the story behind each build.
+      </p>
+    </div>
+
+    <a class="button primary" href="/registry/">Coming soon</a>
+  </section>
+</BaseLayout>
