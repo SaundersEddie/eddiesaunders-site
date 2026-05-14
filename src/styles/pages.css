@@ -16,8 +16,8 @@
   max-width: 900px;
   color: var(--text);
   font-size: clamp(3.2rem, 9vw, 7rem);
-  letter-spacing: -0.08em;
-  line-height: 0.88;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
 }
 
 .page-hero p:last-child {

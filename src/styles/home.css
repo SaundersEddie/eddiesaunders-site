@@ -62,8 +62,8 @@
 .hero h1 {
   max-width: 900px;
   font-size: clamp(3.8rem, 11vw, 8.8rem);
-  letter-spacing: -0.08em;
-  line-height: 0.86;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
 }
 
 .hero-lede {
