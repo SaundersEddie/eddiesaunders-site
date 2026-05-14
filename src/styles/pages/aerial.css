@@ -18,6 +18,66 @@
     var(--surface);
 }
 
+.aerial-study {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 28px;
+}
+
+.aerial-study-copy,
+.aerial-progress-list article {
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  box-shadow: var(--shadow);
+}
+
+.aerial-study-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(238, 243, 240, 0.9)),
+    var(--surface);
+  padding: clamp(28px, 5vw, 44px);
+}
+
+.aerial-study-copy h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.aerial-study-copy p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.aerial-progress-list {
+  display: grid;
+  gap: 12px;
+}
+
+.aerial-progress-list article {
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.76);
+  padding: 22px;
+}
+
+.aerial-progress-list h3 {
+  color: var(--accent);
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+.aerial-progress-list p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
 .aerial-panel {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -56,32 +116,143 @@
   margin-top: 18px;
 }
 
-.aerial-note-list {
-  display: grid;
+.aerial-topic-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
   gap: 12px;
 }
 
-.aerial-note-list article {
+.aerial-topic-cloud span {
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
-  padding: 22px;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 800;
+  padding: 10px 14px;
 }
 
-.aerial-note-list h3 {
-  color: var(--surface);
-  font-size: 1.25rem;
-  letter-spacing: -0.03em;
-}
-
-.aerial-note-list p {
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.6;
-  margin-top: 8px;
+@media (max-width: 900px) {
+  .views-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 850px) {
+  .aerial-study,
   .aerial-panel {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 560px) {
+  .views-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.views-section {
+  border-top: 1px solid var(--line);
+  margin-top: 38px;
+  padding-top: 38px;
+}
+
+.views-heading {
+  max-width: 820px;
+}
+
+.views-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.views-heading p:last-child {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.views-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.view-card {
+  overflow: hidden;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.view-card img,
+.view-placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.view-card img {
+  object-fit: cover;
+}
+
+.view-placeholder {
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(35, 92, 116, 0.12), rgba(225, 139, 97, 0.1)),
+    var(--surface-soft);
+}
+
+.view-placeholder span {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.view-card-copy {
+  padding: 20px;
+}
+
+.view-type {
+  color: var(--warm);
+  font-size: 0.74rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.view-card h3 {
+  font-size: 1.35rem;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-top: 8px;
+}
+
+.view-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.view-meta span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 5px 9px;
+}
+
+.view-card-copy > p:last-child {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 14px;
 }

@@ -2,38 +2,83 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/pages/aerial.css";
 
-const aerialAreas = [
+const aerialGallery = [
   {
-    title: "Part 107 Study",
-    text: "Notes from learning the rules, charts, weather, airspace, procedures, and all the little FAA-flavored details that come with flying legally.",
+    title: "Old Post Office View",
+    type: "Tall Building",
+    location: "Old Post Office",
+    date: "Archive photo",
+    image: null,
+    alt: "",
+    text: "A view from the top of the Old Post Office, looking across the city from a perspective you do not get at street level.",
   },
   {
-    title: "Drone Practice",
-    text: "Flight practice, camera work, shot planning, small tests, lessons learned, and building safe habits before doing anything serious.",
+    title: "Window Seat View",
+    type: "Aircraft Window",
+    location: "In flight",
+    date: "Archive photo",
+    image: null,
+    alt: "",
+    text: "Clouds, terrain, roads, weather, and the strange patterns that only really show up from the air.",
   },
   {
-    title: "Views From Above",
-    text: "Plane-window shots, tall-building views, overlook photos, drone images, and anything that makes the world look better from higher up.",
-  },
-  {
-    title: "Aerial Ideas",
-    text: "Potential video projects, small-town flythrough concepts, location notes, route planning, shot lists, and future aerial storytelling ideas.",
+    title: "Drone Practice Archive",
+    type: "Drone",
+    location: "Private practice footage",
+    date: "Held for now",
+    image: null,
+    alt: "",
+    text: "Drone photos and video are staying private until Part 107 certification is complete and public use can be handled properly.",
   },
 ];
 
-const noteItems = [
+const aerialAreas = [
   {
-    title: "Study Log",
-    text: "A future place for Part 107 study progress, tricky topics, reminders, and useful resources.",
+    title: "Part 107 Study",
+    text: "Working through the Remote Pilot certification material, starting with the building blocks: aircraft theory, flight forces, weather, airspace, charts, and safe decision-making.",
   },
   {
-    title: "Practice Notes",
-    text: "Flight sessions, weather observations, camera settings, battery notes, and what to improve next time.",
+    title: "Drone Practice",
+    text: "Flight practice, camera control, smooth movement, shot planning, legal boundaries, and building habits that keep the aircraft, the footage, and everyone nearby in one piece.",
   },
   {
-    title: "Location Ideas",
-    text: "Interesting places, elevated viewpoints, historic towns, scenic routes, and safe/legal flight planning ideas.",
+    title: "Views From Above",
+    text: "Drone footage, plane-window views, tall-building perspectives, overlooks, and any other moment where the world looks better from higher up.",
   },
+  {
+    title: "Aerial Ideas",
+    text: "Future photo and video concepts, small-town flythrough planning, location notes, route ideas, and visual storytelling from a higher angle.",
+  },
+];
+
+const studyProgress = [
+   {
+    title: "Why No Drone Videos Yet",
+    text: "I have filmed from my drone, but I’m keeping that footage private for now. Because drone footage can quickly move from recreational use into Part 107 territory — especially when tied to public content, business use, promotion, or monetized platforms — I’m waiting until I’m certified before sharing drone footage publicly.",
+    },
+  {
+    title: "Current Course",
+    text: "Studying through Pilot Institute as part of the path toward becoming a Part 107 certified drone operator.",
+  },
+  {
+    title: "Current Focus",
+    text: "Working through the early aircraft theory material, including the basics of aerodynamics, thrust, lift, and how aircraft actually stay in the air.",
+  },
+  {
+    title: "Expected Timeline",
+    text: "The goal is to work steadily through the course over the next month or two, building understanding instead of just cramming answers.",
+  },
+];
+
+const futureTopics = [
+  "Airspace",
+  "Weather",
+  "Sectional charts",
+  "Flight restrictions",
+  "Drone practice notes",
+  "Shot planning",
+  "Aerial photography",
+  "Small-town flythrough ideas",
 ];
 ---
 
@@ -51,6 +96,71 @@ const noteItems = [
     </p>
   </section>
 
+  <section class="aerial-study">
+    <div class="aerial-study-copy">
+      <p class="eyebrow">Current path</p>
+      <h2>Working toward Part 107</h2>
+      <p>
+        I’m currently studying for Part 107 certification through Pilot Institute.
+        Right now I’m in the early course material, covering the basics of aircraft
+        theory and aerodynamics — things like thrust, lift, and the forces that
+        make flight possible.
+      </p>
+      <p>
+        The plan is to work through it steadily over the next month or two. The
+        goal is not just to pass a test, but to understand enough to fly safely,
+        plan properly, and make better aerial photos and videos.
+      </p>
+    </div>
+
+    <div class="aerial-progress-list">
+      {studyProgress.map((item) => (
+        <article>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+    <section class="views-section">
+    <div class="views-heading">
+        <p class="eyebrow">Views from above</p>
+        <h2>Elevated views, wherever they come from</h2>
+        <p>
+        A small collection of higher-perspective photos: aircraft-window views,
+        tall-building shots, overlooks, future drone images, and anything else
+        where the world looks better from above.
+        </p>
+    </div>
+
+    <div class="views-grid">
+        {aerialGallery.map((item) => (
+        <article class="view-card">
+            {item.image ? (
+            <img src={item.image} alt={item.alt} loading="lazy" />
+            ) : (
+            <div class="view-placeholder" aria-hidden="true">
+                <span>{item.type}</span>
+            </div>
+            )}
+
+            <div class="view-card-copy">
+            <p class="view-type">{item.type}</p>
+            <h3>{item.title}</h3>
+
+            <div class="view-meta">
+                <span>{item.location}</span>
+                <span>{item.date}</span>
+            </div>
+
+            <p>{item.text}</p>
+            </div>
+        </article>
+        ))}
+    </div>
+    </section>
+
   <section class="content-grid">
     {aerialAreas.map((item) => (
       <article class="content-card">
@@ -62,21 +172,18 @@ const noteItems = [
 
   <section class="aerial-panel">
     <div class="aerial-panel-copy">
-      <p class="eyebrow">In progress</p>
-      <h2>Learning the sky properly</h2>
+      <p class="eyebrow">Coming notes</p>
+      <h2>Building the aerial notebook</h2>
       <p>
-        This section can grow into a mix of Part 107 study notes, drone practice
-        logs, elevated photography, location scouting, aerial video ideas, and
-        anything else that starts with looking at the world from a better angle.
+        This section will grow as the studying, flying, planning, and camera work
+        develop. Some notes will be technical, some visual, and some will probably
+        be reminders that the sky has rules and the FAA owns a very large clipboard.
       </p>
     </div>
 
-    <div class="aerial-note-list">
-      {noteItems.map((item) => (
-        <article>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-        </article>
+    <div class="aerial-topic-cloud">
+      {futureTopics.map((topic) => (
+        <span>{topic}</span>
       ))}
     </div>
   </section>
