@@ -1,14 +1,61 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const creationAreas = [
+  {
+    title: "Woodwork",
+    text: "Cedar builds, trays, feeders, small furniture, rustic experiments, and the occasional project that started as scrap and became useful.",
+  },
+  {
+    title: "3D Printing",
+    text: "Useful prints, custom tags, fixtures, signs, prototypes, and small-batch items made across the printer fleet.",
+  },
+  {
+    title: "Laser",
+    text: "Cut boxes, engraved pieces, signs, tests, templates, and production ideas that need clean lines and repeatable results.",
+  },
+  {
+    title: "CNC",
+    text: "Carved trays, pocketed designs, test cuts, layout experiments, and projects where the machine gets to eat some wood.",
+  },
+  {
+    title: "Product Registry",
+    text: "A serial-numbered archive of handmade items with materials, dates, finish notes, photos, and build history.",
+    href: "/registry/",
+  },
+  {
+    title: "Brindle Besties",
+    text: "The craft side of the operation: handmade goods, market pieces, Etsy items, and practical things made to sell.",
+  },
+];
 ---
 
-<BaseLayout title="Creations | Eddie Saunders">
+<BaseLayout
+  title="Creations | Eddie Saunders"
+  description="Woodwork, 3D prints, laser projects, CNC experiments, and handmade creations by Eddie Saunders."
+>
   <section class="page-hero">
     <p class="eyebrow">Workshop</p>
     <h1>Creations</h1>
     <p>
-      Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces
-      from the workshop.
+      Woodwork, 3D prints, laser projects, CNC experiments, numbered handmade
+      pieces, and the occasional idea that probably should have stayed in the
+      notebook but somehow made it to the bench.
     </p>
+  </section>
+
+  <section class="content-grid">
+    {creationAreas.map((item) => (
+      <article class="content-card">
+        <h2>{item.title}</h2>
+        <p>{item.text}</p>
+
+        {item.href && (
+          <a class="button primary" href={item.href}>
+            View Registry
+          </a>
+        )}
+      </article>
+    ))}
   </section>
 </BaseLayout>
