@@ -21,7 +21,7 @@
 }
 
 .page-hero p:last-child {
-  max-width: 760px;
+  max-width: 900px;
   color: var(--muted);
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   line-height: 1.6;
