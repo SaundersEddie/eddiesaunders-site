@@ -1,14 +1,132 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const registryItems = [
+  {
+    serial: "ES-CFT-0001",
+    name: "Cedar Squirrel Picnic Table",
+    category: "Woodwork",
+    date: "May 2026",
+    status: "Prototype",
+    materials: "Cedar picket, exterior glue, spar urethane",
+    notes:
+      "Early workshop build used to refine height, angle, and feeder proportions.",
+  },
+  {
+    serial: "ES-3DP-0002",
+    name: "Custom Door Handle Tag",
+    category: "3D Print",
+    date: "May 2026",
+    status: "Production test",
+    materials: "PLA matte base with raised text",
+    notes:
+      "Small-batch customizable door hanger/tag design with color and phrase variations.",
+  },
+  {
+    serial: "ES-CNC-0003",
+    name: "Playing Card Suit Tray",
+    category: "CNC",
+    date: "May 2026",
+    status: "Test cut",
+    materials: "Cedar, Odie's Oil finish",
+    notes:
+      "Tray and holder concept using card suit shapes, with fit testing for spades and clubs.",
+  },
+  {
+    serial: "ES-LSR-0004",
+    name: "Laser Cut Box Test",
+    category: "Laser",
+    date: "May 2026",
+    status: "In development",
+    materials: "Plywood test stock",
+    notes:
+      "Box generator and laser kerf tests for future finished and flat-pack craft items.",
+  },
+];
 ---
 
-<BaseLayout title="Creations | Eddie Saunders">
+<BaseLayout
+  title="Product Registry | Eddie Saunders"
+  description="A serial-numbered archive of handmade products, prototypes, materials, finish notes, and workshop history."
+>
   <section class="page-hero">
-    <p class="eyebrow">Workshop</p>
-    <h1>Creations</h1>
+    <p class="eyebrow">Serial numbered archive</p>
+    <h1>Product Registry</h1>
     <p>
-      Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces
-      from the workshop.
+      A growing index of handmade pieces, prototypes, small-batch products, and
+      workshop experiments. Each item gets a serial number, material notes, build
+      status, and a little history so the work does not disappear into the sawdust.
     </p>
+  </section>
+
+  <section class="registry-intro">
+    <article class="content-card">
+      <h2>How serials work</h2>
+      <p>
+        Serial numbers use a simple maker-friendly format: the Eddie Saunders
+        prefix, a category code, and a numbered item ID.
+      </p>
+
+      <div class="serial-example">
+        <strong>ES-CFT-0001</strong>
+        <span>Eddie Saunders / Craft / Item 0001</span>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <h2>Categories</h2>
+      <p>
+        Woodwork, 3D prints, laser work, CNC pieces, mixed-media builds, and
+        future one-off oddities that somehow become real products.
+      </p>
+    </article>
+  </section>
+
+  <section class="registry-table-wrap" aria-label="Product registry entries">
+    <div class="registry-heading">
+      <div>
+        <p class="eyebrow">Registry entries</p>
+        <h2>Current sample index</h2>
+      </div>
+
+      <p>
+        Dummy entries for now. Real pieces can replace these once the structure
+        is locked.
+      </p>
+    </div>
+
+    <div class="registry-list">
+      {registryItems.map((item) => (
+        <article class="registry-item">
+          <div class="registry-main">
+            <p class="serial">{item.serial}</p>
+            <h3>{item.name}</h3>
+            <p>{item.notes}</p>
+          </div>
+
+          <dl class="registry-meta">
+            <div>
+              <dt>Category</dt>
+              <dd>{item.category}</dd>
+            </div>
+
+            <div>
+              <dt>Date</dt>
+              <dd>{item.date}</dd>
+            </div>
+
+            <div>
+              <dt>Status</dt>
+              <dd>{item.status}</dd>
+            </div>
+
+            <div>
+              <dt>Materials</dt>
+              <dd>{item.materials}</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </div>
   </section>
 </BaseLayout>

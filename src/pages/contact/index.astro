@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const contactCards = [
+  {
+    title: "General contact",
+    text: "Questions, project notes, collaboration ideas, or anything that does not fit neatly into a category.",
+    linkText: "Email Eddie",
+    href: "mailto:eddie@eddiesaunders.com",
+  },
+  {
+    title: "Craft and products",
+    text: "Handmade items, serial numbered pieces, custom work, product questions, and Brindle Besties-style projects.",
+    linkText: "Ask about a project",
+    href: "mailto:eddie@eddiesaunders.com?subject=Craft%20or%20Product%20Question",
+  },
+  {
+    title: "Code and websites",
+    text: "Small tools, web projects, games, automation experiments, and practical software builds.",
+    linkText: "Talk code",
+    href: "mailto:eddie@eddiesaunders.com?subject=Code%20Project%20Question",
+  },
+];
+
+const links = [
+  {
+    label: "eddiesgames.xyz",
+    text: "Small browser games, experiments, and web-based projects.",
+    href: "https://eddiesgames.xyz",
+  },
+  {
+    label: "Brindle Besties",
+    text: "Craft, handmade goods, and product work.",
+    href: "#",
+  },
+];
+---
+
+<BaseLayout
+  title="Contact | Eddie Saunders"
+  description="Contact Eddie Saunders about code, craft, music, garden notes, handmade products, and project ideas."
+>
+  <section class="page-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>Say hello</h1>
+    <p>
+      Got a question, project idea, product note, music thought, garden comment,
+      or a wonderfully suspicious rabbit hole? This is the place.
+    </p>
+  </section>
+
+  <section class="contact-layout">
+    <div class="contact-main">
+      {contactCards.map((item) => (
+        <article class="content-card">
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+          <a class="button primary" href={item.href}>{item.linkText}</a>
+        </article>
+      ))}
+    </div>
+
+    <aside class="contact-panel">
+      <p class="eyebrow">Main email</p>
+      <h2>eddie@eddiesaunders.com</h2>
+      <p>
+        Best starting point for most things. Keep it human, useful, and vaguely
+        related to reality. Bonus points for not sending spam. The bar is low,
+        but somehow people still trip over it.
+      </p>
+
+      <a class="button secondary-dark" href="mailto:eddie@eddiesaunders.com">
+        Open email
+      </a>
+    </aside>
+  </section>
+
+  <section class="link-strip">
+    <div>
+      <p class="eyebrow">Elsewhere</p>
+      <h2>Other places</h2>
+    </div>
+
+    <div class="external-links">
+      {links.map((item) => (
+        <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined}>
+          <strong>{item.label}</strong>
+          <span>{item.text}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
