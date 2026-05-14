@@ -1,0 +1,87 @@
+.music-hero {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(238, 243, 240, 0.86)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(35, 92, 116, 0.26),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(225, 139, 97, 0.18),
+      transparent 26rem
+    ),
+    var(--surface);
+}
+
+.music-panel {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+  align-items: stretch;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(17, 20, 23, 0.92), rgba(23, 66, 83, 0.88)),
+    var(--accent);
+  box-shadow: var(--shadow);
+  color: var(--surface);
+  margin-top: 38px;
+  padding: clamp(28px, 5vw, 44px);
+}
+
+.music-panel .eyebrow {
+  color: #f0c1a8;
+}
+
+.music-panel-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.music-panel h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.music-panel-copy p:last-child {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.music-project-list {
+  display: grid;
+  gap: 12px;
+}
+
+.music-project-list article {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 22px;
+}
+
+.music-project-list h3 {
+  color: var(--surface);
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+.music-project-list p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+@media (max-width: 850px) {
+  .music-panel {
+    grid-template-columns: 1fr;
+  }
+}

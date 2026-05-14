@@ -1,0 +1,80 @@
+.code-hero {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(238, 243, 240, 0.86)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(35, 92, 116, 0.28),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(17, 20, 23, 0.08),
+      transparent 26rem
+    ),
+    var(--surface);
+}
+
+.code-feature {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 24px;
+  align-items: start;
+  border-top: 1px solid var(--line);
+  margin-top: 38px;
+  padding-top: 38px;
+}
+
+.code-feature h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.code-feature > div > p:last-child {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.code-link-list {
+  display: grid;
+  gap: 12px;
+}
+
+.code-link-list a {
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.code-link-list a:hover {
+  background: var(--surface);
+  transform: translateY(-2px);
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.code-link-list strong {
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.code-link-list span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 850px) {
+  .code-feature {
+    grid-template-columns: 1fr;
+  }
+}

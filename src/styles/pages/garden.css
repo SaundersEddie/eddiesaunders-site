@@ -1,0 +1,66 @@
+.garden-hero {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(238, 243, 240, 0.92)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(111, 143, 121, 0.28),
+      transparent 30rem
+    ),
+    var(--surface);
+}
+
+.garden-log {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 24px;
+  align-items: start;
+  border-top: 1px solid var(--line);
+  margin-top: 38px;
+  padding-top: 38px;
+}
+
+.garden-log h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.garden-log > div > p:last-child {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.garden-log-list {
+  display: grid;
+  gap: 12px;
+}
+
+.garden-log-list article {
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.garden-log-list strong {
+  color: var(--accent-2);
+  font-size: 1.2rem;
+}
+
+.garden-log-list p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+@media (max-width: 850px) {
+  .garden-log {
+    grid-template-columns: 1fr;
+  }
+}

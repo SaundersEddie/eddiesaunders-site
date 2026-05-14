@@ -1,0 +1,80 @@
+.notes-hero {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(238, 243, 240, 0.86)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(225, 139, 97, 0.2),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(35, 92, 116, 0.18),
+      transparent 28rem
+    ),
+    var(--surface);
+}
+
+.notes-panel {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 24px;
+  align-items: start;
+  border-top: 1px solid var(--line);
+  margin-top: 38px;
+  padding-top: 38px;
+}
+
+.notes-panel h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.notes-panel > div > p:last-child {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.notes-list {
+  display: grid;
+  gap: 12px;
+}
+
+.notes-list article {
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.notes-list span {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.notes-list h3 {
+  font-size: 1.35rem;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-top: 10px;
+}
+
+.notes-list p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+@media (max-width: 850px) {
+  .notes-panel {
+    grid-template-columns: 1fr;
+  }
+}

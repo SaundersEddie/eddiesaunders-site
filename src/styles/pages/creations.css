@@ -1,0 +1,19 @@
+.creations-hero {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(238, 243, 240, 0.9)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(225, 139, 97, 0.18),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(35, 92, 116, 0.16),
+      transparent 28rem
+    ),
+    var(--surface);
+}
