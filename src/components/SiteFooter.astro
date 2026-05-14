@@ -1,5 +1,13 @@
 ---
-const iconLinks = [
+type IconName = "email" | "linkedin" | "facebook" | "youtube";
+
+type IconLink = {
+  label: string;
+  href: string;
+  icon: IconName;
+};
+
+const iconLinks: IconLink[] = [
   {
     label: "Email Eddie Saunders",
     href: "mailto:eddie@eddiesaunders.com",
@@ -12,17 +20,17 @@ const iconLinks = [
   },
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/share/1CwtbEQvxp/?mibextid=wwXIfr",
     icon: "facebook",
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://www.youtube.com/@eddie_saunders",
     icon: "youtube",
   },
 ];
 
-const renderIcon = (icon) => {
+const renderIcon = (icon: IconName) => {
   const icons = {
     email: `
       <svg viewBox="0 0 24 24" aria-hidden="true">
