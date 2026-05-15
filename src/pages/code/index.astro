@@ -21,15 +21,25 @@ const featuredProjects = [
     title: "Weather Summary Tool",
     type: "Python / AI",
     status: "Prototype",
-    href: "",
+    href: "https://github.com/SaundersEddie/weather-spa",
     text: "A small Open-Meteo and AI summarizer experiment for turning weather data into readable daily summaries.",
   },
   {
     title: "WMATA Incident Summarizer",
-    type: "Python / AI",
+    type: "Python / AI / Web",
     status: "Prototype",
     href: "",
-    text: "A modular API and summarization experiment for turning transit incident data into cleaner human-readable updates.",
+    links: [
+      {
+        label: "Backend Repo",
+        href: "https://github.com/SaundersEddie/wmata-be",
+      },
+      {
+        label: "Frontend Repo",
+        href: "https://github.com/SaundersEddie/wmata-fe",
+      },
+    ],
+    text: "A split frontend/backend experiment for turning WMATA transit incident data into cleaner human-readable summaries.",
   },
 ];
 
@@ -104,23 +114,34 @@ const projectLinks = [
     </div>
 
     <div class="project-grid">
-      {featuredProjects.map((item) => (
-        item.href ? (
-          <a class="project-card" href={item.href} target="_blank" rel="noreferrer">
+      {featuredProjects.map((item) => {
+        const CardTag = item.href ? "a" : "article";
+
+        return (
+          <CardTag
+            class="project-card"
+            href={item.href || undefined}
+            target={item.href ? "_blank" : undefined}
+            rel={item.href ? "noreferrer" : undefined}
+          >
             <p class="project-type">{item.type}</p>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+
+            {item.links && (
+              <div class="project-links">
+                {item.links.map((link) => (
+                  <a href={link.href} target="_blank" rel="noreferrer">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
             <span>{item.status}</span>
-          </a>
-        ) : (
-          <article class="project-card">
-            <p class="project-type">{item.type}</p>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-            <span>{item.status}</span>
-          </article>
-        )
-      ))}
+          </CardTag>
+        );
+      })}
     </div>
   </section>
 <!-- 
