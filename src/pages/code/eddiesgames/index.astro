@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import "../../../styles/pages/code.css";
+---
+
+<BaseLayout
+  title="Building eddiesgames.xyz | Eddie Saunders"
+  description="A project writeup about eddiesgames.xyz, small browser games, Cloudflare hosting, daily scoreboards, Sudoku across platforms, and future game plans."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Project writeup</p>
+    <h1>Building eddiesgames.xyz</h1>
+    <p>
+      Small browser games, daily scores, Cloudflare hosting, and one Sudoku
+      project that refused to stay on one platform.
+    </p>
+  </section>
+
+  <section class="article-page">
+    <article class="article-content">
+      <h2>What is eddiesgames.xyz?</h2>
+
+      <p>
+        eddiesgames.xyz is my home for small browser games: quick to play,
+        easy to share, and built without making players create accounts,
+        hand over personal data, or download anything.
+      </p>
+
+      <p>
+        The site is part game collection, part development lab. Each game gives
+        me a way to work through game logic, responsive layouts, score handling,
+        Cloudflare deployment, and the kind of tiny details that only show up
+        once real people start poking buttons.
+      </p>
+
+      <h2>Why Cloudflare?</h2>
+
+      <p>
+        I chose Cloudflare because the project needed to stay lean. The games
+        do not need a giant backend or a pile of infrastructure. They need fast
+        hosting, simple deploys, lightweight API routes, and a small database
+        for daily scores.
+      </p>
+
+      <p>
+        Cloudflare Pages handles the hosting, GitHub handles the deployment
+        flow, and Cloudflare D1 gives the project a practical place to store
+        daily leaderboard data.
+      </p>
+
+      <h2>Current games</h2>
+
+      <p>
+        The site already includes several games, including REDACTED, MATCH,
+        REACTION, SEQUENCE, SHIFT, and Sudoku. Each one is designed around a
+        short-session loop, daily scoring, or quick replayability.
+      </p>
+
+      <h2>Sudoku across platforms</h2>
+
+      <p>
+        Sudoku turned into a larger project than expected, which is exactly why
+        it has been useful. There is a Python version for puzzle generation,
+        validation, solving, and testing. There is a web version for
+        eddiesgames.xyz. There is also a Unity version in progress, with WebGL
+        and mobile builds planned.
+      </p>
+
+      <p>
+        That sounds like overkill, and it is. But it is useful overkill. The
+        same puzzle exposes different problems in Python, the browser, and
+        Unity: logic, UI, input, validation, layout, testing, and platform
+        deployment.
+      </p>
+
+      <h2>Banner ads or no banner ads?</h2>
+
+      <p>
+        The site has space for banner ads, but that does not mean ads need to
+        be switched on immediately. The better order is to build the games,
+        polish the experience, get enough traffic to justify the tradeoff, and
+        only then decide whether ads make sense.
+      </p>
+
+      <p>
+        Nobody needs a billboard in an empty field.
+      </p>
+
+      <h2>What comes next?</h2>
+
+      <p>
+        The plan is simple: more games, better polish, stronger writeups, and a
+        growing library of small projects that are actually playable. The site
+        should become a proper destination, not just a folder of demos wearing a
+        domain name.
+      </p>
+    </article>
+  </section>
+</BaseLayout>
