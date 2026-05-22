@@ -1,0 +1,147 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import "../../../styles/pages/code.css";
+
+const webProjects = [
+  {
+    title: "eddiesaunders.com Rebuild",
+    type: "Current focus",
+    status: "In progress",
+    text: "A full personal-site rebuild using Astro, cleaner content structure, and a move away from GoDaddy toward Cloudflare Pages.",
+    links: [
+      {
+        label: "Current Site",
+        href: "/",
+      },
+      {
+        label: "Code Landing Page",
+        href: "/code/",
+      },
+    ],
+  },
+  {
+    title: "eddiesgames.xyz",
+    type: "Live site",
+    status: "Active",
+    text: "A browser game site with daily scoreboards, shareable results, and lightweight Cloudflare-backed APIs.",
+    links: [
+      {
+        label: "Live Site",
+        href: "https://eddiesgames.xyz",
+      },
+      {
+        label: "Project Writeup",
+        href: "/code/eddiesgames/",
+      },
+    ],
+  },
+  {
+    title: "WMATA Frontend / Backend",
+    type: "Web app",
+    status: "Prototype",
+    text: "A split frontend/backend project for turning WMATA transit incident data into cleaner human-readable summaries.",
+    links: [
+      {
+        label: "Frontend Repo",
+        href: "https://github.com/SaundersEddie/wmata-fe",
+      },
+      {
+        label: "Backend Repo",
+        href: "https://github.com/SaundersEddie/wmata-be",
+      },
+    ],
+  },
+  {
+    title: "Weather SPA",
+    type: "Web app",
+    status: "Prototype",
+    text: "A small weather-focused single-page app experiment connected to the broader weather summary tooling work.",
+    links: [
+      {
+        label: "Repo",
+        href: "https://github.com/SaundersEddie/weather-spa",
+      },
+    ],
+  },
+];
+
+const notes = [
+  "GoDaddy to Cloudflare migration notes",
+  "Astro rebuild decisions",
+  "Portfolio project structure",
+  "Playwright testing demos",
+];
+---
+
+<BaseLayout
+  title="Web Projects | Eddie Saunders"
+  description="Web projects, site rebuilds, browser apps, deployment experiments, and build notes by Eddie Saunders."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Code / Web Projects</p>
+    <h1>Web Projects</h1>
+    <p>
+      Sites, browser apps, frontend/backend experiments, deployment work, and
+      the occasional lesson learned after arguing with hosting providers before breakfast.
+    </p>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Current web work</p>
+      <h2>Sites, apps, and practical builds</h2>
+      <p>
+        A growing collection of public web projects, rebuild notes, live apps,
+        prototypes, and the technical decisions behind them.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {webProjects.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+
+          <div class="project-links">
+            {item.links.map((link) => (
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Build notes</p>
+      <h2>Posts, videos, and writeups coming here</h2>
+      <p>
+        This section will hold deeper notes about the rebuild, hosting move,
+        project decisions, testing, deployment, and the bits that needed a firm talking-to.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {notes.map((note) => (
+        <article class="project-card">
+          <p class="project-type">Planned writeup</p>
+          <h3>{note}</h3>
+          <p>
+            Placeholder for a future post, video, repo note, or project breakdown.
+          </p>
+          <span>Planned</span>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
