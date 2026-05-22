@@ -4,39 +4,45 @@ import "../../styles/pages/code.css";
 
 const featuredProjects = [
   {
-    title: "eddiesgames.xyz",
-    type: "Live site",
-    status: "Active",
+    title: "eddiesaunders.com Rebuild",
+    type: "Web Projects",
+    status: "In progress",
     href: "",
     links: [
       {
-        label: "Live Site",
-        href: "https://eddiesgames.xyz"
+        label: "Current Site",
+        href: "/",
       },
-      {
-        label: "Project Writeup",
-        href: "/code/eddiesgames/"
-      }
     ],
-    text: "Small browser games with daily scoreboards, shareable results, and lightweight Cloudflare-backed APIs. Built as both a playable game site and an ongoing web/game development lab.",
+    text: "A full personal-site rebuild using Astro, with a cleaner structure, sharper portfolio pages, and a move away from GoDaddy toward Cloudflare Pages.",
   },
   {
     title: "Image Background Remover",
-    type: "Python tool",
+    type: "Small Tools",
     status: "In progress",
     href: "",
     text: "A local desktop tool concept for turning images into transparent-background PNGs, with future GUI and SVG workflow ideas.",
   },
   {
-    title: "Weather Summary Tool",
-    type: "Python / AI",
-    status: "Prototype",
-    href: "https://github.com/SaundersEddie/weather-spa",
-    text: "A small Open-Meteo and AI summarizer experiment for turning weather data into readable daily summaries.",
+    title: "eddiesgames.xyz",
+    type: "Games",
+    status: "Active",
+    href: "",
+    links: [
+      {
+        label: "Live Site",
+        href: "https://eddiesgames.xyz",
+      },
+      {
+        label: "Project Writeup",
+        href: "/code/eddiesgames/",
+      },
+    ],
+    text: "Small browser games with daily scoreboards, shareable results, and lightweight Cloudflare-backed APIs. Built as both a playable game site and an ongoing web/game development lab.",
   },
   {
     title: "WMATA Incident Summarizer",
-    type: "Python / AI / Web",
+    type: "AI Experiments",
     status: "Prototype",
     href: "",
     links: [
@@ -56,43 +62,26 @@ const featuredProjects = [
 const codeAreas = [
   {
     title: "Web projects",
-    id: "web-projects",
+    href: "/code/web-projects/",
     text: "Astro sites, browser games, static builds, deployment experiments, and practical web work that stays lean.",
   },
   {
     title: "Small tools",
-    id: "small-tools",
+    href: "/code/small-tools/",
     text: "Python utilities, automation helpers, image tools, scripts, and projects built to solve real annoyances.",
   },
   {
     title: "Games",
-    id: "games",
+    href: "/code/games/",
     text: "Small browser games, Unity prototypes, C64-style learning builds, scoreboards, and gameplay experiments.",
   },
   {
     title: "AI experiments",
-    id: "ai-experiments",
+    href: "/code/ai-experiments/",
     text: "Carefully scoped AI helpers, summarizers, content tools, and experiments that earn their keep instead of waving jazz hands.",
   },
 ];
 
-const projectLinks = [
-  {
-    label: "eddiesgames.xyz",
-    text: "Small browser games and web game experiments.",
-    href: "https://eddiesgames.xyz",
-  },
-  {
-    label: "Image background remover",
-    text: "A practical Python tool project for turning images into transparent PNGs.",
-    href: "#",
-  },
-  {
-    label: "Automation notes",
-    text: "Python, APIs, OpenAI experiments, Playwright study, and useful workflow ideas.",
-    href: "#",
-  },
-];
 ---
 
 <BaseLayout
@@ -110,7 +99,7 @@ const projectLinks = [
 
   <section class="content-grid code-area-grid" aria-label="Code project areas">
     {codeAreas.map((item) => (
-      <a class="content-card code-area-card" href={`#${item.id}`}>
+      <a class="content-card code-area-card" href={item.href}>
         <h2>{item.title}</h2>
         <p>{item.text}</p>
       </a>
@@ -158,25 +147,4 @@ const projectLinks = [
       })}
     </div>
   </section>
-<!-- 
-  <section class="code-feature">
-    <div>
-      <p class="eyebrow">Featured code</p>
-      <h2>Projects, experiments, and useful little machines.</h2>
-      <p>
-        This section can eventually link to live projects, GitHub repositories,
-        writeups, build notes, and lessons learned from the stuff that worked —
-        plus the stuff that needed a firm talking-to.
-      </p>
-    </div>
-
-    <div class="code-link-list">
-      {projectLinks.map((item) => (
-        <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined}>
-          <strong>{item.label}</strong>
-          <span>{item.text}</span>
-        </a>
-      ))}
-    </div>
-  </section> -->
 </BaseLayout>
