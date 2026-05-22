@@ -56,18 +56,22 @@ const featuredProjects = [
 const codeAreas = [
   {
     title: "Web projects",
+    id: "web-projects",
     text: "Astro sites, browser games, static builds, deployment experiments, and practical web work that stays lean.",
   },
   {
     title: "Small tools",
+    id: "small-tools",
     text: "Python utilities, automation helpers, image tools, scripts, and projects built to solve real annoyances.",
   },
   {
     title: "Games",
+    id: "games",
     text: "Small browser games, Unity prototypes, C64-style learning builds, scoreboards, and gameplay experiments.",
   },
   {
     title: "AI experiments",
+    id: "ai-experiments",
     text: "Carefully scoped AI helpers, summarizers, content tools, and experiments that earn their keep instead of waving jazz hands.",
   },
 ];
@@ -104,12 +108,12 @@ const projectLinks = [
     </p>
   </section>
 
-  <section class="content-grid">
+  <section class="content-grid code-area-grid" aria-label="Code project areas">
     {codeAreas.map((item) => (
-      <article class="content-card">
+      <a class="content-card code-area-card" href={`#${item.id}`}>
         <h2>{item.title}</h2>
         <p>{item.text}</p>
-      </article>
+      </a>
     ))}
   </section>
 
