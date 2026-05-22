@@ -1,0 +1,232 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import "../../../styles/pages/code.css";
+
+const featuredExperiments = [
+  {
+    title: "WMATA Incident Summarizer",
+    type: "Featured AI experiment",
+    status: "Prototype",
+    text: "A split frontend/backend experiment for turning WMATA transit incident data into cleaner human-readable summaries.",
+    links: [
+      {
+        label: "Backend Repo",
+        href: "https://github.com/SaundersEddie/wmata-be",
+      },
+      {
+        label: "Frontend Repo",
+        href: "https://github.com/SaundersEddie/wmata-fe",
+      },
+    ],
+  },
+];
+
+const activeExperiments = [
+  {
+    title: "Weather Summary Tool",
+    type: "Python / AI",
+    status: "Prototype",
+    text: "An Open-Meteo and AI summarizer experiment for turning raw weather data into readable daily summaries.",
+    links: [
+      {
+        label: "Repo",
+        href: "https://github.com/SaundersEddie/weather-spa",
+      },
+    ],
+  },
+  {
+    title: "WMATA Incident Summarizer",
+    type: "Python / AI / Web",
+    status: "Prototype",
+    text: "A practical AI summarization project built around real transit incident data, backend processing, and a separate frontend.",
+    links: [
+      {
+        label: "Backend Repo",
+        href: "https://github.com/SaundersEddie/wmata-be",
+      },
+      {
+        label: "Frontend Repo",
+        href: "https://github.com/SaundersEddie/wmata-fe",
+      },
+    ],
+  },
+  {
+    title: "Social Media Post Generator",
+    type: "Content workflow",
+    status: "Active",
+    text: "A helper for turning project notes and structured inputs into cleaner social posts, descriptions, and reusable copy.",
+  },
+];
+
+const futureExperiments = [
+  {
+    title: "CraftForge Image Review",
+    type: "Moderation / Review",
+    status: "Planned",
+    text: "A future helper for flagging uploaded images that may contain protected IP, hate symbols, or questionable custom requests before production.",
+  },
+  {
+    title: "Product Listing Assistant",
+    type: "Shop workflow",
+    status: "Planned",
+    text: "A practical assistant for turning real product specs, materials, print time, and pricing notes into clearer listings and posts.",
+  },
+  {
+    title: "Project Writeup Assistant",
+    type: "Portfolio workflow",
+    status: "Planned",
+    text: "A helper for turning README files, commit notes, and project decisions into human-readable build notes and portfolio posts.",
+  },
+];
+
+const principles = [
+  {
+    title: "Useful before clever",
+    type: "Rule",
+    status: "Always",
+    text: "The AI part has to reduce real work, clean up messy information, or make a workflow easier. Otherwise it is just expensive glitter.",
+  },
+  {
+    title: "Human review stays in the loop",
+    type: "Rule",
+    status: "Always",
+    text: "For moderation, content, business, and public-facing decisions, AI should assist and flag. It should not blindly approve things that can cause trouble.",
+  },
+  {
+    title: "Small scope wins",
+    type: "Rule",
+    status: "Always",
+    text: "The best experiments are narrow enough to test, debug, and explain without needing a whiteboard, a grant, and a nap.",
+  },
+];
+---
+
+<BaseLayout
+  title="AI Experiments | Eddie Saunders"
+  description="AI experiments, summarizers, content helpers, moderation ideas, and practical workflow tools by Eddie Saunders."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Code / AI Experiments</p>
+    <h1>AI Experiments</h1>
+    <p>
+      Carefully scoped AI helpers, summarizers, content tools, review workflows,
+      and experiments where the AI has to earn its keep instead of just waving jazz hands.
+    </p>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Featured experiment</p>
+      <h2>Real data, cleaner summaries</h2>
+      <p>
+        The strongest AI projects are not magic tricks. They take messy inputs,
+        process them clearly, and give people something easier to understand.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {featuredExperiments.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+
+          <div class="project-links">
+            {item.links.map((link) => (
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Active experiments</p>
+      <h2>Summaries, processors, and content helpers</h2>
+      <p>
+        Current experiments focused on summarization, data cleanup, workflow support,
+        and turning rough inputs into more useful output.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {activeExperiments.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+
+          {item.links && (
+            <div class="project-links">
+              {item.links.map((link) => (
+                <a
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Planned experiments</p>
+      <h2>Ideas for later, not distractions for today</h2>
+      <p>
+        These are AI-assisted workflows that could become genuinely useful once
+        the surrounding projects are mature enough to justify them.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {futureExperiments.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">AI rules</p>
+      <h2>The experiment has to have a job</h2>
+      <p>
+        AI is useful when it is scoped, testable, and attached to a real workflow.
+        Otherwise it becomes a very confident fog machine.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {principles.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
