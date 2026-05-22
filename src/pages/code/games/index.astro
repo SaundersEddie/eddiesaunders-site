@@ -1,0 +1,240 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import "../../../styles/pages/code.css";
+
+const featuredGames = [
+  {
+    title: "eddiesgames.xyz",
+    type: "Live game site",
+    status: "Active",
+    text: "The main home for small browser games, daily scoreboards, shareable results, and lightweight Cloudflare-backed APIs.",
+    links: [
+      {
+        label: "Live Site",
+        href: "https://eddiesgames.xyz",
+      },
+      {
+        label: "Project Writeup",
+        href: "/code/eddiesgames/",
+      },
+    ],
+  },
+];
+
+const browserGames = [
+  {
+    title: "REDACTED",
+    type: "Browser game",
+    status: "Live",
+    text: "A word-hunt style game built around a compact grid, daily play, and shareable score results.",
+  },
+  {
+    title: "MATCH",
+    type: "Browser game",
+    status: "Live",
+    text: "A pairs game with multiple difficulty modes, move tracking, timing, and daily leaderboard support.",
+  },
+  {
+    title: "REACTION",
+    type: "Browser game",
+    status: "Live",
+    text: "A timing and precision game focused on quick sessions, clean feedback, and daily score tracking.",
+  },
+  {
+    title: "SEQUENCE",
+    type: "Browser game",
+    status: "Live",
+    text: "A Simon-style memory game with repeat-the-pattern logic, responsive layout work, and score handling.",
+  },
+  {
+    title: "SHIFT",
+    type: "Browser game",
+    status: "Live",
+    text: "A slide, merge, and survive puzzle game with daily and random modes.",
+  },
+  {
+    title: "Sudoku",
+    type: "Browser game",
+    status: "In progress",
+    text: "A browser Sudoku project connected to the larger Python and Unity Sudoku experiments.",
+  },
+];
+
+const gameLabs = [
+  {
+    title: "Python Sudoku",
+    type: "Logic / testing",
+    status: "Active",
+    text: "A Python puzzle generation, solving, validation, and testing project used to explore reliable Sudoku board creation.",
+    links: [
+      {
+        label: "Repo",
+        href: "https://github.com/SaundersEddie/python-sudoku",
+      },
+    ],
+  },
+  {
+    title: "Unity Sudoku",
+    type: "Unity",
+    status: "In progress",
+    text: "A Unity version using UI Toolkit and the new Input System, with WebGL and mobile layout lessons baked in the hard way.",
+  },
+  {
+    title: "Godot Experiments",
+    type: "Game engine lab",
+    status: "Exploring",
+    text: "Small Godot tests and learning builds for comparing engine workflows against Unity.",
+  },
+  {
+    title: "C64-style Learning Builds",
+    type: "Retro game dev",
+    status: "Planned",
+    text: "Polished, deeper C64-style learning projects rather than rushed 24-hour challenge builds.",
+  },
+];
+
+const gameNotes = [
+  {
+    title: "Diary of a Game",
+    type: "Build notes",
+    status: "Planned",
+    text: "Longer writeups about how game projects are planned, built, broken, fixed, and improved.",
+  },
+  {
+    title: "OGaaT YT",
+    type: "Video / dev log",
+    status: "Planned",
+    text: "Shorter game-dev progress posts and videos tied to experiments, prototypes, and build lessons.",
+  },
+];
+---
+
+<BaseLayout
+  title="Games | Eddie Saunders"
+  description="Game projects, browser games, Sudoku experiments, Unity work, Godot notes, and game development writeups by Eddie Saunders."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Code / Games</p>
+    <h1>Games</h1>
+    <p>
+      Browser games, puzzle logic, Unity prototypes, Godot experiments, retro-style
+      learning builds, and the build notes that come from breaking things properly.
+    </p>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Featured game project</p>
+      <h2>The main game site</h2>
+      <p>
+        The central place for playable web games, daily scoreboards, and the
+        larger experiments that spin out from them.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {featuredGames.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+
+          <div class="project-links">
+            {item.links.map((link) => (
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Playable browser games</p>
+      <h2>Small games, daily scores, quick loops</h2>
+      <p>
+        The current game lineup on eddiesgames.xyz. These are small enough to
+        play quickly, but useful enough to teach real UI, state, scoring, and deployment lessons.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {browserGames.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Game dev labs</p>
+      <h2>Engines, logic, and experiments</h2>
+      <p>
+        Projects that are less about a single finished game and more about
+        solving the hard parts: generation, validation, input, layout, testing, and platform builds.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {gameLabs.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+
+          {item.links && (
+            <div class="project-links">
+              {item.links.map((link) => (
+                <a
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Build notes</p>
+      <h2>Posts, videos, and deeper writeups</h2>
+      <p>
+        This is where the longer explanations can live: what was built, why it
+        was built that way, what broke, and what got better after the smoke cleared.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {gameNotes.map((item) => (
+        <article class="project-card">
+          <p class="project-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span>{item.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
