@@ -34,6 +34,58 @@ const creationAreas = [
     text: "A future home for custom requests, limited runs, commission notes, available pieces, and what kinds of projects make sense.",
   },
 ];
+
+const featuredCreations = [
+ {
+  title: "Playing Card Suit Tray",
+  type: "CNC & Woodwork",
+  status: "Nearly finished",
+  image: "/images/creations/suit-tray-bowl.jpg",
+  alt: "Live-edge cedar tray with CNC-carved playing card suit bowls.",
+  text: "A live-edge cedar tray with CNC-carved suit bowls and darker wood insets, currently one final sand and finish pass away from being properly done.",
+},
+  {
+    title: "Custom Door Hangers",
+    type: "3D Printing",
+    status: "Featured",
+    image: "/images/creations/door-hangers.jpg",
+    alt: "Custom 3D printed door hangers.",
+    text: "Practical printed pieces with room for color, text, themes, flags, and small-batch customization.",
+  },
+  {
+    title: "MLB Ballpark Map",
+    type: "Laser Work",
+    status: "Featured",
+    image: "/images/creations/ballpark-map.jpg",
+    alt: "Laser cut MLB ballpark map with wood layers, blue backing, and marker pieces.",
+    text: "A layered laser-cut ballpark map with stadium markers, detailed background cuts, and a clean display-ready layout.",
+  },
+  {
+    title: "S-style Kit Guitar Build",
+    type: "Build Diaries",
+    status: "Planned",
+    image: "/images/creations/kit-guitar.jpg",
+    alt: "An S-style electric guitar kit prepared for a build diary.",
+    text: "A future build diary project covering assembly, finishing, setup, mistakes, fixes, and probably at least one moment of questionable optimism.",
+  },
+  {
+    title: "Brindle Besties Feature",
+    type: "Brindle Besties",
+    status: "Planned",
+    image: "/images/creations/brindle-besties-feature.jpg",
+    alt: "A featured Brindle Besties handmade product.",
+    text: "A rotating feature spot for the craft/shop side: market pieces, Etsy items, small-batch products, and practical things made to sell.",
+  },
+  {
+    title: "Freedom Ride Rescue Tray",
+    type: "Custom Work",
+    status: "Featured",
+    image: "/images/creations/freedom-ride-rescue-tray.jpg",
+    alt: "A custom handmade tray made for Freedom Ride Rescue.",
+    text: "A custom tray project showing how design, finish, personalization, and purpose can come together in a one-off handmade piece.",
+  },
+];
+
 ---
 
 <BaseLayout
@@ -61,6 +113,34 @@ const creationAreas = [
       </CardTag>
     );
   })}
+</section>
+
+<section class="featured-creations">
+  <div class="featured-creations-heading">
+    <p class="eyebrow">Featured products</p>
+    <h2>Current showoff pieces</h2>
+    <p>
+      A few stronger examples from the workshop: wood, prints, laser work,
+      build diaries, shop products, and custom pieces with a bit more story behind them.
+    </p>
+  </div>
+
+  <div class="featured-creations-grid">
+    {featuredCreations.map((item) => (
+      <article class="featured-creation-card">
+        <div class="featured-creation-image">
+          <img src={item.image} alt={item.alt} loading="lazy" />
+        </div>
+
+        <div class="featured-creation-content">
+          <p class="creation-type">{item.type}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span>{item.status}</span>
+        </div>
+      </article>
+    ))}
+  </div>
 </section>
 
 </BaseLayout>
