@@ -4,29 +4,34 @@ import "../../styles/pages/creations.css";
 
 const creationAreas = [
   {
-    title: "Woodwork",
-    text: "Cedar builds, trays, feeders, small furniture, rustic experiments, and the occasional project that started as scrap and became useful.",
+    title: "CNC & Woodwork",
+    href: "/creations/cnc-woodwork/",
+    text: "Cedar builds, trays, feeders, CNC tests, carved projects, guitar experiments, fixtures, finishes, and workshop lessons.",
   },
   {
     title: "3D Printing",
-    text: "Useful prints, custom tags, fixtures, signs, prototypes, and small-batch items made across the printer fleet.",
+    href: "/creations/3d-printing/",
+    text: "Useful prints, custom tags, fixtures, signs, prototypes, product tests, and small-batch items made across the printer fleet.",
   },
   {
-    title: "Laser",
-    text: "Cut boxes, engraved pieces, signs, tests, templates, and production ideas that need clean lines and repeatable results.",
+    title: "Laser Work",
+    href: "/creations/laser/",
+    text: "Cut boxes, engraved pieces, slate tests, signs, templates, and production ideas that need clean lines and repeatable results.",
   },
   {
-    title: "CNC",
-    text: "Carved trays, pocketed designs, test cuts, layout experiments, and projects where the machine gets to eat some wood.",
-  },
-  {
-    title: "Product Registry",
-    text: "A serial-numbered archive of handmade items with materials, dates, finish notes, photos, and build history.",
-    href: "/registry/",
+    title: "Build Diaries",
+    href: "/creations/diaries/",
+    text: "Workshop notes, project writeups, build progress, mistakes, fixes, material tests, and the stories behind the finished pieces.",
   },
   {
     title: "Brindle Besties",
-    text: "The craft side of the operation: handmade goods, market pieces, Etsy items, and practical things made to sell.",
+    href: "",
+    text: "The craft side of the operation: handmade goods, market pieces, Etsy items, custom products, and practical things made to sell.",
+  },
+  {
+    title: "Custom Work",
+    href: "",
+    text: "A future home for custom requests, limited runs, commission notes, available pieces, and what kinds of projects make sense.",
   },
 ];
 ---
@@ -45,18 +50,17 @@ const creationAreas = [
     </p>
   </section>
 
-  <section class="content-grid">
-    {creationAreas.map((item) => (
-      <article class="content-card">
+<section class="content-grid creations-area-grid" aria-label="Creation areas">
+  {creationAreas.map((item) => {
+    const CardTag = item.href ? "a" : "article";
+
+    return (
+      <CardTag class="content-card creations-area-card" href={item.href || undefined}>
         <h2>{item.title}</h2>
         <p>{item.text}</p>
+      </CardTag>
+    );
+  })}
+</section>
 
-        {item.href && (
-          <a class="button primary" href={item.href}>
-            View Registry
-          </a>
-        )}
-      </article>
-    ))}
-  </section>
 </BaseLayout>
