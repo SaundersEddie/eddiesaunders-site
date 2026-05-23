@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import "../../../../../styles/pages/code.css";
+
+const entries = [
+  {
+    title: "Entry 001: Starting Gridlock",
+    date: "2026-05-23",
+    status: "First entry",
+    text: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non erat sed ipsum luctus posuere. Donec at neque vitae lorem hendrerit feugiat.",
+      "This starter entry is only here to prove the diary format. Later it can become the real first note: the idea, the rules, the first rough sketch, and what the first prototype needs to prove.",
+      "Future entries can include screenshots, embedded videos, repo links, design notes, score logic, UI decisions, and anything else useful enough to document."
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Gridlock Diary | Eddie Saunders"
+  description="Build diary for Gridlock, a game development project by Eddie Saunders."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Diary of a Game</p>
+    <h1>Gridlock</h1>
+    <p>
+      A game build diary for Gridlock: a puzzle idea about movement, blocking,
+      tight decisions, and eventually finding out whether the design is clever
+      or just mean with better branding.
+    </p>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Project status</p>
+      <h2>In Progress</h2>
+      <p>
+        This page will collect the diary entries for the project. For now, it is
+        a working format test with one placeholder entry.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-card">
+        <p class="project-type">Game diary</p>
+        <h3>Gridlock</h3>
+        <p>
+          Status: In Progress
+          <br />
+          Started: 2026-05-23
+          <br />
+          Category: Browser game / puzzle
+        </p>
+        <span>Active</span>
+      </article>
+
+      <article class="project-card">
+        <p class="project-type">Future content</p>
+        <h3>Media-ready format</h3>
+        <p>
+          Later entries can include screenshots, embedded videos, dev notes,
+          repo links, playable demos, and design breakdowns.
+        </p>
+        <span>Ready</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Entries</p>
+      <h2>Build log</h2>
+      <p>
+        Entries are newest-or-oldest depending on what feels better once there
+        are more than one. For now, the first one gets the page moving.
+      </p>
+    </div>
+
+    <div class="diary-entry-list">
+      {entries.map((entry) => (
+        <article class="diary-entry">
+          <p class="project-type">{entry.date}</p>
+          <h3>{entry.title}</h3>
+
+          {entry.text.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+
+          <span>{entry.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

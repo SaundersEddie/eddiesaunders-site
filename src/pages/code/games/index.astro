@@ -94,11 +94,12 @@ const gameLabs = [
 ];
 
 const gameNotes = [
-  {
+ {
     title: "Diary of a Game",
     type: "Build notes",
-    status: "Planned",
-    text: "Longer writeups about how game projects are planned, built, broken, fixed, and improved.",
+    status: "In progress",
+    href: "/code/games/diary/",
+    text: "Game-specific build diaries, dev logs, experiments, mistakes, fixes, progress notes, and the occasional questionable idea that somehow becomes playable.",
   },
   {
     title: "OGaaT YT",
@@ -227,14 +228,21 @@ const gameNotes = [
     </div>
 
     <div class="project-grid">
-      {gameNotes.map((item) => (
-        <article class="project-card">
-          <p class="project-type">{item.type}</p>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-          <span>{item.status}</span>
-        </article>
-      ))}
+      {gameNotes.map((item) => {
+        const CardTag = item.href ? "a" : "article";
+
+        return (
+          <CardTag
+            class="project-card"
+            href={item.href || undefined}
+          >
+            <p class="project-type">{item.type}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span>{item.status}</span>
+          </CardTag>
+        );
+      })}
     </div>
   </section>
 </BaseLayout>

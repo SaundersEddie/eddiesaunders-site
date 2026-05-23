@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import "../../../../styles/pages/code.css";
+
+const diaries = [
+  {
+    title: "Gridlock",
+    status: "In Progress",
+    started: "2026-05-23",
+    updated: "2026-05-23",
+    href: "/code/games/diary/gridlock/",
+    tags: ["Browser Game", "Puzzle", "JavaScript", "Design"],
+    text: "A build diary for a puzzle game about movement, blocking, tight spaces, and probably getting trapped by your own brilliant ideas.",
+  },
+  {
+    title: "Shattered Realms",
+    status: "Planned",
+    started: "TBD",
+    updated: "TBD",
+    href: "",
+    tags: ["MUD", "Worldbuilding", "Systems", "Text Game"],
+    text: "A future diary for the MUD idea: systems, rooms, lore, commands, content tools, and the dangerous joy of building a world out of text.",
+  },
+];
+---
+
+<BaseLayout
+  title="Diary of a Game | Eddie Saunders"
+  description="Game development diary series, build logs, design notes, and progress journals by Eddie Saunders."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Code / Games / Diary</p>
+    <h1>Diary of a Game</h1>
+    <p>
+      Game-specific build diaries for projects that need more than a single
+      writeup: ideas, prototypes, design choices, mistakes, fixes, progress,
+      pauses, restarts, and lessons learned the hard way.
+    </p>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Diary series</p>
+      <h2>Current game diaries</h2>
+      <p>
+        Each diary follows one game or game-like project over time. Some will be
+        active, some paused, some done, and some waiting for me to make the questionable decision official.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      {diaries.map((item) => {
+        const CardTag = item.href ? "a" : "article";
+
+        return (
+          <CardTag
+            class="project-card"
+            href={item.href || undefined}
+          >
+            <p class="project-type">Diary series</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+
+            <div class="project-links" aria-label={`${item.title} tags`}>
+              {item.tags.map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </div>
+
+            <p>
+              Started: {item.started}
+              <br />
+              Updated: {item.updated}
+            </p>
+
+            <span>{item.status}</span>
+          </CardTag>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
