@@ -26,36 +26,42 @@ const browserGames = [
     title: "REDACTED",
     type: "Browser game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/redacted/",
     text: "A word-hunt style game built around a compact grid, daily play, and shareable score results.",
   },
   {
     title: "MATCH",
     type: "Browser game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/match/",
     text: "A pairs game with multiple difficulty modes, move tracking, timing, and daily leaderboard support.",
   },
   {
     title: "REACTION",
     type: "Browser game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/reaction/",
     text: "A timing and precision game focused on quick sessions, clean feedback, and daily score tracking.",
   },
   {
     title: "SEQUENCE",
     type: "Browser game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/sequence/",
     text: "A Simon-style memory game with repeat-the-pattern logic, responsive layout work, and score handling.",
   },
   {
     title: "SHIFT",
     type: "Browser game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/shift/",
     text: "A slide, merge, and survive puzzle game with daily and random modes.",
   },
   {
     title: "Sudoku",
     type: "Browser game",
     status: "In progress",
+    href: "https://eddiesgames.xyz/play/sudoku/",
     text: "A browser Sudoku project connected to the larger Python and Unity Sudoku experiments.",
   },
 ];
@@ -174,6 +180,15 @@ const gameNotes = [
           <p class="project-type">{item.type}</p>
           <h3>{item.title}</h3>
           <p>{item.text}</p>
+
+          {item.href && (
+            <div class="project-links">
+              <a href={item.href} target="_blank" rel="noreferrer">
+                Play Game
+              </a>
+            </div>
+          )}
+
           <span>{item.status}</span>
         </article>
       ))}
