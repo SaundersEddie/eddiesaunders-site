@@ -11,7 +11,7 @@ const webProjects = [
     links: [
       {
         label: "Current Site",
-        href: "/",
+        href: "https://eddiesaunders-site.hippygoth.workers.dev/",
       },
       {
         label: "Code Landing Page",
@@ -64,13 +64,6 @@ const webProjects = [
     ],
   },
 ];
-
-const notes = [
-  "GoDaddy to Cloudflare migration notes",
-  "Astro rebuild decisions",
-  "Portfolio project structure",
-  "Playwright testing demos",
-];
 ---
 
 <BaseLayout
@@ -116,30 +109,6 @@ const notes = [
           </div>
 
           <span>{item.status}</span>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Build notes</p>
-      <h2>Posts, videos, and writeups coming here</h2>
-      <p>
-        This section will hold deeper notes about the rebuild, hosting move,
-        project decisions, testing, deployment, and the bits that needed a firm talking-to.
-      </p>
-    </div>
-
-    <div class="project-grid">
-      {notes.map((note) => (
-        <article class="project-card">
-          <p class="project-type">Planned writeup</p>
-          <h3>{note}</h3>
-          <p>
-            Placeholder for a future post, video, repo note, or project breakdown.
-          </p>
-          <span>Planned</span>
         </article>
       ))}
     </div>
