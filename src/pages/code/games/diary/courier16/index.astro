@@ -1,0 +1,233 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import "../../../../../styles/pages/code.css";
+
+type DiaryInlinePart = {
+  text: string;
+  strong?: boolean;
+  em?: boolean;
+  code?: boolean;
+  href?: string;
+};
+
+type DiaryBlock =
+  | {
+      type: "paragraph";
+      content: DiaryInlinePart[];
+    }
+  | {
+      type: "pullquote";
+      text: string;
+    }
+  | {
+      type: "figure";
+      src: string;
+      alt: string;
+      caption: string;
+    }
+  | {
+      type: "note";
+      title: string;
+      text: string;
+    }
+  | {
+      type: "next";
+      title: string;
+      text: string;
+    };
+
+type DiaryEntry = {
+  chapter: string;
+  title: string;
+  date: string;
+  stage: string;
+  focus: string;
+  blocks: DiaryBlock[];
+};
+
+
+const courierEntries: DiaryEntry[] = [
+  {
+    chapter: "001",
+    title: "Starting Courier 16",
+    date: "2026-05-27",
+    stage: "Project setup",
+    focus: "Giving the game a real starting point",
+    blocks: [
+      {
+        type: "paragraph",
+        content: [
+          { text: "Courier 16 started with a simple target: build a small Unity game from start to finish and document the process properly along the way.",
+          },
+        ],
+      },
+      {
+        type: "paragraph",
+        content: [
+          {
+            text: "Not a giant game. Not a forever project. Not one of those “small ideas” that quietly grows weapons, crafting, multiplayer, a skill tree, and a suspicious need for three more months. The goal here is much more useful: make a complete game with a clear scope, then write about the decisions, problems, fixes, and lessons as it comes together.",
+          },
+        ],
+      },
+      {
+        type: "pullquote",
+        text: "If the package does not matter, the game becomes a generic platformer with a box. If the package matters too much, it becomes a punishment with a shipping label.",
+      },
+      {
+        type: "paragraph",
+        content: [
+          {
+            text: "The current plan is a compact side-scrolling delivery platformer built around sixteen scrolling routes. The player is a courier, the job is to get a package to the end of each route, and the interesting part should come from movement, hazards, timing, and package handling. Somewhere between “box decoration” and “shipping label punishment” is probably the actual game.",
+          },
+        ],
+      },
+      {
+        type: "paragraph",
+        content: [
+          { text: "The first actual Unity work was not glamorous, but it was important. I created the three usual scenes I like to start with: "},
+          { text: "mainMenu", code: true },
+          { text: ", " },
+          { text: "gamePlay", code: true },
+          { text: ", and " },
+          { text: "gameOver", code: true },
+          {
+            text: ". That gives the project a basic shape before any gameplay exists.",
+          },
+        ],
+      },
+      {
+        type: "note",
+        title: "Tiny setup detail, future headache avoided",
+        text: "I also created a GameUI folder and added the Panel Settings asset up front, because UI Toolkit has a special talent for waiting until later to remind you that you forgot it.",
+      },
+      {
+        type: "paragraph",
+        content: [
+          {
+            text: "That is not much of a game yet, but it is the first proper checkpoint. The project exists. The basic scene structure is in place. The UI has somewhere to live. The first version has been pushed to git, which means there is a clean starting line instead of a pile of local files and false confidence.",
+          },
+        ],
+      },
+      {
+        type: "paragraph",
+        content: [
+          {
+            text: "The next job is to make the project format work before chasing mechanics. This diary needs to read more like a serialized making-of article than a plain developer notebook, so the page structure matters: chapters, screenshots, captions, notes, and eventually playable build links.",
+          },
+        ],
+      },
+      {
+        type: "next",
+        title: "Next",
+        text: "Settle the diary page layout, then build the first functional Unity loop: main menu to gameplay, gameplay to game over, and back again.",
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Courier 16 Diary | Eddie Saunders"
+  description="Build diary for Courier 16, a game development project by Eddie Saunders."
+>
+  <section class="page-hero code-hero">
+    <p class="eyebrow">Diary of a Game</p>
+    <h1>Courier 16</h1>
+    <p>
+    A compact Unity side-scrolling delivery platformer about getting the package to the end of each route. This diary follows the project from early concept through prototype, level design, polish, WebGL build, and release.
+    </p>
+  </section>
+
+
+<section class="development-log">
+  <header class="development-log__header">
+    <p class="eyebrow">Development log</p>
+    <h2>Building Courier 16</h2>
+    <p>
+      These chapters follow Courier 16 from rough idea to playable release.
+      Each one focuses on a decision, problem, milestone, or lesson from the
+      build rather than acting as a raw changelog.
+    </p>
+  </header>
+
+  <div class="diary-timeline">
+    {courierEntries.map((entry) => (
+      <article class="diary-entry">
+        <header class="diary-entry__header">
+          <div class="diary-entry__meta-row">
+            <span>{entry.date}</span>
+            <span>{entry.stage}</span>
+          </div>
+
+          <h3>
+            <span>Chapter {entry.chapter}</span>
+            {entry.title}
+          </h3>
+
+          <p class="diary-entry__focus">
+            <strong>Focus:</strong> {entry.focus}
+          </p>
+        </header>
+
+        <div class="diary-entry__body">
+          {entry.blocks.map((block) => {
+            if (block.type === "paragraph") {
+              return (
+                <p>
+                  {block.content.map((part) => {
+                    if (part.strong) return <strong>{part.text}</strong>;
+                    if (part.em) return <em>{part.text}</em>;
+                    if (part.code) return <code>{part.text}</code>;
+                    if (part.href) return <a href={part.href}>{part.text}</a>;
+
+                    return part.text;
+                  })}
+                </p>
+              );
+            }
+
+            if (block.type === "pullquote") {
+              return (
+                <aside class="diary-pullquote">
+                  <p>{block.text}</p>
+                </aside>
+              );
+            }
+
+            if (block.type === "figure") {
+              return (
+                <figure class="diary-figure">
+                  <img src={block.src} alt={block.alt} />
+                  <figcaption>{block.caption}</figcaption>
+                </figure>
+              );
+            }
+
+            if (block.type === "note") {
+              return (
+                <aside class="diary-note">
+                  <p class="diary-note__label">Build note</p>
+                  <h4>{block.title}</h4>
+                  <p>{block.text}</p>
+                </aside>
+              );
+            }
+
+            if (block.type === "next") {
+              return (
+                <aside class="next-step">
+                  <p class="next-step__label">Next</p>
+                  <h4>{block.title}</h4>
+                  <p>{block.text}</p>
+                </aside>
+              );
+            }
+
+            return null;
+          })}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+</BaseLayout>
