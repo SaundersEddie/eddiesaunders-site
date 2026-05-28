@@ -310,6 +310,11 @@ const courierEntries: DiaryEntry[] = [
   ],
 },
 ];
+
+const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
+
+const latestEntry = courierEntries[courierEntries.length - 1];
+const indexedEntries = [...courierEntries].reverse();
 ---
 
 <BaseLayout
@@ -322,6 +327,52 @@ const courierEntries: DiaryEntry[] = [
     <p>
     A compact Unity side-scrolling delivery platformer about getting the package to the end of each route. This diary follows the project from early concept through prototype, level design, polish, WebGL build, and release.
     </p>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Quick index</p>
+      <h2>Latest and past entries</h2>
+      <p>
+        Jump straight to the newest Courier 16 update or browse the diary by chapter.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-card">
+        <p class="project-type">Latest entry</p>
+        <h3>
+          Chapter {latestEntry.chapter}: {latestEntry.title}
+        </h3>
+        <p>
+          {latestEntry.date}
+          <br />
+          {latestEntry.stage}
+        </p>
+
+        <div class="project-links">
+          <a href={`#${getEntryId(latestEntry)}`}>Read Latest</a>
+        </div>
+
+        <span>{latestEntry.focus}</span>
+      </article>
+
+      <article class="project-card">
+        <p class="project-type">Entry index</p>
+        <h3>Courier 16 chapters</h3>
+
+        <div class="diary-index-list">
+          {indexedEntries.map((entry) => (
+            <a href={`#${getEntryId(entry)}`}>
+              <span>
+                {entry.date} · Chapter {entry.chapter}
+              </span>
+              <strong>{entry.title}</strong>
+            </a>
+          ))}
+        </div>
+      </article>
+    </div>
   </section>
 
 
@@ -338,7 +389,7 @@ const courierEntries: DiaryEntry[] = [
 
   <div class="diary-timeline">
     {courierEntries.map((entry) => (
-      <article class="diary-entry">
+      <article class="diary-entry" id={getEntryId(entry)}>
         <header class="diary-entry__header">
           <div class="diary-entry__meta-row">
             <span>{entry.date}</span>

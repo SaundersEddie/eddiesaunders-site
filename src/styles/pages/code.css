@@ -319,14 +319,22 @@ a.project-card:hover {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 28px;
   background:
-    radial-gradient(circle at 12% 0%, rgba(255, 204, 102, 0.18), transparent 34rem),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.035));
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(255, 204, 102, 0.18),
+      transparent 34rem
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.105),
+      rgba(255, 255, 255, 0.035)
+    );
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(18px);
 }
 
 .diary-entry::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -503,4 +511,36 @@ a.project-card:hover {
   .diary-entry__meta-row span {
     font-size: 0.72rem;
   }
+}
+
+.diary-index-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.diary-index-list a {
+  display: grid;
+  gap: 3px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: inherit;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.diary-index-list a:hover,
+.diary-index-list a:focus-visible {
+  background: var(--surface-soft);
+}
+
+.diary-index-list span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.diary-index-list strong {
+  color: var(--accent);
+  font-size: 0.95rem;
 }
