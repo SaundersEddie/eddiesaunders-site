@@ -118,11 +118,197 @@ const courierEntries: DiaryEntry[] = [
       },
       {
         type: "next",
-        title: "Next",
-        text: "Settle the diary page layout, then build the first functional Unity loop: main menu to gameplay, gameplay to game over, and back again.",
+        title: "Minor Housekeeping",
+        text: "Settle the diary page layout and put together a quick Main screen, it won't be fancy, but we don't need fancy yet.",
       },
     ],
   },
+  {
+  chapter: "002",
+  title: "A Menu Appears, Eventually",
+  date: "2026-05-28",
+  stage: "Main menu first pass",
+  focus: "Getting the project synced, choosing a dev font, and laying out the first UI screen.",
+  blocks: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The day started with the laptop version of the repo not pulling down properly, which is always a charming way to begin. The scenes were missing, even though everything had pushed cleanly from the MacBook downstairs and the files were visible in the repo.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "With a repo this small, I had no great emotional need to investigate the mystery in depth. I pulled a fresh clone instead, which worked. Hopefully that was a one-off oddity and not the start of some strange Git folklore where the MacBooks begin disagreeing about reality.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Since ",
+        },
+        {
+          text: "Courier 16",
+          strong: true,
+        },
+        {
+          text: " is not planned as a commercial release, and the repo will be available publicly, I am looking into using free assets where it makes sense. My artistic skill can currently be described as ",
+        },
+        {
+          text: "brick on a pile of bricks",
+          em: true,
+        },
+        {
+          text: ", so I am not going to pretend this project needs hand-painted visual mastery before it earns the right to exist. I may still attempt my own music and sound effects, because apparently I enjoy creating future problems with headphones on.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "For development flow, I prefer working in a fairly linear way, so the first target is the ",
+        },
+        {
+          text: "mainMenu",
+          code: true,
+        },
+        {
+          text: " scene. Nothing fancy yet: title, Play, About, and Quit. It is not polished, and it is not supposed to be. It is there to give the project a front door instead of just throwing the player straight into a half-built level like a confused parcel.",
+        },
+      ],
+    },
+    {
+      type: "note",
+      title: "Development ritual nonsense",
+      text: "This is also the kind of setup work that helps the project feel real. Same reason I apparently code games better in a hoodie with the hood up, even when it is a cheerful 90°F outside. Ridiculous? Yes. Useful? Also yes.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "This morning’s session was mostly base ",
+        },
+        {
+          text: "UI Toolkit",
+          strong: true,
+        },
+        {
+          text: " work. I picked a development font, created the first pass at the menu layout, and got something visible on screen. I will be completely honest: ",
+        },
+        {
+          text: "ChatGPT helped with the ",
+        },
+        {
+          text: "USS",
+          code: true,
+        },
+        {
+          text: " and ",
+        },
+        {
+          text: "UXML",
+          code: true,
+        },
+        {
+          text: " files. One day I will properly sit down with UI Toolkit and go through the details like a responsible adult. Today was not that day.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The font I landed on for now is ",
+        },
+        {
+          text: "Luckiest Guy",
+          strong: true,
+          href: "https://fonts.google.com/specimen/Luckiest+Guy",
+        },
+        {
+          text: " by ",
+        },
+        {
+          text: "Astigmatic",
+          href: "https://fonts.google.com/?query=Astigmatic",
+        },
+        {
+          text: ". It may not survive to the final version, but it has the right chunky, playful energy for development. It also immediately reminded me that big personality fonts are great until they start shoving the layout around like they own the place.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "While looking through fonts, I also ran into some really nice multi-colour examples. I thought fonts were still mostly monochrome creatures, but apparently that ship sailed while I was off doing something else. I asked ChatGPT how those colour fonts worked from a screenshot and got the usual five-page answer, so that can wait until after a cup of tea or five.",
+        },
+      ],
+    },
+    {
+      type: "figure",
+      src: "/images/games/courier-16/main-menu-first-pass.png",
+      alt: "First Courier 16 main menu layout in Unity showing the title, Play, About, and Quit text buttons.",
+      caption: "The first rough main menu pass. Not final, not polished, and definitely not balanced yet, but it is a working screen instead of an empty scene with ambitions.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "After a bit of playing around, AI and I got a workable ",
+        },
+        {
+          text: "mainMenu",
+          code: true,
+        },
+        {
+          text: " laid out. I already have ideas for what this screen should eventually become, especially once there is actual gameplay art to sit behind it, but for pure function this does the job. There is a line of text sitting low on the screen, and I am not losing sleep over that yet.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The ",
+        },
+        {
+          text: "About",
+          strong: true,
+        },
+        {
+          text: " button should eventually open a modal. The ",
+        },
+        {
+          text: "Quit",
+          strong: true,
+        },
+        {
+          text: " button can quit desktop builds, while the web version may need to do something else entirely. Opening Google would be funny, but probably not the final answer. Probably.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Progress stopped there because I was distracted by Aussie Rules and State of Origin, which is not a bug, it is a scheduling feature. The menu exists, the font is in place, and the next step is obvious enough.",
+        },
+      ],
+    },
+    {
+      type: "next",
+      title: "Controlling the Menu",
+      text: "Implement the main menu button controllers so Play, About, and Quit actually do something useful instead of sitting there looking ugly.",
+    },
+  ],
+},
 ];
 ---
 
@@ -175,10 +361,17 @@ const courierEntries: DiaryEntry[] = [
               return (
                 <p>
                   {block.content.map((part) => {
+                    if (part.href) {
+                      return (
+                        <a href={part.href} target="_blank" rel="noopener noreferrer">
+                          {part.strong ? <strong>{part.text}</strong> : part.text}
+                        </a>
+                      );
+                    }
+
                     if (part.strong) return <strong>{part.text}</strong>;
                     if (part.em) return <em>{part.text}</em>;
                     if (part.code) return <code>{part.text}</code>;
-                    if (part.href) return <a href={part.href}>{part.text}</a>;
 
                     return part.text;
                   })}
