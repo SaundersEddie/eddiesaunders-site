@@ -309,6 +309,199 @@ const courierEntries: DiaryEntry[] = [
     },
   ],
 },
+{
+  chapter: "003",
+  title: "Menus Wired, HUD Started",
+  date: "2026-05-29",
+  stage: "Menu flow and gameplay HUD",
+  focus: "Getting the main menu working, sorting scene flow, and building the first gameplay UI.",
+  blocks: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "This morning’s session was on a slightly tighter schedule, so the goal was to keep things practical: wire up the main menu, make sure the game can actually move between scenes, and get the first pass of the gameplay HUD on screen.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Naturally, that started with me forgetting to add scenes to the ",
+        },
+        {
+          text: "Build Profile",
+          strong: true,
+        },
+        {
+          text: ". Twice. That caused the ",
+        },
+        {
+          text: "gamePlay",
+          code: true,
+        },
+        {
+          text: " scene to refuse to load, which is the sort of problem that feels mysterious for about thirty seconds and then immediately turns into “yes, that was obviously me.” Once the scenes were actually included where they needed to be, things behaved properly.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "A quick focus assignment to the ",
+        },
+        {
+          text: "Play",
+          strong: true,
+        },
+        {
+          text: " button also meant keyboard and controller navigation started working nicely in the ",
+        },
+        {
+          text: "mainMenu",
+          code: true,
+        },
+        {
+          text: " scene. That is enough for now. I am not especially worried about the ",
+        },
+        {
+          text: "About",
+          strong: true,
+        },
+        {
+          text: " or ",
+        },
+        {
+          text: "Quit",
+          strong: true,
+        },
+        {
+          text: " buttons yet. They react when clicked, which is all I need at this stage. One button gets the player into the game, and that is currently the important bit.",
+        },
+      ],
+    },
+    {
+      type: "pullquote",
+      text: "The menu does not need to be clever yet. It just needs to get the player into the game without behaving like a confused parcel.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "With the menu flow in place, the project has moved a little closer to feeling like a real game rather than a collection of scenes with ambitions. It also means I now have to think more seriously about the actual game pieces. I know broadly how I want ",
+        },
+        {
+          text: "Courier 16",
+          strong: true,
+        },
+        {
+          text: " to play, but as previously established, my artistic skill remains somewhere in the region of ",
+        },
+        {
+          text: "brick",
+          em: true,
+        },
+        {
+          text: ". Because of that, I am happy to lean on freeware art while I sketch out ideas and slowly figure out what the project really needs visually.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "If I had not already said it clearly enough, this project is being built in ",
+        },
+        {
+          text: "Unity 6",
+          strong: true,
+        },
+        {
+          text: " using ",
+        },
+        {
+          text: "UI Toolkit",
+          strong: true,
+        },
+        {
+          text: " and the ",
+        },
+        {
+          text: "New Input System",
+          strong: true,
+        },
+        {
+          text: ". I do not see much point in retreating to older UI or input workflows unless the modern systems hand me a genuinely ugly defect later on. For now, the newer stack is doing what I need.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "After a bit of digging around, I found a ",
+        },
+        {
+          text: "Kenney",
+          strong: true,
+          href: "https://kenney.nl/",
+        },
+        {
+          text: " asset pack that should do the job for early development: ",
+        },
+        {
+          text: "New Platformer Pack",
+          href: "https://kenney.nl/assets/new-platformer-pack",
+        },
+        {
+          text: ". It is not perfect, but it is more than good enough to get the project moving while I work out gameplay and gradually design my own graphics.",
+        },
+      ],
+    },
+    {
+      type: "note",
+      title: "A perfectly honest development confession",
+      text: "Just like yesterday, I had ChatGPT help generate the simple gameplay HUD in UXML and USS. I fully intend to understand UI Toolkit better over time, but right now the priority is getting the game moving rather than pretending I need to hand-chisel every panel from first principles.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The first pass of the gameplay UI is now in place. Score sits in the top left, lives sit in the top right, and the space between them is reserved for player notifications. That middle area is likely going to become one of the more personality-heavy pieces of the HUD. I am not going to give too much away yet, but weather warnings, delivery notices, and other little interruptions are very much on my mind.",
+        },
+      ],
+    },
+    {
+      type: "figure",
+      src: "/images/games/courier-16/gameplay-hud-first-pass.png",
+      alt: "First gameplay HUD pass for Courier 16 in Unity, showing score on the left, a central notice area, and lives with heart icons on the right.",
+      caption: "The first gameplay HUD pass. Score on the left, lives on the right, and a central notice area that will eventually carry hints, warnings, and other small bits of courier-related mischief.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "There is not a huge amount of visible complexity here yet, but this was still a useful session. The menu now leads somewhere, the scenes are connected, input is behaving, and the gameplay screen has a basic information structure. That is a decent return for a short morning, even if part of the process involved me forgetting where Unity expects its scenes to be listed.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "That is enough for today. Coffee is calling, and once that happens the next obvious step is to start moving away from menus and into the actual game logic.",
+        },
+      ],
+    },
+    {
+      type: "next",
+      title: "Gameplay Stuff",
+      text: "Start implementing the first real gameplay elements so the project has more to do than display a respectable menu and a confident-looking HUD.",
+    },
+  ],
+},
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
