@@ -502,6 +502,200 @@ const courierEntries: DiaryEntry[] = [
     },
   ],
 },
+{
+  chapter: "004",
+  title: "The Floor Exists",
+  date: "2026-05-30",
+  stage: "Tilemap and first movement test",
+  focus: "Creating the first real tilemap test area and getting the player moving on it.",
+  blocks: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "While drinking tea at 03:30, I had one of those useful but slightly annoying realizations: most of my previous Unity games have been single-screen projects. ",
+        },
+        {
+          text: "Courier 16",
+          strong: true,
+        },
+        {
+          text: " is not supposed to be that. It needs scrolling levels, which immediately raises the question of how the levels should actually exist inside Unity.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Do I make a separate scene for each level? Do I unpack level data into the main ",
+        },
+        {
+          text: "gamePlay",
+          code: true,
+        },
+        {
+          text: " scene? Do I use prefabs, additive scenes, or some hybrid approach that sounds sensible right up until Unity starts clearing its throat? There are plenty of opinions out there, and naturally most of them disagree with each other.",
+        },
+      ],
+    },
+    {
+      type: "pullquote",
+      text: "At some point the answer stops being research and becomes: build the smallest real version and see what hurts.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "For testing, the useful goal was simple: create a basic tilemap level, paint enough ground to stand on, and make sure the player does not immediately fall through the world like a dropped sandwich. It does not need to be Level 1 yet. It just needs to use the same sort of workflow the final game is likely to use.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The first headache was getting the tiles imported and usable. After that came the pixel-size problem. The tiles were ",
+        },
+        {
+          text: "64x64",
+          code: true,
+        },
+        {
+          text: ", but the import settings were not matching that properly, so they did not sit correctly in the grid. Setting the ",
+        },
+        {
+          text: "Pixels Per Unit",
+          strong: true,
+        },
+        {
+          text: " value to match the sprite size fixed it without too much drama.",
+        },
+      ],
+    },
+    {
+      type: "note",
+      title: "Tilemap lesson learned",
+      text: "The Tile Palette is not a scene object. It is the paint tray. The Tilemap in the scene is the canvas. Also, painting happens in Scene view, not Game view, because apparently Unity wanted that to be today's little character-building exercise.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Once the tilemap was behaving, I added a quick player sprite and gave it a ",
+        },
+        {
+          text: "Rigidbody2D",
+          code: true,
+        },
+        {
+          text: " and ",
+        },
+        {
+          text: "BoxCollider2D",
+          code: true,
+        },
+        {
+          text: ". For reasons best known to the collider goblins, Unity decided the box collider should start at roughly microscopic size. A quick edit fixed that, and the player finally dropped onto the ground instead of falling through it.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "That was the first proper win of the morning. The tilemap had collision, the player had collision, and gravity was doing its job. The player hit the floor harder than a drunk guy on a dance floor, but at least the floor existed.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Next came the first movement script. This is using ",
+        },
+        {
+          text: "Unity 6",
+          strong: true,
+        },
+        {
+          text: ", ",
+        },
+        {
+          text: "UI Toolkit",
+          strong: true,
+        },
+        {
+          text: ", and the ",
+        },
+        {
+          text: "New Input System",
+          strong: true,
+        },
+        {
+          text: ", and I have to admit I do like the newer input workflow. It is still Unity, so there is always a chance of ritual confusion, but compared to some input systems I have used over the years, this one feels fairly reasonable once the pieces are connected correctly.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The player can now move left and right, jump, land on platforms, and bump into walls. I had to increase ",
+        },
+        {
+          text: "jumpForce",
+          code: true,
+        },
+        {
+          text: " to ",
+        },
+        {
+          text: "12f",
+          code: true,
+        },
+        {
+          text: " so the player could actually reach the test platforms, which is exactly why this kind of ugly test map matters. Numbers mean very little until they are attached to a jump you either can or cannot make.",
+        },
+      ],
+    },
+    {
+      type: "figure",
+      src: "/images/games/courier-16/tilemap-movement-test-01.png",
+      alt: "Courier 16 tilemap movement test in Unity Scene view showing platforms, a player marker, and an exit sign.",
+      caption: "The first proper tilemap movement test. Still in Scene view rather than Game view, but it proves the important pieces: tile placement, collision, platform spacing, player movement, jumping, and a rough route shape.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "While testing, I kept trying to double jump. That probably says something useful. Double jump feels like one of those expected platformer features now, and for this game it could be a good way to make movement more fun without adding a whole new pile of systems. So that goes on the list.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "I also noticed the player can occasionally get stuck against or underneath blocks. That is likely a collision box issue rather than a grand mystery. Platformer collision is usually less about perfectly matching the sprite and more about making the player feel like the game is being fair. The collider probably needs to be a little more forgiving.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "That can wait until tomorrow. Today’s goal was simple: make a small environment where the player can move, jump, and collide with the world. That goal is done. It is not pretty, but it is real gameplay plumbing, and real gameplay plumbing beats imaginary polish every time.",
+        },
+      ],
+    },
+    {
+      type: "next",
+      title: "A Little Bit of Tweaking...",
+      text: "Add double jump, tweak the player collision box so it stops catching on tiles, and keep using the test map to tune movement before turning it into a real level.",
+    },
+  ],
+},
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
