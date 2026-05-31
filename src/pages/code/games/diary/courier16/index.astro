@@ -696,6 +696,179 @@ const courierEntries: DiaryEntry[] = [
     },
   ],
 },
+{
+  chapter: "005",
+  title: "The Level Finally Appears",
+  date: "2026-05-31",
+  stage: "Level loading and Game view test",
+  focus: "Loading level_01 into the gameplay scene and getting the first playable test map visible in Game view.",
+  blocks: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The morning started with a bit of cleanup and organization. I imported more of the ",
+        },
+        {
+          text: "Kenney",
+          strong: true,
+          href: "https://kenney.nl/",
+        },
+        {
+          text: " blocks into the Tile Palette and built a very small test level. Nothing fancy, but enough to start proving the workflow: terrain first, gameplay objects later.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "I did briefly throw in a key and a button because they were sitting there looking useful, but that also made the next lesson fairly obvious. Those items do not really belong in the ground tilemap. Terrain is terrain. Pickups, buttons, locks, doors, and other interactive bits should become prefabs so they can have proper positioning, colliders, and scripts. The floating blue button was funny, but not exactly a professional design statement.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "I will probably end up with multiple palettes: ground, hazards, decorations, and maybe a few visual layout helpers. I am not pretending I have a perfect tilemap workflow yet. Tilemaps are still new territory for this project, so what seems like a good idea today may turn into tomorrow’s cleanup job. That is the fun of learning, or at least what I tell myself while drinking tea at unreasonable hours.",
+        },
+      ],
+    },
+    {
+      type: "pullquote",
+      text: "Terrain belongs in the tilemap. Gameplay objects need to become prefabs before they start floating around like they have unfinished business.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The main goal today was getting the test level to display correctly inside the actual game. Up to this point I had mostly been playing around in Scene view, which is fine for building, but not where the player will live. The level scene itself has no camera, HUD, or gameplay systems. It is only the map. The ",
+        },
+        {
+          text: "gamePlay",
+          code: true,
+        },
+        {
+          text: " scene provides the camera, player, HUD, and the rest of the game shell.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Once the level was loaded into the ",
+        },
+        {
+          text: "gamePlay",
+          code: true,
+        },
+        {
+          text: " scene, I was honestly pretty pleased with how it looked. The sky colour needs work later, and background graphics will probably help, but the chunky tiles, simple platforms, and HUD already give it a nice retro feel. It is not final art, but it is finally starting to look like a game screen instead of a workshop accident.",
+        },
+      ],
+    },
+    {
+      type: "figure",
+      src: "/images/games/courier-16/game-view-first-level-load.png",
+      alt: "Courier 16 running in Unity Game view with the HUD visible, a blue sky background, platforms, player sprite, and key pickup.",
+      caption: "The first proper Game view screenshot. The level is still a rough test map, but now it loads through the gameplay scene with the HUD, camera, player, and background all visible together.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "I also swapped the temporary player marker for something that at least looks more like a player. There are no animations yet, and I am not worried about that right now. A static player sprite is enough while the game loop is still being built. The priority is movement, pickups, events, hazards, meanies, and level flow. Fancy bits can wait. No point making the game look amazing if the gameplay underneath it is still held together with wishful thinking and biscuits.",
+        },
+      ],
+    },
+    {
+      type: "note",
+      title: "First version of the level loading approach",
+      text: "The gamePlay scene now owns the camera, HUD, player, and core systems. The level scene owns the tilemap and level content. A small LevelLoader script loads level_01 additively so the map appears when the gameplay scene starts.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The first ",
+        },
+        {
+          text: "LevelLoader",
+          code: true,
+        },
+        {
+          text: " script is not coding genius, and it does not need to be. It has one job: load the starting level scene additively. That gives me a working structure where ",
+        },
+        {
+          text: "gamePlay",
+          code: true,
+        },
+        {
+          text: " stays as the reusable gameplay shell while ",
+        },
+        {
+          text: "level_01",
+          code: true,
+        },
+        {
+          text: " provides the actual map.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "That immediately exposed the next architecture issue: the player should not live inside ",
+        },
+        {
+          text: "level_01",
+          code: true,
+        },
+        {
+          text: ". The player belongs to ",
+        },
+        {
+          text: "gamePlay",
+          code: true,
+        },
+        {
+          text: ", while the level should only say where the player starts. So I added a ",
+        },
+        {
+          text: "PlayerSpawn",
+          code: true,
+        },
+        {
+          text: " object to the level and adjusted the loading flow so the player starts disabled, gets moved to the spawn point, and then gets turned on.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "That small change matters more than it sounds. Without it, the player appears in the middle of the screen and then magically snaps to the start position, which looks cheap even in a test build. Now the player stays out of sight while the level loads, then appears where the level says they should appear. Much cleaner.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "There is still plenty of roughness here. The sky is flat. The level is tiny. The pickup does not do anything yet. The player collider still catches on terrain now and then. But the important structure is working: the gameplay scene loads the level, the camera renders it, the HUD stays visible, and the player starts from the level’s spawn point.",
+        },
+      ],
+    },
+    {
+      type: "next",
+      title: "Collisions, Pickups, and Tune-ups",
+      text: "Start handling item collisions, beginning with pickups. Then shrink/tune the player collision box so it stops catching on tiles, add an isFalling state or similar movement lockout, and create the first basic “you died” event for falling or hazards.",
+    },
+  ],
+},
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
