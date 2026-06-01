@@ -869,6 +869,233 @@ const courierEntries: DiaryEntry[] = [
     },
   ],
 },
+{
+chapter: "006",
+title: "Keys, Scaling, and Other Small Lies",
+date: "2026-06-01",
+stage: "HUD cleanup, key inventory, and interaction planning",
+focus: "Cleaning up UI scaling, adding basic key collection state, and preparing the next gameplay systems for lock boxes, packages, and buttons.",
+blocks: [
+{
+type: "paragraph",
+content: [
+{
+text: "After yesterday’s diary was published, the house was still asleep, the tea was still doing its job, and I had just enough quiet time to keep poking at ",
+},
+{
+text: "Courier 16",
+strong: true,
+},
+{
+text: ". This is how these things get you. You say you are done, then you see one more thing that could be cleaned up, moved, tested, or made slightly less awful.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "I added a few more items to ",
+},
+{
+text: "level_01",
+code: true,
+},
+{
+text: " and continued playing around with the Kenney assets. Those packs are dangerous in the best possible way. You import a few blocks, spot a button, and suddenly your brain starts planning locks, mushrooms, signs, package routes, delivery points, and little bits of scenery that probably have no business being considered at four in the morning.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "The test level is still not really ",
+},
+{
+text: "Level 1",
+strong: true,
+},
+{
+text: " yet, but it is starting to move away from being a plain collision lab. There are platforms, pickups, lock-box ideas, and enough route shape to expose problems. That is useful. A rough level that reveals bad assumptions is far more valuable than a pretty screen that does nothing.",
+},
+],
+},
+{
+type: "pullquote",
+text: "A rough level that reveals bad assumptions is far more valuable than a pretty screen that does nothing.",
+},
+{
+type: "paragraph",
+content: [
+{
+text: "One thing that became obvious while testing was that the game needs some kind of fail boundary under the level. If the player falls off the map, they should not get the full Hans Gruber slow-motion death scene. They should hit a fail zone, lose a life or reset, and get back to the route. That is now on the list.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "I also cleaned up the gameplay HUD because the original sections were slightly different heights, and once I noticed that, it started annoying me like a loose cupboard door. The HUD now behaves more like proper modules: score, notice, items, and lives. It is not final, but it is much cleaner.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "The bigger UI issue turned out to be the Panel Settings asset. I had been building mostly on the 4K machine, then opened the project on the MacBook, and everything looked like it had been thrown into a UI blender. The culprit was ",
+},
+{
+text: "Constant Physical Size",
+code: true,
+},
+{
+text: ". Switching the panel to ",
+},
+{
+text: "Scale With Screen Size",
+code: true,
+},
+{
+text: ", with a 1920x1080 reference resolution, fixed both the main menu and the gameplay HUD. That was one of those fixes that feels small, but saves the project from future layout misery.",
+},
+],
+},
+{
+type: "note",
+title: "UI Toolkit lesson learned",
+text: "For this project, the Panel Settings asset needs to scale with screen size using a 1920x1080 reference. Constant Physical Size made the UI behave unpredictably between the 4K desktop and the MacBook.",
+},
+{
+type: "paragraph",
+content: [
+{
+text: "I also fixed the Luckiest Guy font issue on the main menu. The correct USS property was ",
+},
+{
+text: "-unity-font-definition",
+code: true,
+},
+{
+text: ", not the property I was originally trying to use. Unity was happy enough to let me be wrong for a while, obviously. The gameplay HUD can keep its current font for now. It is readable, and readability matters more than style during testing.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "During another quiet stretch, I created a few more prefabs, added double jump, and tried to reduce the problem where the player sometimes catches on platform edges. The double jump already feels useful for testing. The sticking issue is better after adding a zero-friction physics material, but it has not completely vanished. It is not bad enough to derail the morning, so it stays on the review list.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Monday morning started with a small goal: add collision detection, even if it only reported results to the Console. That is not exciting in the marketing sense, but it is exactly the kind of work the game needs right now. Before score, packages, locks, buttons, and meanies can matter, the game needs to reliably know when the player touched something.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "The first proper interaction was coloured keys. The key pickup script now supports four colours: blue, green, red, and yellow. The player can collect them, the key disappears, and the game logs what was collected. That gave the project its first small piece of actual gameplay state.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "That immediately led to the next design decision: how should the player interact with the world? Do we use one button for everything, switching between fire and action depending on context, or do we map separate buttons? It took about thirty seconds to remember we are not trapped in the 8-bit era anymore. The game can have a ",
+},
+{
+text: "Fire",
+strong: true,
+},
+{
+text: " button and an ",
+},
+{
+text: "Interact",
+strong: true,
+},
+{
+text: " button. Nobody wants to blast a meanie and accidentally have the game interpret that as, “please operate this nearby delivery machine.”",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "The current thinking is that keys open matching lock boxes, and lock boxes release the package or item that needs to be delivered. Some levels may be simple: avoid the meanies, grab the package, and reach the customer. Later levels can layer in coloured keys, buttons, package requirements, and delivery unlocks. The important part is that the systems are being built in a way that can grow without needing to be rewritten every time a new object appears.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "That meant the next obvious piece was a tiny inventory system. Not a full RPG backpack. No slots, no menus, and no “you are carrying sixteen turnips and a ceremonial spoon.” Just enough state to answer simple questions: does the player have the blue key, the green key, the red key, or the yellow key?",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Once the keys existed in inventory, the HUD needed to show them. Console logs are useful while building, but they are not a player interface. So the HUD now has a dedicated ",
+},
+{
+text: "Items",
+strong: true,
+},
+{
+text: " section. If the player has no keys or packages, nothing is shown. When keys are collected, their icons appear in the Items panel.",
+},
+],
+},
+{
+type: "figure",
+src: "/images/games/courier-16/hud-key-inventory.png",
+alt: "Courier 16 gameplay HUD showing score, notice, collected key icons, and lives above a small test level.",
+caption: "The HUD now has a separate Items panel for collected keys. It is still a testing layout, but it gives immediate visual feedback instead of making me stare at the Console like it owes me money.",
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Getting that wired was more fiddly than it should have been. UI Toolkit needs the ",
+},
+{
+text: "UIDocument",
+code: true,
+},
+{
+text: " to display the UXML, a controller script to find and update named elements, and then the player inventory needs a reference to that controller. It works, but the setup feels like plugging a kettle into a toaster through a fax machine. Scotch would not have been an unreasonable thought at 05:35.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Still, it works. The player collects keys, the inventory records them, the HUD displays them, and the notice area remains free for gameplay messages. That is a proper little foundation. Tomorrow’s fun should be opening the lock box. In very technical terms: are you the Keymaster? If yes, open the box and get the package.",
+},
+],
+},
+{
+type: "next",
+title: "Opening the Box",
+text: "Use the key inventory to interact with matching lock boxes. The first version only needs to check whether the player has the correct key, swap the lock box sprite to the unlocked version, and log the result. Package release can come after the lock box state works.",
+},
+],
+},
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
