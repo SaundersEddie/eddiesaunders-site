@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../../../../../layouts/BaseLayout.astro";
-import "../../../../../styles/pages/code.css";
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import '../../../../../styles/pages/code.css';
 
 type DiaryInlinePart = {
   text: string;
@@ -12,26 +12,26 @@ type DiaryInlinePart = {
 
 type DiaryBlock =
   | {
-      type: "paragraph";
+      type: 'paragraph';
       content: DiaryInlinePart[];
     }
   | {
-      type: "pullquote";
+      type: 'pullquote';
       text: string;
     }
   | {
-      type: "figure";
+      type: 'figure';
       src: string;
       alt: string;
       caption: string;
     }
   | {
-      type: "note";
+      type: 'note';
       title: string;
       text: string;
     }
   | {
-      type: "next";
+      type: 'next';
       title: string;
       text: string;
     };
@@ -45,96 +45,1081 @@ type DiaryEntry = {
   blocks: DiaryBlock[];
 };
 
-
 const courierEntries: DiaryEntry[] = [
   {
-    chapter: "001",
-    title: "Starting Courier 16",
-    date: "2026-05-27",
-    stage: "Project setup",
-    focus: "Giving the game a real starting point",
+    chapter: '001',
+    title: 'Starting Courier 16',
+    date: '2026-05-27',
+    stage: 'Project setup',
+    focus: 'Giving the game a real starting point',
     blocks: [
       {
-        type: "paragraph",
-        content: [
-          { text: "Courier 16 started with a simple target: build a small Unity game from start to finish and document the process properly along the way.",
-          },
-        ],
-      },
-      {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            text: "Not a giant game. Not a forever project. Not one of those “small ideas” that quietly grows weapons, crafting, multiplayer, a skill tree, and a suspicious need for three more months. The goal here is much more useful: make a complete game with a clear scope, then write about the decisions, problems, fixes, and lessons as it comes together.",
+            text: 'Courier 16 started with a simple target: build a small Unity game from start to finish and document the process properly along the way.',
           },
         ],
       },
       {
-        type: "pullquote",
-        text: "If the package does not matter, the game becomes a generic platformer with a box. If the package matters too much, it becomes a punishment with a shipping label.",
-      },
-      {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            text: "The current plan is a compact side-scrolling delivery platformer built around sixteen scrolling routes. The player is a courier, the job is to get a package to the end of each route, and the interesting part should come from movement, hazards, timing, and package handling. Somewhere between “box decoration” and “shipping label punishment” is probably the actual game.",
+            text: 'Not a giant game. Not a forever project. Not one of those “small ideas” that quietly grows weapons, crafting, multiplayer, a skill tree, and a suspicious need for three more months. The goal here is much more useful: make a complete game with a clear scope, then write about the decisions, problems, fixes, and lessons as it comes together.',
           },
         ],
       },
       {
-        type: "paragraph",
-        content: [
-          { text: "The first actual Unity work was not glamorous, but it was important. I created the three usual scenes I like to start with: "},
-          { text: "mainMenu", code: true },
-          { text: ", " },
-          { text: "gamePlay", code: true },
-          { text: ", and " },
-          { text: "gameOver", code: true },
-          {
-            text: ". That gives the project a basic shape before any gameplay exists.",
-          },
-        ],
+        type: 'pullquote',
+        text: 'If the package does not matter, the game becomes a generic platformer with a box. If the package matters too much, it becomes a punishment with a shipping label.',
       },
       {
-        type: "note",
-        title: "Tiny setup detail, future headache avoided",
-        text: "I also created a GameUI folder and added the Panel Settings asset up front, because UI Toolkit has a special talent for waiting until later to remind you that you forgot it.",
-      },
-      {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            text: "That is not much of a game yet, but it is the first proper checkpoint. The project exists. The basic scene structure is in place. The UI has somewhere to live. The first version has been pushed to git, which means there is a clean starting line instead of a pile of local files and false confidence.",
+            text: 'The current plan is a compact side-scrolling delivery platformer built around sixteen scrolling routes. The player is a courier, the job is to get a package to the end of each route, and the interesting part should come from movement, hazards, timing, and package handling. Somewhere between “box decoration” and “shipping label punishment” is probably the actual game.',
           },
         ],
       },
       {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            text: "The next job is to make the project format work before chasing mechanics. This diary needs to read more like a serialized making-of article than a plain developer notebook, so the page structure matters: chapters, screenshots, captions, notes, and eventually playable build links.",
+            text: 'The first actual Unity work was not glamorous, but it was important. I created the three usual scenes I like to start with: ',
+          },
+          { text: 'mainMenu', code: true },
+          { text: ', ' },
+          { text: 'gamePlay', code: true },
+          { text: ', and ' },
+          { text: 'gameOver', code: true },
+          {
+            text: '. That gives the project a basic shape before any gameplay exists.',
           },
         ],
       },
       {
-        type: "next",
-        title: "Minor Housekeeping",
+        type: 'note',
+        title: 'Tiny setup detail, future headache avoided',
+        text: 'I also created a GameUI folder and added the Panel Settings asset up front, because UI Toolkit has a special talent for waiting until later to remind you that you forgot it.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That is not much of a game yet, but it is the first proper checkpoint. The project exists. The basic scene structure is in place. The UI has somewhere to live. The first version has been pushed to git, which means there is a clean starting line instead of a pile of local files and false confidence.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The next job is to make the project format work before chasing mechanics. This diary needs to read more like a serialized making-of article than a plain developer notebook, so the page structure matters: chapters, screenshots, captions, notes, and eventually playable build links.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Minor Housekeeping',
         text: "Settle the diary page layout and put together a quick Main screen, it won't be fancy, but we don't need fancy yet.",
       },
     ],
   },
   {
-  chapter: "002",
-  title: "A Menu Appears, Eventually",
-  date: "2026-05-28",
-  stage: "Main menu first pass",
-  focus: "Getting the project synced, choosing a dev font, and laying out the first UI screen.",
+    chapter: '002',
+    title: 'A Menu Appears, Eventually',
+    date: '2026-05-28',
+    stage: 'Main menu first pass',
+    focus:
+      'Getting the project synced, choosing a dev font, and laying out the first UI screen.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The day started with the laptop version of the repo not pulling down properly, which is always a charming way to begin. The scenes were missing, even though everything had pushed cleanly from the MacBook downstairs and the files were visible in the repo.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'With a repo this small, I had no great emotional need to investigate the mystery in depth. I pulled a fresh clone instead, which worked. Hopefully that was a one-off oddity and not the start of some strange Git folklore where the MacBooks begin disagreeing about reality.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Since ',
+          },
+          {
+            text: 'Courier 16',
+            strong: true,
+          },
+          {
+            text: ' is not planned as a commercial release, and the repo will be available publicly, I am looking into using free assets where it makes sense. My artistic skill can currently be described as ',
+          },
+          {
+            text: 'brick on a pile of bricks',
+            em: true,
+          },
+          {
+            text: ', so I am not going to pretend this project needs hand-painted visual mastery before it earns the right to exist. I may still attempt my own music and sound effects, because apparently I enjoy creating future problems with headphones on.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'For development flow, I prefer working in a fairly linear way, so the first target is the ',
+          },
+          {
+            text: 'mainMenu',
+            code: true,
+          },
+          {
+            text: ' scene. Nothing fancy yet: title, Play, About, and Quit. It is not polished, and it is not supposed to be. It is there to give the project a front door instead of just throwing the player straight into a half-built level like a confused parcel.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Development ritual nonsense',
+        text: 'This is also the kind of setup work that helps the project feel real. Same reason I apparently code games better in a hoodie with the hood up, even when it is a cheerful 90°F outside. Ridiculous? Yes. Useful? Also yes.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'This morning’s session was mostly base ',
+          },
+          {
+            text: 'UI Toolkit',
+            strong: true,
+          },
+          {
+            text: ' work. I picked a development font, created the first pass at the menu layout, and got something visible on screen. I will be completely honest: ',
+          },
+          {
+            text: 'ChatGPT helped with the ',
+          },
+          {
+            text: 'USS',
+            code: true,
+          },
+          {
+            text: ' and ',
+          },
+          {
+            text: 'UXML',
+            code: true,
+          },
+          {
+            text: ' files. One day I will properly sit down with UI Toolkit and go through the details like a responsible adult. Today was not that day.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The font I landed on for now is ',
+          },
+          {
+            text: 'Luckiest Guy',
+            strong: true,
+            href: 'https://fonts.google.com/specimen/Luckiest+Guy',
+          },
+          {
+            text: ' by ',
+          },
+          {
+            text: 'Astigmatic',
+            href: 'https://fonts.google.com/?query=Astigmatic',
+          },
+          {
+            text: '. It may not survive to the final version, but it has the right chunky, playful energy for development. It also immediately reminded me that big personality fonts are great until they start shoving the layout around like they own the place.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'While looking through fonts, I also ran into some really nice multi-colour examples. I thought fonts were still mostly monochrome creatures, but apparently that ship sailed while I was off doing something else. I asked ChatGPT how those colour fonts worked from a screenshot and got the usual five-page answer, so that can wait until after a cup of tea or five.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/main-menu-first-pass.png',
+        alt: 'First Courier 16 main menu layout in Unity showing the title, Play, About, and Quit text buttons.',
+        caption:
+          'The first rough main menu pass. Not final, not polished, and definitely not balanced yet, but it is a working screen instead of an empty scene with ambitions.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'After a bit of playing around, AI and I got a workable ',
+          },
+          {
+            text: 'mainMenu',
+            code: true,
+          },
+          {
+            text: ' laid out. I already have ideas for what this screen should eventually become, especially once there is actual gameplay art to sit behind it, but for pure function this does the job. There is a line of text sitting low on the screen, and I am not losing sleep over that yet.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The ',
+          },
+          {
+            text: 'About',
+            strong: true,
+          },
+          {
+            text: ' button should eventually open a modal. The ',
+          },
+          {
+            text: 'Quit',
+            strong: true,
+          },
+          {
+            text: ' button can quit desktop builds, while the web version may need to do something else entirely. Opening Google would be funny, but probably not the final answer. Probably.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Progress stopped there because I was distracted by Aussie Rules and State of Origin, which is not a bug, it is a scheduling feature. The menu exists, the font is in place, and the next step is obvious enough.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Controlling the Menu',
+        text: 'Implement the main menu button controllers so Play, About, and Quit actually do something useful instead of sitting there looking ugly.',
+      },
+    ],
+  },
+  {
+    chapter: '003',
+    title: 'Menus Wired, HUD Started',
+    date: '2026-05-29',
+    stage: 'Menu flow and gameplay HUD',
+    focus:
+      'Getting the main menu working, sorting scene flow, and building the first gameplay UI.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'This morning’s session was on a slightly tighter schedule, so the goal was to keep things practical: wire up the main menu, make sure the game can actually move between scenes, and get the first pass of the gameplay HUD on screen.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Naturally, that started with me forgetting to add scenes to the ',
+          },
+          {
+            text: 'Build Profile',
+            strong: true,
+          },
+          {
+            text: '. Twice. That caused the ',
+          },
+          {
+            text: 'gamePlay',
+            code: true,
+          },
+          {
+            text: ' scene to refuse to load, which is the sort of problem that feels mysterious for about thirty seconds and then immediately turns into “yes, that was obviously me.” Once the scenes were actually included where they needed to be, things behaved properly.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'A quick focus assignment to the ',
+          },
+          {
+            text: 'Play',
+            strong: true,
+          },
+          {
+            text: ' button also meant keyboard and controller navigation started working nicely in the ',
+          },
+          {
+            text: 'mainMenu',
+            code: true,
+          },
+          {
+            text: ' scene. That is enough for now. I am not especially worried about the ',
+          },
+          {
+            text: 'About',
+            strong: true,
+          },
+          {
+            text: ' or ',
+          },
+          {
+            text: 'Quit',
+            strong: true,
+          },
+          {
+            text: ' buttons yet. They react when clicked, which is all I need at this stage. One button gets the player into the game, and that is currently the important bit.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'The menu does not need to be clever yet. It just needs to get the player into the game without behaving like a confused parcel.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'With the menu flow in place, the project has moved a little closer to feeling like a real game rather than a collection of scenes with ambitions. It also means I now have to think more seriously about the actual game pieces. I know broadly how I want ',
+          },
+          {
+            text: 'Courier 16',
+            strong: true,
+          },
+          {
+            text: ' to play, but as previously established, my artistic skill remains somewhere in the region of ',
+          },
+          {
+            text: 'brick',
+            em: true,
+          },
+          {
+            text: '. Because of that, I am happy to lean on freeware art while I sketch out ideas and slowly figure out what the project really needs visually.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'If I had not already said it clearly enough, this project is being built in ',
+          },
+          {
+            text: 'Unity 6',
+            strong: true,
+          },
+          {
+            text: ' using ',
+          },
+          {
+            text: 'UI Toolkit',
+            strong: true,
+          },
+          {
+            text: ' and the ',
+          },
+          {
+            text: 'New Input System',
+            strong: true,
+          },
+          {
+            text: '. I do not see much point in retreating to older UI or input workflows unless the modern systems hand me a genuinely ugly defect later on. For now, the newer stack is doing what I need.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'After a bit of digging around, I found a ',
+          },
+          {
+            text: 'Kenney',
+            strong: true,
+            href: 'https://kenney.nl/',
+          },
+          {
+            text: ' asset pack that should do the job for early development: ',
+          },
+          {
+            text: 'New Platformer Pack',
+            href: 'https://kenney.nl/assets/new-platformer-pack',
+          },
+          {
+            text: '. It is not perfect, but it is more than good enough to get the project moving while I work out gameplay and gradually design my own graphics.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'A perfectly honest development confession',
+        text: 'Just like yesterday, I had ChatGPT help generate the simple gameplay HUD in UXML and USS. I fully intend to understand UI Toolkit better over time, but right now the priority is getting the game moving rather than pretending I need to hand-chisel every panel from first principles.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The first pass of the gameplay UI is now in place. Score sits in the top left, lives sit in the top right, and the space between them is reserved for player notifications. That middle area is likely going to become one of the more personality-heavy pieces of the HUD. I am not going to give too much away yet, but weather warnings, delivery notices, and other little interruptions are very much on my mind.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/gameplay-hud-first-pass.png',
+        alt: 'First gameplay HUD pass for Courier 16 in Unity, showing score on the left, a central notice area, and lives with heart icons on the right.',
+        caption:
+          'The first gameplay HUD pass. Score on the left, lives on the right, and a central notice area that will eventually carry hints, warnings, and other small bits of courier-related mischief.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'There is not a huge amount of visible complexity here yet, but this was still a useful session. The menu now leads somewhere, the scenes are connected, input is behaving, and the gameplay screen has a basic information structure. That is a decent return for a short morning, even if part of the process involved me forgetting where Unity expects its scenes to be listed.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That is enough for today. Coffee is calling, and once that happens the next obvious step is to start moving away from menus and into the actual game logic.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Gameplay Stuff',
+        text: 'Start implementing the first real gameplay elements so the project has more to do than display a respectable menu and a confident-looking HUD.',
+      },
+    ],
+  },
+  {
+    chapter: '004',
+    title: 'The Floor Exists',
+    date: '2026-05-30',
+    stage: 'Tilemap and first movement test',
+    focus:
+      'Creating the first real tilemap test area and getting the player moving on it.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'While drinking tea at 03:30, I had one of those useful but slightly annoying realizations: most of my previous Unity games have been single-screen projects. ',
+          },
+          {
+            text: 'Courier 16',
+            strong: true,
+          },
+          {
+            text: ' is not supposed to be that. It needs scrolling levels, which immediately raises the question of how the levels should actually exist inside Unity.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Do I make a separate scene for each level? Do I unpack level data into the main ',
+          },
+          {
+            text: 'gamePlay',
+            code: true,
+          },
+          {
+            text: ' scene? Do I use prefabs, additive scenes, or some hybrid approach that sounds sensible right up until Unity starts clearing its throat? There are plenty of opinions out there, and naturally most of them disagree with each other.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'At some point the answer stops being research and becomes: build the smallest real version and see what hurts.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'For testing, the useful goal was simple: create a basic tilemap level, paint enough ground to stand on, and make sure the player does not immediately fall through the world like a dropped sandwich. It does not need to be Level 1 yet. It just needs to use the same sort of workflow the final game is likely to use.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The first headache was getting the tiles imported and usable. After that came the pixel-size problem. The tiles were ',
+          },
+          {
+            text: '64x64',
+            code: true,
+          },
+          {
+            text: ', but the import settings were not matching that properly, so they did not sit correctly in the grid. Setting the ',
+          },
+          {
+            text: 'Pixels Per Unit',
+            strong: true,
+          },
+          {
+            text: ' value to match the sprite size fixed it without too much drama.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Tilemap lesson learned',
+        text: "The Tile Palette is not a scene object. It is the paint tray. The Tilemap in the scene is the canvas. Also, painting happens in Scene view, not Game view, because apparently Unity wanted that to be today's little character-building exercise.",
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Once the tilemap was behaving, I added a quick player sprite and gave it a ',
+          },
+          {
+            text: 'Rigidbody2D',
+            code: true,
+          },
+          {
+            text: ' and ',
+          },
+          {
+            text: 'BoxCollider2D',
+            code: true,
+          },
+          {
+            text: '. For reasons best known to the collider goblins, Unity decided the box collider should start at roughly microscopic size. A quick edit fixed that, and the player finally dropped onto the ground instead of falling through it.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That was the first proper win of the morning. The tilemap had collision, the player had collision, and gravity was doing its job. The player hit the floor harder than a drunk guy on a dance floor, but at least the floor existed.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Next came the first movement script. This is using ',
+          },
+          {
+            text: 'Unity 6',
+            strong: true,
+          },
+          {
+            text: ', ',
+          },
+          {
+            text: 'UI Toolkit',
+            strong: true,
+          },
+          {
+            text: ', and the ',
+          },
+          {
+            text: 'New Input System',
+            strong: true,
+          },
+          {
+            text: ', and I have to admit I do like the newer input workflow. It is still Unity, so there is always a chance of ritual confusion, but compared to some input systems I have used over the years, this one feels fairly reasonable once the pieces are connected correctly.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The player can now move left and right, jump, land on platforms, and bump into walls. I had to increase ',
+          },
+          {
+            text: 'jumpForce',
+            code: true,
+          },
+          {
+            text: ' to ',
+          },
+          {
+            text: '12f',
+            code: true,
+          },
+          {
+            text: ' so the player could actually reach the test platforms, which is exactly why this kind of ugly test map matters. Numbers mean very little until they are attached to a jump you either can or cannot make.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/tilemap-movement-test-01.png',
+        alt: 'Courier 16 tilemap movement test in Unity Scene view showing platforms, a player marker, and an exit sign.',
+        caption:
+          'The first proper tilemap movement test. Still in Scene view rather than Game view, but it proves the important pieces: tile placement, collision, platform spacing, player movement, jumping, and a rough route shape.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'While testing, I kept trying to double jump. That probably says something useful. Double jump feels like one of those expected platformer features now, and for this game it could be a good way to make movement more fun without adding a whole new pile of systems. So that goes on the list.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also noticed the player can occasionally get stuck against or underneath blocks. That is likely a collision box issue rather than a grand mystery. Platformer collision is usually less about perfectly matching the sprite and more about making the player feel like the game is being fair. The collider probably needs to be a little more forgiving.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That can wait until tomorrow. Today’s goal was simple: make a small environment where the player can move, jump, and collide with the world. That goal is done. It is not pretty, but it is real gameplay plumbing, and real gameplay plumbing beats imaginary polish every time.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'A Little Bit of Tweaking...',
+        text: 'Add double jump, tweak the player collision box so it stops catching on tiles, and keep using the test map to tune movement before turning it into a real level.',
+      },
+    ],
+  },
+  {
+    chapter: '005',
+    title: 'The Level Finally Appears',
+    date: '2026-05-31',
+    stage: 'Level loading and Game view test',
+    focus:
+      'Loading level_01 into the gameplay scene and getting the first playable test map visible in Game view.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The morning started with a bit of cleanup and organization. I imported more of the ',
+          },
+          {
+            text: 'Kenney',
+            strong: true,
+            href: 'https://kenney.nl/',
+          },
+          {
+            text: ' blocks into the Tile Palette and built a very small test level. Nothing fancy, but enough to start proving the workflow: terrain first, gameplay objects later.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I did briefly throw in a key and a button because they were sitting there looking useful, but that also made the next lesson fairly obvious. Those items do not really belong in the ground tilemap. Terrain is terrain. Pickups, buttons, locks, doors, and other interactive bits should become prefabs so they can have proper positioning, colliders, and scripts. The floating blue button was funny, but not exactly a professional design statement.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I will probably end up with multiple palettes: ground, hazards, decorations, and maybe a few visual layout helpers. I am not pretending I have a perfect tilemap workflow yet. Tilemaps are still new territory for this project, so what seems like a good idea today may turn into tomorrow’s cleanup job. That is the fun of learning, or at least what I tell myself while drinking tea at unreasonable hours.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Terrain belongs in the tilemap. Gameplay objects need to become prefabs before they start floating around like they have unfinished business.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The main goal today was getting the test level to display correctly inside the actual game. Up to this point I had mostly been playing around in Scene view, which is fine for building, but not where the player will live. The level scene itself has no camera, HUD, or gameplay systems. It is only the map. The ',
+          },
+          {
+            text: 'gamePlay',
+            code: true,
+          },
+          {
+            text: ' scene provides the camera, player, HUD, and the rest of the game shell.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Once the level was loaded into the ',
+          },
+          {
+            text: 'gamePlay',
+            code: true,
+          },
+          {
+            text: ' scene, I was honestly pretty pleased with how it looked. The sky colour needs work later, and background graphics will probably help, but the chunky tiles, simple platforms, and HUD already give it a nice retro feel. It is not final art, but it is finally starting to look like a game screen instead of a workshop accident.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/game-view-first-level-load.png',
+        alt: 'Courier 16 running in Unity Game view with the HUD visible, a blue sky background, platforms, player sprite, and key pickup.',
+        caption:
+          'The first proper Game view screenshot. The level is still a rough test map, but now it loads through the gameplay scene with the HUD, camera, player, and background all visible together.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also swapped the temporary player marker for something that at least looks more like a player. There are no animations yet, and I am not worried about that right now. A static player sprite is enough while the game loop is still being built. The priority is movement, pickups, events, hazards, meanies, and level flow. Fancy bits can wait. No point making the game look amazing if the gameplay underneath it is still held together with wishful thinking and biscuits.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'First version of the level loading approach',
+        text: 'The gamePlay scene now owns the camera, HUD, player, and core systems. The level scene owns the tilemap and level content. A small LevelLoader script loads level_01 additively so the map appears when the gameplay scene starts.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The first ',
+          },
+          {
+            text: 'LevelLoader',
+            code: true,
+          },
+          {
+            text: ' script is not coding genius, and it does not need to be. It has one job: load the starting level scene additively. That gives me a working structure where ',
+          },
+          {
+            text: 'gamePlay',
+            code: true,
+          },
+          {
+            text: ' stays as the reusable gameplay shell while ',
+          },
+          {
+            text: 'level_01',
+            code: true,
+          },
+          {
+            text: ' provides the actual map.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That immediately exposed the next architecture issue: the player should not live inside ',
+          },
+          {
+            text: 'level_01',
+            code: true,
+          },
+          {
+            text: '. The player belongs to ',
+          },
+          {
+            text: 'gamePlay',
+            code: true,
+          },
+          {
+            text: ', while the level should only say where the player starts. So I added a ',
+          },
+          {
+            text: 'PlayerSpawn',
+            code: true,
+          },
+          {
+            text: ' object to the level and adjusted the loading flow so the player starts disabled, gets moved to the spawn point, and then gets turned on.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That small change matters more than it sounds. Without it, the player appears in the middle of the screen and then magically snaps to the start position, which looks cheap even in a test build. Now the player stays out of sight while the level loads, then appears where the level says they should appear. Much cleaner.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'There is still plenty of roughness here. The sky is flat. The level is tiny. The pickup does not do anything yet. The player collider still catches on terrain now and then. But the important structure is working: the gameplay scene loads the level, the camera renders it, the HUD stays visible, and the player starts from the level’s spawn point.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Collisions, Pickups, and Tune-ups',
+        text: 'Start handling item collisions, beginning with pickups. Then shrink/tune the player collision box so it stops catching on tiles, add an isFalling state or similar movement lockout, and create the first basic “you died” event for falling or hazards.',
+      },
+    ],
+  },
+  {
+    chapter: '006',
+    title: 'Keys, Scaling, and Other Small Lies',
+    date: '2026-06-01',
+    stage: 'HUD cleanup, key inventory, and interaction planning',
+    focus:
+      'Cleaning up UI scaling, adding basic key collection state, and preparing the next gameplay systems for lock boxes, packages, and buttons.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'After yesterday’s diary was published, the house was still asleep, the tea was still doing its job, and I had just enough quiet time to keep poking at ',
+          },
+          {
+            text: 'Courier 16',
+            strong: true,
+          },
+          {
+            text: '. This is how these things get you. You say you are done, then you see one more thing that could be cleaned up, moved, tested, or made slightly less awful.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I added a few more items to ',
+          },
+          {
+            text: 'level_01',
+            code: true,
+          },
+          {
+            text: ' and continued playing around with the Kenney assets. Those packs are dangerous in the best possible way. You import a few blocks, spot a button, and suddenly your brain starts planning locks, mushrooms, signs, package routes, delivery points, and little bits of scenery that probably have no business being considered at four in the morning.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The test level is still not really ',
+          },
+          {
+            text: 'Level 1',
+            strong: true,
+          },
+          {
+            text: ' yet, but it is starting to move away from being a plain collision lab. There are platforms, pickups, lock-box ideas, and enough route shape to expose problems. That is useful. A rough level that reveals bad assumptions is far more valuable than a pretty screen that does nothing.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'A rough level that reveals bad assumptions is far more valuable than a pretty screen that does nothing.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'One thing that became obvious while testing was that the game needs some kind of fail boundary under the level. If the player falls off the map, they should not get the full Hans Gruber slow-motion death scene. They should hit a fail zone, lose a life or reset, and get back to the route. That is now on the list.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also cleaned up the gameplay HUD because the original sections were slightly different heights, and once I noticed that, it started annoying me like a loose cupboard door. The HUD now behaves more like proper modules: score, notice, items, and lives. It is not final, but it is much cleaner.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The bigger UI issue turned out to be the Panel Settings asset. I had been building mostly on the 4K machine, then opened the project on the MacBook, and everything looked like it had been thrown into a UI blender. The culprit was ',
+          },
+          {
+            text: 'Constant Physical Size',
+            code: true,
+          },
+          {
+            text: '. Switching the panel to ',
+          },
+          {
+            text: 'Scale With Screen Size',
+            code: true,
+          },
+          {
+            text: ', with a 1920x1080 reference resolution, fixed both the main menu and the gameplay HUD. That was one of those fixes that feels small, but saves the project from future layout misery.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'UI Toolkit lesson learned',
+        text: 'For this project, the Panel Settings asset needs to scale with screen size using a 1920x1080 reference. Constant Physical Size made the UI behave unpredictably between the 4K desktop and the MacBook.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also fixed the Luckiest Guy font issue on the main menu. The correct USS property was ',
+          },
+          {
+            text: '-unity-font-definition',
+            code: true,
+          },
+          {
+            text: ', not the property I was originally trying to use. Unity was happy enough to let me be wrong for a while, obviously. The gameplay HUD can keep its current font for now. It is readable, and readability matters more than style during testing.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'During another quiet stretch, I created a few more prefabs, added double jump, and tried to reduce the problem where the player sometimes catches on platform edges. The double jump already feels useful for testing. The sticking issue is better after adding a zero-friction physics material, but it has not completely vanished. It is not bad enough to derail the morning, so it stays on the review list.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Monday morning started with a small goal: add collision detection, even if it only reported results to the Console. That is not exciting in the marketing sense, but it is exactly the kind of work the game needs right now. Before score, packages, locks, buttons, and meanies can matter, the game needs to reliably know when the player touched something.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The first proper interaction was coloured keys. The key pickup script now supports four colours: blue, green, red, and yellow. The player can collect them, the key disappears, and the game logs what was collected. That gave the project its first small piece of actual gameplay state.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That immediately led to the next design decision: how should the player interact with the world? Do we use one button for everything, switching between fire and action depending on context, or do we map separate buttons? It took about thirty seconds to remember we are not trapped in the 8-bit era anymore. The game can have a ',
+          },
+          {
+            text: 'Fire',
+            strong: true,
+          },
+          {
+            text: ' button and an ',
+          },
+          {
+            text: 'Interact',
+            strong: true,
+          },
+          {
+            text: ' button. Nobody wants to blast a meanie and accidentally have the game interpret that as, “please operate this nearby delivery machine.”',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The current thinking is that keys open matching lock boxes, and lock boxes release the package or item that needs to be delivered. Some levels may be simple: avoid the meanies, grab the package, and reach the customer. Later levels can layer in coloured keys, buttons, package requirements, and delivery unlocks. The important part is that the systems are being built in a way that can grow without needing to be rewritten every time a new object appears.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That meant the next obvious piece was a tiny inventory system. Not a full RPG backpack. No slots, no menus, and no “you are carrying sixteen turnips and a ceremonial spoon.” Just enough state to answer simple questions: does the player have the blue key, the green key, the red key, or the yellow key?',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Once the keys existed in inventory, the HUD needed to show them. Console logs are useful while building, but they are not a player interface. So the HUD now has a dedicated ',
+          },
+          {
+            text: 'Items',
+            strong: true,
+          },
+          {
+            text: ' section. If the player has no keys or packages, nothing is shown. When keys are collected, their icons appear in the Items panel.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/hud-key-inventory.png',
+        alt: 'Courier 16 gameplay HUD showing score, notice, collected key icons, and lives above a small test level.',
+        caption:
+          'The HUD now has a separate Items panel for collected keys. It is still a testing layout, but it gives immediate visual feedback instead of making me stare at the Console like it owes me money.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Getting that wired was more fiddly than it should have been. UI Toolkit needs the ',
+          },
+          {
+            text: 'UIDocument',
+            code: true,
+          },
+          {
+            text: ' to display the UXML, a controller script to find and update named elements, and then the player inventory needs a reference to that controller. It works, but the setup feels like plugging a kettle into a toaster through a fax machine. Scotch would not have been an unreasonable thought at 05:35.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Still, it works. The player collects keys, the inventory records them, the HUD displays them, and the notice area remains free for gameplay messages. That is a proper little foundation. Tomorrow’s fun should be opening the lock box. In very technical terms: are you the Keymaster? If yes, open the box and get the package.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Opening the Box',
+        text: 'Use the key inventory to interact with matching lock boxes. The first version only needs to check whether the player has the correct key, swap the lock box sprite to the unlocked version, and log the result. Package release can come after the lock box state works.',
+      },
+    ],
+  },
+  {
+  chapter: "007",
+  title: "Camera Follow, Moving Meanies, and Death Zones",
+  date: "2026-06-02",
+  stage: "Gameplay systems",
+  focus: "Completing the pickup-to-delivery loop, adding camera follow, spawning moving meanies, and wiring the first level death zones.",
   blocks: [
     {
       type: "paragraph",
       content: [
         {
-          text: "The day started with the laptop version of the repo not pulling down properly, which is always a charming way to begin. The scenes were missing, even though everything had pushed cleanly from the MacBook downstairs and the files were visible in the repo.",
+          text: "Well, yesterday evening proved productive. It was quiet, with YouTube running in the background, so I went ahead and completed the pickup-to-delivery flow for items.",
         },
       ],
     },
@@ -142,29 +1127,14 @@ const courierEntries: DiaryEntry[] = [
       type: "paragraph",
       content: [
         {
-          text: "With a repo this small, I had no great emotional need to investigate the mystery in depth. I pulled a fresh clone instead, which worked. Hopefully that was a one-off oddity and not the start of some strange Git folklore where the MacBooks begin disagreeing about reality.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Since ",
+          text: "I was expecting some headaches, but outside of forgetting that the default ",
         },
         {
-          text: "Courier 16",
+          text: "Input System",
           strong: true,
         },
         {
-          text: " is not planned as a commercial release, and the repo will be available publicly, I am looking into using free assets where it makes sense. My artistic skill can currently be described as ",
-        },
-        {
-          text: "brick on a pile of bricks",
-          em: true,
-        },
-        {
-          text: ", so I am not going to pretend this project needs hand-painted visual mastery before it earns the right to exist. I may still attempt my own music and sound effects, because apparently I enjoy creating future problems with headphones on.",
+          text: " setting for Interact was holding the button for 0.5 seconds, nothing really went pear-shaped. The interact issue was resolved by simply deleting the hold setting. Then everything started working.",
         },
       ],
     },
@@ -172,51 +1142,50 @@ const courierEntries: DiaryEntry[] = [
       type: "paragraph",
       content: [
         {
-          text: "For development flow, I prefer working in a fairly linear way, so the first target is the ",
+          text: "Input System shenanigans aside, this involved a fair amount of work: pick up a key, open a lockbox, get a package gem, take it to a customer with a matching gem above their head, and deliver it. The code supports four package colours, so the system is not locked to one delivery type.",
         },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
         {
-          text: "mainMenu",
-          code: true,
-        },
-        {
-          text: " scene. Nothing fancy yet: title, Play, About, and Quit. It is not polished, and it is not supposed to be. It is there to give the project a front door instead of just throwing the player straight into a half-built level like a confused parcel.",
+          text: "For good measure, the locked box becomes a block once collected, and the gem above the customer's head disappears once the delivery is completed.",
         },
       ],
     },
     {
       type: "note",
-      title: "Development ritual nonsense",
-      text: "This is also the kind of setup work that helps the project feel real. Same reason I apparently code games better in a hoodie with the hood up, even when it is a cheerful 90°F outside. Ridiculous? Yes. Useful? Also yes.",
+      title: "Gameplay first, fancy later",
+      text: "Animations, sound effects, and fancy levels are still waiting their turn. Right now the important job is proving the gameplay loop works before spending time polishing the presentation.",
     },
     {
       type: "paragraph",
       content: [
         {
-          text: "This morning’s session was mostly base ",
+          text: "As more functionality has been built into the game, the test level has started to expand, so it was time to add a quick function for the camera to follow the player. I am sure Unity has something built in, but a quick ",
         },
         {
-          text: "UI Toolkit",
-          strong: true,
-        },
-        {
-          text: " work. I picked a development font, created the first pass at the menu layout, and got something visible on screen. I will be completely honest: ",
-        },
-        {
-          text: "ChatGPT helped with the ",
-        },
-        {
-          text: "USS",
+          text: "CameraFollow2D",
           code: true,
         },
         {
-          text: " and ",
+          text: " script of around 23 lines does the trick for now. I might migrate to Cinemachine later.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The main goal this morning was to build some ",
         },
         {
-          text: "UXML",
+          text: "meanieSpawner",
           code: true,
         },
         {
-          text: " files. One day I will properly sit down with UI Toolkit and go through the details like a responsible adult. Today was not that day.",
+          text: " code. I was not worried about player/meanie collision at this point, but if good progress was made on the spawner, I was prepared to work on it.",
         },
       ],
     },
@@ -224,22 +1193,7 @@ const courierEntries: DiaryEntry[] = [
       type: "paragraph",
       content: [
         {
-          text: "The font I landed on for now is ",
-        },
-        {
-          text: "Luckiest Guy",
-          strong: true,
-          href: "https://fonts.google.com/specimen/Luckiest+Guy",
-        },
-        {
-          text: " by ",
-        },
-        {
-          text: "Astigmatic",
-          href: "https://fonts.google.com/?query=Astigmatic",
-        },
-        {
-          text: ". It may not survive to the final version, but it has the right chunky, playful energy for development. It also immediately reminded me that big personality fonts are great until they start shoving the layout around like they own the place.",
+          text: "For the first version of meanies, the process is simple: they spawn, they move, and if they fall off the world they meet the same fate as the player. Maybe they need some intelligence later. The important part right now is that they spawn and move.",
         },
       ],
     },
@@ -247,854 +1201,49 @@ const courierEntries: DiaryEntry[] = [
       type: "paragraph",
       content: [
         {
-          text: "While looking through fonts, I also ran into some really nice multi-colour examples. I thought fonts were still mostly monochrome creatures, but apparently that ship sailed while I was off doing something else. I asked ChatGPT how those colour fonts worked from a screenshot and got the usual five-page answer, so that can wait until after a cup of tea or five.",
-        },
-      ],
-    },
-    {
-      type: "figure",
-      src: "/images/games/courier-16/main-menu-first-pass.png",
-      alt: "First Courier 16 main menu layout in Unity showing the title, Play, About, and Quit text buttons.",
-      caption: "The first rough main menu pass. Not final, not polished, and definitely not balanced yet, but it is a working screen instead of an empty scene with ambitions.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "After a bit of playing around, AI and I got a workable ",
+          text: "Meanie movement did not initially go quite as expected. The ground and wall collision needed some tweaking to stop the meanie from just flipping around on itself without actually moving. It turned out I had given the ground layer in the tilemap a tag called ",
         },
         {
-          text: "mainMenu",
+          text: "groundLayer",
           code: true,
         },
         {
-          text: " laid out. I already have ideas for what this screen should eventually become, especially once there is actual gameplay art to sit behind it, but for pure function this does the job. There is a line of text sitting low on the screen, and I am not losing sleep over that yet.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The ",
-        },
-        {
-          text: "About",
-          strong: true,
-        },
-        {
-          text: " button should eventually open a modal. The ",
-        },
-        {
-          text: "Quit",
-          strong: true,
-        },
-        {
-          text: " button can quit desktop builds, while the web version may need to do something else entirely. Opening Google would be funny, but probably not the final answer. Probably.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Progress stopped there because I was distracted by Aussie Rules and State of Origin, which is not a bug, it is a scheduling feature. The menu exists, the font is in place, and the next step is obvious enough.",
-        },
-      ],
-    },
-    {
-      type: "next",
-      title: "Controlling the Menu",
-      text: "Implement the main menu button controllers so Play, About, and Quit actually do something useful instead of sitting there looking ugly.",
-    },
-  ],
-},
-{
-  chapter: "003",
-  title: "Menus Wired, HUD Started",
-  date: "2026-05-29",
-  stage: "Menu flow and gameplay HUD",
-  focus: "Getting the main menu working, sorting scene flow, and building the first gameplay UI.",
-  blocks: [
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "This morning’s session was on a slightly tighter schedule, so the goal was to keep things practical: wire up the main menu, make sure the game can actually move between scenes, and get the first pass of the gameplay HUD on screen.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Naturally, that started with me forgetting to add scenes to the ",
-        },
-        {
-          text: "Build Profile",
-          strong: true,
-        },
-        {
-          text: ". Twice. That caused the ",
-        },
-        {
-          text: "gamePlay",
-          code: true,
-        },
-        {
-          text: " scene to refuse to load, which is the sort of problem that feels mysterious for about thirty seconds and then immediately turns into “yes, that was obviously me.” Once the scenes were actually included where they needed to be, things behaved properly.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "A quick focus assignment to the ",
-        },
-        {
-          text: "Play",
-          strong: true,
-        },
-        {
-          text: " button also meant keyboard and controller navigation started working nicely in the ",
-        },
-        {
-          text: "mainMenu",
-          code: true,
-        },
-        {
-          text: " scene. That is enough for now. I am not especially worried about the ",
-        },
-        {
-          text: "About",
-          strong: true,
-        },
-        {
-          text: " or ",
-        },
-        {
-          text: "Quit",
-          strong: true,
-        },
-        {
-          text: " buttons yet. They react when clicked, which is all I need at this stage. One button gets the player into the game, and that is currently the important bit.",
+          text: " instead of assigning an actual Layer. Once that was fixed, the meanies spawned and started moving without falling off the platform they spawned on.",
         },
       ],
     },
     {
       type: "pullquote",
-      text: "The menu does not need to be clever yet. It just needs to get the player into the game without behaving like a confused parcel.",
+      text: "Do we make some meanies dumb enough to fall into the death zones? That is probably a question for later today, not 04:20.",
     },
     {
       type: "paragraph",
       content: [
         {
-          text: "With the menu flow in place, the project has moved a little closer to feeling like a real game rather than a collection of scenes with ambitions. It also means I now have to think more seriously about the actual game pieces. I know broadly how I want ",
-        },
-        {
-          text: "Courier 16",
-          strong: true,
-        },
-        {
-          text: " to play, but as previously established, my artistic skill remains somewhere in the region of ",
-        },
-        {
-          text: "brick",
-          em: true,
-        },
-        {
-          text: ". Because of that, I am happy to lean on freeware art while I sketch out ideas and slowly figure out what the project really needs visually.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "If I had not already said it clearly enough, this project is being built in ",
-        },
-        {
-          text: "Unity 6",
-          strong: true,
-        },
-        {
-          text: " using ",
-        },
-        {
-          text: "UI Toolkit",
-          strong: true,
-        },
-        {
-          text: " and the ",
-        },
-        {
-          text: "New Input System",
-          strong: true,
-        },
-        {
-          text: ". I do not see much point in retreating to older UI or input workflows unless the modern systems hand me a genuinely ugly defect later on. For now, the newer stack is doing what I need.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "After a bit of digging around, I found a ",
-        },
-        {
-          text: "Kenney",
-          strong: true,
-          href: "https://kenney.nl/",
-        },
-        {
-          text: " asset pack that should do the job for early development: ",
-        },
-        {
-          text: "New Platformer Pack",
-          href: "https://kenney.nl/assets/new-platformer-pack",
-        },
-        {
-          text: ". It is not perfect, but it is more than good enough to get the project moving while I work out gameplay and gradually design my own graphics.",
-        },
-      ],
-    },
-    {
-      type: "note",
-      title: "A perfectly honest development confession",
-      text: "Just like yesterday, I had ChatGPT help generate the simple gameplay HUD in UXML and USS. I fully intend to understand UI Toolkit better over time, but right now the priority is getting the game moving rather than pretending I need to hand-chisel every panel from first principles.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The first pass of the gameplay UI is now in place. Score sits in the top left, lives sit in the top right, and the space between them is reserved for player notifications. That middle area is likely going to become one of the more personality-heavy pieces of the HUD. I am not going to give too much away yet, but weather warnings, delivery notices, and other little interruptions are very much on my mind.",
+          text: "I also added quick death zones around the level that cause the player to get whacked if they touch them. The lava floor and spike walls now use trigger colliders hooked into the existing respawn code.",
         },
       ],
     },
     {
       type: "figure",
-      src: "/images/games/courier-16/gameplay-hud-first-pass.png",
-      alt: "First gameplay HUD pass for Courier 16 in Unity, showing score on the left, a central notice area, and lives with heart icons on the right.",
-      caption: "The first gameplay HUD pass. Score on the left, lives on the right, and a central notice area that will eventually carry hints, warnings, and other small bits of courier-related mischief.",
+      src: "/images/games/courier-16/courier16-meanies-deathzones.png",
+      alt: "Courier 16 test level showing the player, translucent HUD, collected keys, lockboxes, moving meanies, delivery customers with colour indicators, and lava and spike death zones.",
+      caption: "Courier 16 now has camera follow, moving meanies, lockboxes, collected keys, colour-coded delivery customers, a translucent HUD, and death zones starting to shape the test level.",
     },
     {
       type: "paragraph",
       content: [
         {
-          text: "There is not a huge amount of visible complexity here yet, but this was still a useful session. The menu now leads somewhere, the scenes are connected, input is behaving, and the gameplay screen has a basic information structure. That is a decent return for a short morning, even if part of the process involved me forgetting where Unity expects its scenes to be listed.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "That is enough for today. Coffee is calling, and once that happens the next obvious step is to start moving away from menus and into the actual game logic.",
+          text: "The screenshot shows lockboxes, the translucent HUD, meanies running around, and customers with package colour indicators above their heads. It is still very much a test level, but it is starting to look less like isolated mechanics and more like an actual game space.",
         },
       ],
     },
     {
       type: "next",
-      title: "Gameplay Stuff",
-      text: "Start implementing the first real gameplay elements so the project has more to do than display a respectable menu and a confident-looking HUD.",
+      title: "Meaner Meanies",
+      text: "Look further into meanie behaviour and player collision. A short safe-time window after respawn is also probably needed, otherwise the player could respawn straight back into trouble and get chain-whacked.",
     },
   ],
-},
-{
-  chapter: "004",
-  title: "The Floor Exists",
-  date: "2026-05-30",
-  stage: "Tilemap and first movement test",
-  focus: "Creating the first real tilemap test area and getting the player moving on it.",
-  blocks: [
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "While drinking tea at 03:30, I had one of those useful but slightly annoying realizations: most of my previous Unity games have been single-screen projects. ",
-        },
-        {
-          text: "Courier 16",
-          strong: true,
-        },
-        {
-          text: " is not supposed to be that. It needs scrolling levels, which immediately raises the question of how the levels should actually exist inside Unity.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Do I make a separate scene for each level? Do I unpack level data into the main ",
-        },
-        {
-          text: "gamePlay",
-          code: true,
-        },
-        {
-          text: " scene? Do I use prefabs, additive scenes, or some hybrid approach that sounds sensible right up until Unity starts clearing its throat? There are plenty of opinions out there, and naturally most of them disagree with each other.",
-        },
-      ],
-    },
-    {
-      type: "pullquote",
-      text: "At some point the answer stops being research and becomes: build the smallest real version and see what hurts.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "For testing, the useful goal was simple: create a basic tilemap level, paint enough ground to stand on, and make sure the player does not immediately fall through the world like a dropped sandwich. It does not need to be Level 1 yet. It just needs to use the same sort of workflow the final game is likely to use.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The first headache was getting the tiles imported and usable. After that came the pixel-size problem. The tiles were ",
-        },
-        {
-          text: "64x64",
-          code: true,
-        },
-        {
-          text: ", but the import settings were not matching that properly, so they did not sit correctly in the grid. Setting the ",
-        },
-        {
-          text: "Pixels Per Unit",
-          strong: true,
-        },
-        {
-          text: " value to match the sprite size fixed it without too much drama.",
-        },
-      ],
-    },
-    {
-      type: "note",
-      title: "Tilemap lesson learned",
-      text: "The Tile Palette is not a scene object. It is the paint tray. The Tilemap in the scene is the canvas. Also, painting happens in Scene view, not Game view, because apparently Unity wanted that to be today's little character-building exercise.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Once the tilemap was behaving, I added a quick player sprite and gave it a ",
-        },
-        {
-          text: "Rigidbody2D",
-          code: true,
-        },
-        {
-          text: " and ",
-        },
-        {
-          text: "BoxCollider2D",
-          code: true,
-        },
-        {
-          text: ". For reasons best known to the collider goblins, Unity decided the box collider should start at roughly microscopic size. A quick edit fixed that, and the player finally dropped onto the ground instead of falling through it.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "That was the first proper win of the morning. The tilemap had collision, the player had collision, and gravity was doing its job. The player hit the floor harder than a drunk guy on a dance floor, but at least the floor existed.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Next came the first movement script. This is using ",
-        },
-        {
-          text: "Unity 6",
-          strong: true,
-        },
-        {
-          text: ", ",
-        },
-        {
-          text: "UI Toolkit",
-          strong: true,
-        },
-        {
-          text: ", and the ",
-        },
-        {
-          text: "New Input System",
-          strong: true,
-        },
-        {
-          text: ", and I have to admit I do like the newer input workflow. It is still Unity, so there is always a chance of ritual confusion, but compared to some input systems I have used over the years, this one feels fairly reasonable once the pieces are connected correctly.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The player can now move left and right, jump, land on platforms, and bump into walls. I had to increase ",
-        },
-        {
-          text: "jumpForce",
-          code: true,
-        },
-        {
-          text: " to ",
-        },
-        {
-          text: "12f",
-          code: true,
-        },
-        {
-          text: " so the player could actually reach the test platforms, which is exactly why this kind of ugly test map matters. Numbers mean very little until they are attached to a jump you either can or cannot make.",
-        },
-      ],
-    },
-    {
-      type: "figure",
-      src: "/images/games/courier-16/tilemap-movement-test-01.png",
-      alt: "Courier 16 tilemap movement test in Unity Scene view showing platforms, a player marker, and an exit sign.",
-      caption: "The first proper tilemap movement test. Still in Scene view rather than Game view, but it proves the important pieces: tile placement, collision, platform spacing, player movement, jumping, and a rough route shape.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "While testing, I kept trying to double jump. That probably says something useful. Double jump feels like one of those expected platformer features now, and for this game it could be a good way to make movement more fun without adding a whole new pile of systems. So that goes on the list.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "I also noticed the player can occasionally get stuck against or underneath blocks. That is likely a collision box issue rather than a grand mystery. Platformer collision is usually less about perfectly matching the sprite and more about making the player feel like the game is being fair. The collider probably needs to be a little more forgiving.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "That can wait until tomorrow. Today’s goal was simple: make a small environment where the player can move, jump, and collide with the world. That goal is done. It is not pretty, but it is real gameplay plumbing, and real gameplay plumbing beats imaginary polish every time.",
-        },
-      ],
-    },
-    {
-      type: "next",
-      title: "A Little Bit of Tweaking...",
-      text: "Add double jump, tweak the player collision box so it stops catching on tiles, and keep using the test map to tune movement before turning it into a real level.",
-    },
-  ],
-},
-{
-  chapter: "005",
-  title: "The Level Finally Appears",
-  date: "2026-05-31",
-  stage: "Level loading and Game view test",
-  focus: "Loading level_01 into the gameplay scene and getting the first playable test map visible in Game view.",
-  blocks: [
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The morning started with a bit of cleanup and organization. I imported more of the ",
-        },
-        {
-          text: "Kenney",
-          strong: true,
-          href: "https://kenney.nl/",
-        },
-        {
-          text: " blocks into the Tile Palette and built a very small test level. Nothing fancy, but enough to start proving the workflow: terrain first, gameplay objects later.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "I did briefly throw in a key and a button because they were sitting there looking useful, but that also made the next lesson fairly obvious. Those items do not really belong in the ground tilemap. Terrain is terrain. Pickups, buttons, locks, doors, and other interactive bits should become prefabs so they can have proper positioning, colliders, and scripts. The floating blue button was funny, but not exactly a professional design statement.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "I will probably end up with multiple palettes: ground, hazards, decorations, and maybe a few visual layout helpers. I am not pretending I have a perfect tilemap workflow yet. Tilemaps are still new territory for this project, so what seems like a good idea today may turn into tomorrow’s cleanup job. That is the fun of learning, or at least what I tell myself while drinking tea at unreasonable hours.",
-        },
-      ],
-    },
-    {
-      type: "pullquote",
-      text: "Terrain belongs in the tilemap. Gameplay objects need to become prefabs before they start floating around like they have unfinished business.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The main goal today was getting the test level to display correctly inside the actual game. Up to this point I had mostly been playing around in Scene view, which is fine for building, but not where the player will live. The level scene itself has no camera, HUD, or gameplay systems. It is only the map. The ",
-        },
-        {
-          text: "gamePlay",
-          code: true,
-        },
-        {
-          text: " scene provides the camera, player, HUD, and the rest of the game shell.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Once the level was loaded into the ",
-        },
-        {
-          text: "gamePlay",
-          code: true,
-        },
-        {
-          text: " scene, I was honestly pretty pleased with how it looked. The sky colour needs work later, and background graphics will probably help, but the chunky tiles, simple platforms, and HUD already give it a nice retro feel. It is not final art, but it is finally starting to look like a game screen instead of a workshop accident.",
-        },
-      ],
-    },
-    {
-      type: "figure",
-      src: "/images/games/courier-16/game-view-first-level-load.png",
-      alt: "Courier 16 running in Unity Game view with the HUD visible, a blue sky background, platforms, player sprite, and key pickup.",
-      caption: "The first proper Game view screenshot. The level is still a rough test map, but now it loads through the gameplay scene with the HUD, camera, player, and background all visible together.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "I also swapped the temporary player marker for something that at least looks more like a player. There are no animations yet, and I am not worried about that right now. A static player sprite is enough while the game loop is still being built. The priority is movement, pickups, events, hazards, meanies, and level flow. Fancy bits can wait. No point making the game look amazing if the gameplay underneath it is still held together with wishful thinking and biscuits.",
-        },
-      ],
-    },
-    {
-      type: "note",
-      title: "First version of the level loading approach",
-      text: "The gamePlay scene now owns the camera, HUD, player, and core systems. The level scene owns the tilemap and level content. A small LevelLoader script loads level_01 additively so the map appears when the gameplay scene starts.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The first ",
-        },
-        {
-          text: "LevelLoader",
-          code: true,
-        },
-        {
-          text: " script is not coding genius, and it does not need to be. It has one job: load the starting level scene additively. That gives me a working structure where ",
-        },
-        {
-          text: "gamePlay",
-          code: true,
-        },
-        {
-          text: " stays as the reusable gameplay shell while ",
-        },
-        {
-          text: "level_01",
-          code: true,
-        },
-        {
-          text: " provides the actual map.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "That immediately exposed the next architecture issue: the player should not live inside ",
-        },
-        {
-          text: "level_01",
-          code: true,
-        },
-        {
-          text: ". The player belongs to ",
-        },
-        {
-          text: "gamePlay",
-          code: true,
-        },
-        {
-          text: ", while the level should only say where the player starts. So I added a ",
-        },
-        {
-          text: "PlayerSpawn",
-          code: true,
-        },
-        {
-          text: " object to the level and adjusted the loading flow so the player starts disabled, gets moved to the spawn point, and then gets turned on.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "That small change matters more than it sounds. Without it, the player appears in the middle of the screen and then magically snaps to the start position, which looks cheap even in a test build. Now the player stays out of sight while the level loads, then appears where the level says they should appear. Much cleaner.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "There is still plenty of roughness here. The sky is flat. The level is tiny. The pickup does not do anything yet. The player collider still catches on terrain now and then. But the important structure is working: the gameplay scene loads the level, the camera renders it, the HUD stays visible, and the player starts from the level’s spawn point.",
-        },
-      ],
-    },
-    {
-      type: "next",
-      title: "Collisions, Pickups, and Tune-ups",
-      text: "Start handling item collisions, beginning with pickups. Then shrink/tune the player collision box so it stops catching on tiles, add an isFalling state or similar movement lockout, and create the first basic “you died” event for falling or hazards.",
-    },
-  ],
-},
-{
-chapter: "006",
-title: "Keys, Scaling, and Other Small Lies",
-date: "2026-06-01",
-stage: "HUD cleanup, key inventory, and interaction planning",
-focus: "Cleaning up UI scaling, adding basic key collection state, and preparing the next gameplay systems for lock boxes, packages, and buttons.",
-blocks: [
-{
-type: "paragraph",
-content: [
-{
-text: "After yesterday’s diary was published, the house was still asleep, the tea was still doing its job, and I had just enough quiet time to keep poking at ",
-},
-{
-text: "Courier 16",
-strong: true,
-},
-{
-text: ". This is how these things get you. You say you are done, then you see one more thing that could be cleaned up, moved, tested, or made slightly less awful.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "I added a few more items to ",
-},
-{
-text: "level_01",
-code: true,
-},
-{
-text: " and continued playing around with the Kenney assets. Those packs are dangerous in the best possible way. You import a few blocks, spot a button, and suddenly your brain starts planning locks, mushrooms, signs, package routes, delivery points, and little bits of scenery that probably have no business being considered at four in the morning.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "The test level is still not really ",
-},
-{
-text: "Level 1",
-strong: true,
-},
-{
-text: " yet, but it is starting to move away from being a plain collision lab. There are platforms, pickups, lock-box ideas, and enough route shape to expose problems. That is useful. A rough level that reveals bad assumptions is far more valuable than a pretty screen that does nothing.",
-},
-],
-},
-{
-type: "pullquote",
-text: "A rough level that reveals bad assumptions is far more valuable than a pretty screen that does nothing.",
-},
-{
-type: "paragraph",
-content: [
-{
-text: "One thing that became obvious while testing was that the game needs some kind of fail boundary under the level. If the player falls off the map, they should not get the full Hans Gruber slow-motion death scene. They should hit a fail zone, lose a life or reset, and get back to the route. That is now on the list.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "I also cleaned up the gameplay HUD because the original sections were slightly different heights, and once I noticed that, it started annoying me like a loose cupboard door. The HUD now behaves more like proper modules: score, notice, items, and lives. It is not final, but it is much cleaner.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "The bigger UI issue turned out to be the Panel Settings asset. I had been building mostly on the 4K machine, then opened the project on the MacBook, and everything looked like it had been thrown into a UI blender. The culprit was ",
-},
-{
-text: "Constant Physical Size",
-code: true,
-},
-{
-text: ". Switching the panel to ",
-},
-{
-text: "Scale With Screen Size",
-code: true,
-},
-{
-text: ", with a 1920x1080 reference resolution, fixed both the main menu and the gameplay HUD. That was one of those fixes that feels small, but saves the project from future layout misery.",
-},
-],
-},
-{
-type: "note",
-title: "UI Toolkit lesson learned",
-text: "For this project, the Panel Settings asset needs to scale with screen size using a 1920x1080 reference. Constant Physical Size made the UI behave unpredictably between the 4K desktop and the MacBook.",
-},
-{
-type: "paragraph",
-content: [
-{
-text: "I also fixed the Luckiest Guy font issue on the main menu. The correct USS property was ",
-},
-{
-text: "-unity-font-definition",
-code: true,
-},
-{
-text: ", not the property I was originally trying to use. Unity was happy enough to let me be wrong for a while, obviously. The gameplay HUD can keep its current font for now. It is readable, and readability matters more than style during testing.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "During another quiet stretch, I created a few more prefabs, added double jump, and tried to reduce the problem where the player sometimes catches on platform edges. The double jump already feels useful for testing. The sticking issue is better after adding a zero-friction physics material, but it has not completely vanished. It is not bad enough to derail the morning, so it stays on the review list.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Monday morning started with a small goal: add collision detection, even if it only reported results to the Console. That is not exciting in the marketing sense, but it is exactly the kind of work the game needs right now. Before score, packages, locks, buttons, and meanies can matter, the game needs to reliably know when the player touched something.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "The first proper interaction was coloured keys. The key pickup script now supports four colours: blue, green, red, and yellow. The player can collect them, the key disappears, and the game logs what was collected. That gave the project its first small piece of actual gameplay state.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "That immediately led to the next design decision: how should the player interact with the world? Do we use one button for everything, switching between fire and action depending on context, or do we map separate buttons? It took about thirty seconds to remember we are not trapped in the 8-bit era anymore. The game can have a ",
-},
-{
-text: "Fire",
-strong: true,
-},
-{
-text: " button and an ",
-},
-{
-text: "Interact",
-strong: true,
-},
-{
-text: " button. Nobody wants to blast a meanie and accidentally have the game interpret that as, “please operate this nearby delivery machine.”",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "The current thinking is that keys open matching lock boxes, and lock boxes release the package or item that needs to be delivered. Some levels may be simple: avoid the meanies, grab the package, and reach the customer. Later levels can layer in coloured keys, buttons, package requirements, and delivery unlocks. The important part is that the systems are being built in a way that can grow without needing to be rewritten every time a new object appears.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "That meant the next obvious piece was a tiny inventory system. Not a full RPG backpack. No slots, no menus, and no “you are carrying sixteen turnips and a ceremonial spoon.” Just enough state to answer simple questions: does the player have the blue key, the green key, the red key, or the yellow key?",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Once the keys existed in inventory, the HUD needed to show them. Console logs are useful while building, but they are not a player interface. So the HUD now has a dedicated ",
-},
-{
-text: "Items",
-strong: true,
-},
-{
-text: " section. If the player has no keys or packages, nothing is shown. When keys are collected, their icons appear in the Items panel.",
-},
-],
-},
-{
-type: "figure",
-src: "/images/games/courier-16/hud-key-inventory.png",
-alt: "Courier 16 gameplay HUD showing score, notice, collected key icons, and lives above a small test level.",
-caption: "The HUD now has a separate Items panel for collected keys. It is still a testing layout, but it gives immediate visual feedback instead of making me stare at the Console like it owes me money.",
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Getting that wired was more fiddly than it should have been. UI Toolkit needs the ",
-},
-{
-text: "UIDocument",
-code: true,
-},
-{
-text: " to display the UXML, a controller script to find and update named elements, and then the player inventory needs a reference to that controller. It works, but the setup feels like plugging a kettle into a toaster through a fax machine. Scotch would not have been an unreasonable thought at 05:35.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Still, it works. The player collects keys, the inventory records them, the HUD displays them, and the notice area remains free for gameplay messages. That is a proper little foundation. Tomorrow’s fun should be opening the lock box. In very technical terms: are you the Keymaster? If yes, open the box and get the package.",
-},
-],
-},
-{
-type: "next",
-title: "Opening the Box",
-text: "Use the key inventory to interact with matching lock boxes. The first version only needs to check whether the player has the correct key, swap the lock box sprite to the unlocked version, and log the result. Package release can come after the lock box state works.",
-},
-],
 },
 ];
 
@@ -1105,29 +1254,33 @@ const indexedEntries = [...courierEntries].reverse();
 ---
 
 <BaseLayout
-  title="Courier 16 Diary | Eddie Saunders"
-  description="Build diary for Courier 16, a game development project by Eddie Saunders."
+  title='Courier 16 Diary | Eddie Saunders'
+  description='Build diary for Courier 16, a game development project by Eddie Saunders.'
 >
-  <section class="page-hero code-hero">
-    <p class="eyebrow">Diary of a Game</p>
+  <section class='page-hero code-hero'>
+    <p class='eyebrow'>Diary of a Game</p>
     <h1>Courier 16</h1>
     <p>
-    A compact Unity side-scrolling delivery platformer about getting the package to the end of each route. This diary follows the project from early concept through prototype, level design, polish, WebGL build, and release.
+      A compact Unity side-scrolling delivery platformer about getting the
+      package to the end of each route. This diary follows the project from
+      early concept through prototype, level design, polish, WebGL build, and
+      release.
     </p>
   </section>
 
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Quick index</p>
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Quick index</p>
       <h2>Latest and past entries</h2>
       <p>
-        Jump straight to the newest Courier 16 update or browse the diary by chapter.
+        Jump straight to the newest Courier 16 update or browse the diary by
+        chapter.
       </p>
     </div>
 
-    <div class="project-grid">
-      <article class="project-card">
-        <p class="project-type">Latest entry</p>
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Latest entry</p>
         <h3>
           Chapter {latestEntry.chapter}: {latestEntry.title}
         </h3>
@@ -1137,128 +1290,139 @@ const indexedEntries = [...courierEntries].reverse();
           {latestEntry.stage}
         </p>
 
-        <div class="project-links">
+        <div class='project-links'>
           <a href={`#${getEntryId(latestEntry)}`}>Read Latest</a>
         </div>
 
         <span>{latestEntry.focus}</span>
       </article>
 
-      <article class="project-card">
-        <p class="project-type">Entry index</p>
+      <article class='project-card'>
+        <p class='project-type'>Entry index</p>
         <h3>Courier 16 chapters</h3>
 
-        <div class="diary-index-list">
-          {indexedEntries.map((entry) => (
-            <a href={`#${getEntryId(entry)}`}>
-              <span>
-                {entry.date} · Chapter {entry.chapter}
-              </span>
-              <strong>{entry.title}</strong>
-            </a>
-          ))}
+        <div class='diary-index-list'>
+          {
+            indexedEntries.map((entry) => (
+              <a href={`#${getEntryId(entry)}`}>
+                <span>
+                  {entry.date} · Chapter {entry.chapter}
+                </span>
+                <strong>{entry.title}</strong>
+              </a>
+            ))
+          }
         </div>
       </article>
     </div>
   </section>
 
+  <section class='development-log'>
+    <header class='development-log__header'>
+      <p class='eyebrow'>Development log</p>
+      <h2>Building Courier 16</h2>
+      <p>
+        These chapters follow Courier 16 from rough idea to playable release.
+        Each one focuses on a decision, problem, milestone, or lesson from the
+        build rather than acting as a raw changelog.
+      </p>
+    </header>
 
-<section class="development-log">
-  <header class="development-log__header">
-    <p class="eyebrow">Development log</p>
-    <h2>Building Courier 16</h2>
-    <p>
-      These chapters follow Courier 16 from rough idea to playable release.
-      Each one focuses on a decision, problem, milestone, or lesson from the
-      build rather than acting as a raw changelog.
-    </p>
-  </header>
+    <div class='diary-timeline'>
+      {
+        courierEntries.map((entry) => (
+          <article class='diary-entry' id={getEntryId(entry)}>
+            <header class='diary-entry__header'>
+              <div class='diary-entry__meta-row'>
+                <span>{entry.date}</span>
+                <span>{entry.stage}</span>
+              </div>
 
-  <div class="diary-timeline">
-    {courierEntries.map((entry) => (
-      <article class="diary-entry" id={getEntryId(entry)}>
-        <header class="diary-entry__header">
-          <div class="diary-entry__meta-row">
-            <span>{entry.date}</span>
-            <span>{entry.stage}</span>
-          </div>
+              <h3>
+                <span>Chapter {entry.chapter}</span>
+                {entry.title}
+              </h3>
 
-          <h3>
-            <span>Chapter {entry.chapter}</span>
-            {entry.title}
-          </h3>
+              <p class='diary-entry__focus'>
+                <strong>Focus:</strong> {entry.focus}
+              </p>
+            </header>
 
-          <p class="diary-entry__focus">
-            <strong>Focus:</strong> {entry.focus}
-          </p>
-        </header>
+            <div class='diary-entry__body'>
+              {entry.blocks.map((block) => {
+                if (block.type === 'paragraph') {
+                  return (
+                    <p>
+                      {block.content.map((part) => {
+                        if (part.href) {
+                          return (
+                            <a
+                              href={part.href}
+                              target='_blank'
+                              rel='noopener noreferrer'
+                            >
+                              {part.strong ? (
+                                <strong>{part.text}</strong>
+                              ) : (
+                                part.text
+                              )}
+                            </a>
+                          );
+                        }
 
-        <div class="diary-entry__body">
-          {entry.blocks.map((block) => {
-            if (block.type === "paragraph") {
-              return (
-                <p>
-                  {block.content.map((part) => {
-                    if (part.href) {
-                      return (
-                        <a href={part.href} target="_blank" rel="noopener noreferrer">
-                          {part.strong ? <strong>{part.text}</strong> : part.text}
-                        </a>
-                      );
-                    }
+                        if (part.strong) return <strong>{part.text}</strong>;
+                        if (part.em) return <em>{part.text}</em>;
+                        if (part.code) return <code>{part.text}</code>;
 
-                    if (part.strong) return <strong>{part.text}</strong>;
-                    if (part.em) return <em>{part.text}</em>;
-                    if (part.code) return <code>{part.text}</code>;
+                        return part.text;
+                      })}
+                    </p>
+                  );
+                }
 
-                    return part.text;
-                  })}
-                </p>
-              );
-            }
+                if (block.type === 'pullquote') {
+                  return (
+                    <aside class='diary-pullquote'>
+                      <p>{block.text}</p>
+                    </aside>
+                  );
+                }
 
-            if (block.type === "pullquote") {
-              return (
-                <aside class="diary-pullquote">
-                  <p>{block.text}</p>
-                </aside>
-              );
-            }
+                if (block.type === 'figure') {
+                  return (
+                    <figure class='diary-figure'>
+                      <img src={block.src} alt={block.alt} />
+                      <figcaption>{block.caption}</figcaption>
+                    </figure>
+                  );
+                }
 
-            if (block.type === "figure") {
-              return (
-                <figure class="diary-figure">
-                  <img src={block.src} alt={block.alt} />
-                  <figcaption>{block.caption}</figcaption>
-                </figure>
-              );
-            }
+                if (block.type === 'note') {
+                  return (
+                    <aside class='diary-note'>
+                      <p class='diary-note__label'>Build note</p>
+                      <h4>{block.title}</h4>
+                      <p>{block.text}</p>
+                    </aside>
+                  );
+                }
 
-            if (block.type === "note") {
-              return (
-                <aside class="diary-note">
-                  <p class="diary-note__label">Build note</p>
-                  <h4>{block.title}</h4>
-                  <p>{block.text}</p>
-                </aside>
-              );
-            }
+                if (block.type === 'next') {
+                  return (
+                    <aside class='next-step'>
+                      <p class='next-step__label'>Next</p>
+                      <h4>{block.title}</h4>
+                      <p>{block.text}</p>
+                    </aside>
+                  );
+                }
 
-            if (block.type === "next") {
-              return (
-                <aside class="next-step">
-                  <p class="next-step__label">Next</p>
-                  <h4>{block.title}</h4>
-                  <p>{block.text}</p>
-                </aside>
-              );
-            }
-
-            return null;
-          })}
-        </div>
-      </article>
-    ))}
-  </div>
-</section>
+                return null;
+              })}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 </BaseLayout>
