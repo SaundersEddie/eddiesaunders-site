@@ -1245,6 +1245,178 @@ const courierEntries: DiaryEntry[] = [
     },
   ],
 },
+{
+  chapter: "008",
+  title: "Menus, Pause, Spawners, and Sticky Feet",
+  date: "2026-06-03",
+  stage: "UI cleanup, respawn structure, and movement fixes",
+  focus: "Cleaning up the main menu and pause flow, adding proper player spawn and respawn points, and chasing down the player catching on platforms issue.",
+  blocks: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Yesterday afternoon turned into a properly epic session. I went ahead and completed the major game flow: key to unlock, unlock to pickup, pickup to deliver.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "I also added a safe timer for the player after they lose a life, which ties into the Game Over flow. Speaking of which, I revamped both the ",
+        },
+        {
+          text: "mainMenu",
+          code: true,
+        },
+        {
+          text: " and ",
+        },
+        {
+          text: "gameOver",
+          code: true,
+        },
+        {
+          text: " scenes. They are still not 100%, and eventually I want a scrolling game level behind the main menu, but they now feel much more like they belong to the same game.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "Another small issue got cleared up too. After unlocking the package lockers, some of the replacement graphics were solid to the player while others were not. I made them all solid, which means they now block both the player and the meanies. For now, the player has to jump onto the opened locker to collect the package. Ultimately I want the package to fly towards the player and auto-collect, but that can wait.",
+        },
+      ],
+    },
+    {
+      type: "note",
+      title: "Still on the list",
+      text: "In-game graphic effects, the occasional player/platform catching issue, audio, animations, level completion and exit doors, more hazards, more meanies, level design, and in-game pause/quit all still need attention.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The focus now is to start picking one or two items at a time and getting them properly working, while also starting to shape the actual levels. The scary unknowns are shrinking. The work is becoming more about finishing, tuning, and making the game feel good.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "For the morning of 3rd June, the plan was to tackle the main menu ",
+        },
+        {
+          text: "About",
+          strong: true,
+        },
+        {
+          text: " and ",
+        },
+        {
+          text: "Quit",
+          strong: true,
+        },
+        {
+          text: " buttons, add an in-game pause menu, and take another look at the player sticking on platforms.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The About modal turned out not to be a huge deal. I may even be starting to understand this Unity UI Toolkit stuff. It is still not something I would want to do as a full-time job, but progress is progress.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "After that, I decided to implement the in-game pause menu, which should put the main GUI requirements mostly to bed. Of course, that means they will probably be up and around causing havoc like Gremlins fed after midnight by tomorrow. Still, the pause menu is useful already. I see so many tweak points while playtesting, and being able to pause makes it much easier to jot things down instead of trying to remember them while dodging tiny pink menaces.",
+        },
+      ],
+    },
+    {
+      type: "pullquote",
+      text: "The scary unknowns are shrinking. The work is becoming more about finishing, tuning, and making the game feel good.",
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "While tracking down the player getting caught on platforms bug, I realized I had never actually made a proper ",
+        },
+        {
+          text: "playerSpawner",
+          code: true,
+        },
+        {
+          text: " object. I had mostly just thrown the player into the scene and carried on. I thought creating the spawner/respawn structure would be a quick ten-minute task, but a little bad planning on my part, plus ",
+        },
+        {
+          text: "Egotist",
+          em: true,
+        },
+        {
+          text: " playing on Amazon Music, distracted me from the job at hand. Got it working in the end though.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The new setup is cleaner. A level can have a ",
+        },
+        {
+          text: "playerSpawner",
+          code: true,
+        },
+        {
+          text: " for the initial start location, and larger levels can also have ",
+        },
+        {
+          text: "playerRespawnPoint",
+          code: true,
+        },
+        {
+          text: " objects so the player does not get sent all the way back to the start after getting whacked near the end of a long route.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "The sticking issue still did not fully go away at first, so I built a Windows version to check whether it was just Unity being awkward in the Editor or a real issue. The build still flaked out in the same way, so it was a true gameplay problem rather than editor nonsense.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          text: "In the end, I changed the player over from a box collider to a capsule collider. That appears to have resolved the issue, so I suspect the sharp corners of the box collider were catching on the platform edges. Platformer collision is one of those things that sounds simple right up until the player starts behaving like they have sticky feet.",
+        },
+      ],
+    },
+    {
+      type: "note",
+      title: "No screenshot yet",
+      text: "No screenshot for this entry yet. I may add one later, especially once the new Level 01 starts looking less like a cleanup operation and more like an actual first level.",
+    },
+    {
+      type: "next",
+      title: "Level 01 Takes Shape",
+      text: "Start rebuilding Level 01 intentionally using the cleaned-up player spawn setup, pause menu, working score/lives/game over loop, and improved player collision. After that, move toward level completion, exit doors, and more deliberate hazard/meanie placement.",
+    },
+  ],
+},
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
