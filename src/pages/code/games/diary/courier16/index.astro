@@ -1417,6 +1417,151 @@ const courierEntries: DiaryEntry[] = [
     },
   ],
 },
+{
+chapter: "009",
+title: "Backgrounds, Meanie Variants, and Weather Warnings",
+date: "2026-06-04",
+stage: "Level building, atmosphere, and spawner polish",
+focus: "Starting the real Level 01, adding meanie variety, locking the background to the camera, and introducing environmental warnings.",
+blocks: [
+{
+type: "paragraph",
+content: [
+{
+text: "Yesterday after the daily entry was written, I went ahead and started working on the new Level 01. Level design is likely to be one of the hardest parts of the development process, because now all the systems need to stop being test pieces and start becoming an actual game.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "The goals today are not overly difficult: start making a new level that can ship with the game rather than the test bed I have been using, add some more meanie types to the mix, and start thinking about in-game environmental factors that can affect the player.",
+},
+],
+},
+{
+type: "pullquote",
+text: "The level is slowly changing from a test bed full of working parts into something that actually feels like Courier 16.",
+},
+{
+type: "paragraph",
+content: [
+{
+text: "I already have a spawner that can change a number of things that might eventually affect the player, but for now those systems are mostly tied to writing logs and posting HUD notices. The foundation is there, even if the actual wind, rain, snow, heat, and other nonsense still needs to be built properly.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "The ",
+},
+{
+text: "meanieSpawner",
+code: true,
+},
+{
+text: " was not much of a headache. It only needed a quick code update with some spawn options, so now a spawner can either use one fixed meanie prefab or randomly select from a list of meanie types. That gives me much more flexibility when placing meanies in levels.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "While thinking about meanies, I also designed a new future idea: ",
+},
+{
+text: "slowplayMeanieSpawner",
+code: true,
+},
+{
+text: ". The idea is that it triggers after a configured amount of time if the player is not moving quickly enough. The spawned meanie would be immune to almost everything except the player and player-fired projectiles, and it would be able to fly over the environment. That one is only a design note for now, but it feels like a good way to add pressure later without forcing it into the early levels.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Anyway, the updated ",
+},
+{
+text: "meanieSpawner",
+code: true,
+},
+{
+text: " was not a huge deal in the end. I can now have a spawner release one specific meanie or select one from a list. The meanie variants themselves will need a little TLC later, but the spawning side is doing what it needs to do.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Next on the list was getting the gameplay background to behave like a static image. I added a background to the level earlier and it moved along with everything else. It looked great, but it was not the look I wanted. I wanted the level to scroll while the clouds stayed locked behind everything.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Turns out that was easier than expected. I added the background image as a child of the Main Camera, and now it stays static while the level scrolls over it. That one change immediately gave the world a lot more depth. The game stopped looking like sprites floating in blue soup and started looking more like an actual place.",
+},
+],
+},
+{
+type: "figure",
+src: "/images/games/courier-16/courier16-weather-backgrounds-meanies.png",
+alt: "Courier 16 gameplay showing the static cloud background, weather alert notice, HUD, pickups, platforms, and multiple meanie types.",
+caption: "The new static cloud background, environmental warning notice, and meanie variants make the level feel much more alive.",
+},
+{
+type: "paragraph",
+content: [
+{
+text: "I also implemented the ",
+},
+{
+text: "environmentalSpawner",
+code: true,
+},
+{
+text: ". Right now it warns of an impending environmental impact and then fires off a HUD notice. I was thinking that warm and sunny followed by snow seemed unlikely, then I remembered where I live and realized that is entirely possible.",
+},
+],
+},
+{
+type: "paragraph",
+content: [
+{
+text: "The environmental messages should not fire too often. A few times per level is probably enough. Maybe five minutes between events, maybe less, maybe more. It is one of those things that will need to be tested and tweaked once real levels exist.",
+},
+],
+},
+{
+type: "note",
+title: "Notice priority will matter",
+text: "Environmental notices should not stomp all over important gameplay notices. If a blizzard warning is coming in, but the player just delivered a package or opened the exit route, the gameplay message probably needs priority. A notice queue or priority system is now on the tweak list.",
+},
+{
+type: "paragraph",
+content: [
+{
+text: "At this point the systems are starting to support level design instead of getting in the way of it. The meanie spawners are more flexible, the background gives the scene depth, and the environmental spawner gives the game world a bit of personality even before the actual weather mechanics exist.",
+},
+],
+},
+{
+type: "next",
+title: "Back to Level Design",
+text: "Continue shaping the new Level 01 using the cleaned-up player spawner, checkpoint system, finish door, meanie variants, static background, and environmental warning system. The next big job is making the level feel intentional rather than like a test arena.",
+},
+],
+},
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
