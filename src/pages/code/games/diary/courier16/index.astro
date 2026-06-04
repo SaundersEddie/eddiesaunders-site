@@ -1109,459 +1109,464 @@ const courierEntries: DiaryEntry[] = [
     ],
   },
   {
-  chapter: "007",
-  title: "Camera Follow, Moving Meanies, and Death Zones",
-  date: "2026-06-02",
-  stage: "Gameplay systems",
-  focus: "Completing the pickup-to-delivery loop, adding camera follow, spawning moving meanies, and wiring the first level death zones.",
-  blocks: [
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Well, yesterday evening proved productive. It was quiet, with YouTube running in the background, so I went ahead and completed the pickup-to-delivery flow for items.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "I was expecting some headaches, but outside of forgetting that the default ",
-        },
-        {
-          text: "Input System",
-          strong: true,
-        },
-        {
-          text: " setting for Interact was holding the button for 0.5 seconds, nothing really went pear-shaped. The interact issue was resolved by simply deleting the hold setting. Then everything started working.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Input System shenanigans aside, this involved a fair amount of work: pick up a key, open a lockbox, get a package gem, take it to a customer with a matching gem above their head, and deliver it. The code supports four package colours, so the system is not locked to one delivery type.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "For good measure, the locked box becomes a block once collected, and the gem above the customer's head disappears once the delivery is completed.",
-        },
-      ],
-    },
-    {
-      type: "note",
-      title: "Gameplay first, fancy later",
-      text: "Animations, sound effects, and fancy levels are still waiting their turn. Right now the important job is proving the gameplay loop works before spending time polishing the presentation.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "As more functionality has been built into the game, the test level has started to expand, so it was time to add a quick function for the camera to follow the player. I am sure Unity has something built in, but a quick ",
-        },
-        {
-          text: "CameraFollow2D",
-          code: true,
-        },
-        {
-          text: " script of around 23 lines does the trick for now. I might migrate to Cinemachine later.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The main goal this morning was to build some ",
-        },
-        {
-          text: "meanieSpawner",
-          code: true,
-        },
-        {
-          text: " code. I was not worried about player/meanie collision at this point, but if good progress was made on the spawner, I was prepared to work on it.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "For the first version of meanies, the process is simple: they spawn, they move, and if they fall off the world they meet the same fate as the player. Maybe they need some intelligence later. The important part right now is that they spawn and move.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Meanie movement did not initially go quite as expected. The ground and wall collision needed some tweaking to stop the meanie from just flipping around on itself without actually moving. It turned out I had given the ground layer in the tilemap a tag called ",
-        },
-        {
-          text: "groundLayer",
-          code: true,
-        },
-        {
-          text: " instead of assigning an actual Layer. Once that was fixed, the meanies spawned and started moving without falling off the platform they spawned on.",
-        },
-      ],
-    },
-    {
-      type: "pullquote",
-      text: "Do we make some meanies dumb enough to fall into the death zones? That is probably a question for later today, not 04:20.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "I also added quick death zones around the level that cause the player to get whacked if they touch them. The lava floor and spike walls now use trigger colliders hooked into the existing respawn code.",
-        },
-      ],
-    },
-    {
-      type: "figure",
-      src: "/images/games/courier-16/courier16-meanies-deathzones.png",
-      alt: "Courier 16 test level showing the player, translucent HUD, collected keys, lockboxes, moving meanies, delivery customers with colour indicators, and lava and spike death zones.",
-      caption: "Courier 16 now has camera follow, moving meanies, lockboxes, collected keys, colour-coded delivery customers, a translucent HUD, and death zones starting to shape the test level.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The screenshot shows lockboxes, the translucent HUD, meanies running around, and customers with package colour indicators above their heads. It is still very much a test level, but it is starting to look less like isolated mechanics and more like an actual game space.",
-        },
-      ],
-    },
-    {
-      type: "next",
-      title: "Meaner Meanies",
-      text: "Look further into meanie behaviour and player collision. A short safe-time window after respawn is also probably needed, otherwise the player could respawn straight back into trouble and get chain-whacked.",
-    },
-  ],
-},
-{
-  chapter: "008",
-  title: "Menus, Pause, Spawners, and Sticky Feet",
-  date: "2026-06-03",
-  stage: "UI cleanup, respawn structure, and movement fixes",
-  focus: "Cleaning up the main menu and pause flow, adding proper player spawn and respawn points, and chasing down the player catching on platforms issue.",
-  blocks: [
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Yesterday afternoon turned into a properly epic session. I went ahead and completed the major game flow: key to unlock, unlock to pickup, pickup to deliver.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "I also added a safe timer for the player after they lose a life, which ties into the Game Over flow. Speaking of which, I revamped both the ",
-        },
-        {
-          text: "mainMenu",
-          code: true,
-        },
-        {
-          text: " and ",
-        },
-        {
-          text: "gameOver",
-          code: true,
-        },
-        {
-          text: " scenes. They are still not 100%, and eventually I want a scrolling game level behind the main menu, but they now feel much more like they belong to the same game.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "Another small issue got cleared up too. After unlocking the package lockers, some of the replacement graphics were solid to the player while others were not. I made them all solid, which means they now block both the player and the meanies. For now, the player has to jump onto the opened locker to collect the package. Ultimately I want the package to fly towards the player and auto-collect, but that can wait.",
-        },
-      ],
-    },
-    {
-      type: "note",
-      title: "Still on the list",
-      text: "In-game graphic effects, the occasional player/platform catching issue, audio, animations, level completion and exit doors, more hazards, more meanies, level design, and in-game pause/quit all still need attention.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The focus now is to start picking one or two items at a time and getting them properly working, while also starting to shape the actual levels. The scary unknowns are shrinking. The work is becoming more about finishing, tuning, and making the game feel good.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "For the morning of 3rd June, the plan was to tackle the main menu ",
-        },
-        {
-          text: "About",
-          strong: true,
-        },
-        {
-          text: " and ",
-        },
-        {
-          text: "Quit",
-          strong: true,
-        },
-        {
-          text: " buttons, add an in-game pause menu, and take another look at the player sticking on platforms.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The About modal turned out not to be a huge deal. I may even be starting to understand this Unity UI Toolkit stuff. It is still not something I would want to do as a full-time job, but progress is progress.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "After that, I decided to implement the in-game pause menu, which should put the main GUI requirements mostly to bed. Of course, that means they will probably be up and around causing havoc like Gremlins fed after midnight by tomorrow. Still, the pause menu is useful already. I see so many tweak points while playtesting, and being able to pause makes it much easier to jot things down instead of trying to remember them while dodging tiny pink menaces.",
-        },
-      ],
-    },
-    {
-      type: "pullquote",
-      text: "The scary unknowns are shrinking. The work is becoming more about finishing, tuning, and making the game feel good.",
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "While tracking down the player getting caught on platforms bug, I realized I had never actually made a proper ",
-        },
-        {
-          text: "playerSpawner",
-          code: true,
-        },
-        {
-          text: " object. I had mostly just thrown the player into the scene and carried on. I thought creating the spawner/respawn structure would be a quick ten-minute task, but a little bad planning on my part, plus ",
-        },
-        {
-          text: "Egotist",
-          em: true,
-        },
-        {
-          text: " playing on Amazon Music, distracted me from the job at hand. Got it working in the end though.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The new setup is cleaner. A level can have a ",
-        },
-        {
-          text: "playerSpawner",
-          code: true,
-        },
-        {
-          text: " for the initial start location, and larger levels can also have ",
-        },
-        {
-          text: "playerRespawnPoint",
-          code: true,
-        },
-        {
-          text: " objects so the player does not get sent all the way back to the start after getting whacked near the end of a long route.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "The sticking issue still did not fully go away at first, so I built a Windows version to check whether it was just Unity being awkward in the Editor or a real issue. The build still flaked out in the same way, so it was a true gameplay problem rather than editor nonsense.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          text: "In the end, I changed the player over from a box collider to a capsule collider. That appears to have resolved the issue, so I suspect the sharp corners of the box collider were catching on the platform edges. Platformer collision is one of those things that sounds simple right up until the player starts behaving like they have sticky feet.",
-        },
-      ],
-    },
-    {
-      type: "note",
-      title: "No screenshot yet",
-      text: "No screenshot for this entry yet. I may add one later, especially once the new Level 01 starts looking less like a cleanup operation and more like an actual first level.",
-    },
-    {
-      type: "next",
-      title: "Level 01 Takes Shape",
-      text: "Start rebuilding Level 01 intentionally using the cleaned-up player spawn setup, pause menu, working score/lives/game over loop, and improved player collision. After that, move toward level completion, exit doors, and more deliberate hazard/meanie placement.",
-    },
-  ],
-},
-{
-chapter: "009",
-title: "Backgrounds, Meanie Variants, and Weather Warnings",
-date: "2026-06-04",
-stage: "Level building, atmosphere, and spawner polish",
-focus: "Starting the real Level 01, adding meanie variety, locking the background to the camera, and introducing environmental warnings.",
-blocks: [
-{
-type: "paragraph",
-content: [
-{
-text: "Yesterday after the daily entry was written, I went ahead and started working on the new Level 01. Level design is likely to be one of the hardest parts of the development process, because now all the systems need to stop being test pieces and start becoming an actual game.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "The goals today are not overly difficult: start making a new level that can ship with the game rather than the test bed I have been using, add some more meanie types to the mix, and start thinking about in-game environmental factors that can affect the player.",
-},
-],
-},
-{
-type: "pullquote",
-text: "The level is slowly changing from a test bed full of working parts into something that actually feels like Courier 16.",
-},
-{
-type: "paragraph",
-content: [
-{
-text: "I already have a spawner that can change a number of things that might eventually affect the player, but for now those systems are mostly tied to writing logs and posting HUD notices. The foundation is there, even if the actual wind, rain, snow, heat, and other nonsense still needs to be built properly.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "The ",
-},
-{
-text: "meanieSpawner",
-code: true,
-},
-{
-text: " was not much of a headache. It only needed a quick code update with some spawn options, so now a spawner can either use one fixed meanie prefab or randomly select from a list of meanie types. That gives me much more flexibility when placing meanies in levels.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "While thinking about meanies, I also designed a new future idea: ",
-},
-{
-text: "slowplayMeanieSpawner",
-code: true,
-},
-{
-text: ". The idea is that it triggers after a configured amount of time if the player is not moving quickly enough. The spawned meanie would be immune to almost everything except the player and player-fired projectiles, and it would be able to fly over the environment. That one is only a design note for now, but it feels like a good way to add pressure later without forcing it into the early levels.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Anyway, the updated ",
-},
-{
-text: "meanieSpawner",
-code: true,
-},
-{
-text: " was not a huge deal in the end. I can now have a spawner release one specific meanie or select one from a list. The meanie variants themselves will need a little TLC later, but the spawning side is doing what it needs to do.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Next on the list was getting the gameplay background to behave like a static image. I added a background to the level earlier and it moved along with everything else. It looked great, but it was not the look I wanted. I wanted the level to scroll while the clouds stayed locked behind everything.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Turns out that was easier than expected. I added the background image as a child of the Main Camera, and now it stays static while the level scrolls over it. That one change immediately gave the world a lot more depth. The game stopped looking like sprites floating in blue soup and started looking more like an actual place.",
-},
-],
-},
-{
-type: "figure",
-src: "/images/games/courier-16/courier16-weather-backgrounds-meanies.png",
-alt: "Courier 16 gameplay showing the static cloud background, weather alert notice, HUD, pickups, platforms, and multiple meanie types.",
-caption: "The new static cloud background, environmental warning notice, and meanie variants make the level feel much more alive.",
-},
-{
-type: "paragraph",
-content: [
-{
-text: "I also implemented the ",
-},
-{
-text: "environmentalSpawner",
-code: true,
-},
-{
-text: ". Right now it warns of an impending environmental impact and then fires off a HUD notice. I was thinking that warm and sunny followed by snow seemed unlikely, then I remembered where I live and realized that is entirely possible.",
-},
-],
-},
-{
-type: "paragraph",
-content: [
-{
-text: "The environmental messages should not fire too often. A few times per level is probably enough. Maybe five minutes between events, maybe less, maybe more. It is one of those things that will need to be tested and tweaked once real levels exist.",
-},
-],
-},
-{
-type: "note",
-title: "Notice priority will matter",
-text: "Environmental notices should not stomp all over important gameplay notices. If a blizzard warning is coming in, but the player just delivered a package or opened the exit route, the gameplay message probably needs priority. A notice queue or priority system is now on the tweak list.",
-},
-{
-type: "paragraph",
-content: [
-{
-text: "At this point the systems are starting to support level design instead of getting in the way of it. The meanie spawners are more flexible, the background gives the scene depth, and the environmental spawner gives the game world a bit of personality even before the actual weather mechanics exist.",
-},
-],
-},
-{
-type: "next",
-title: "Back to Level Design",
-text: "Continue shaping the new Level 01 using the cleaned-up player spawner, checkpoint system, finish door, meanie variants, static background, and environmental warning system. The next big job is making the level feel intentional rather than like a test arena.",
-},
-],
-},
+    chapter: '007',
+    title: 'Camera Follow, Moving Meanies, and Death Zones',
+    date: '2026-06-02',
+    stage: 'Gameplay systems',
+    focus:
+      'Completing the pickup-to-delivery loop, adding camera follow, spawning moving meanies, and wiring the first level death zones.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Well, yesterday evening proved productive. It was quiet, with YouTube running in the background, so I went ahead and completed the pickup-to-delivery flow for items.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I was expecting some headaches, but outside of forgetting that the default ',
+          },
+          {
+            text: 'Input System',
+            strong: true,
+          },
+          {
+            text: ' setting for Interact was holding the button for 0.5 seconds, nothing really went pear-shaped. The interact issue was resolved by simply deleting the hold setting. Then everything started working.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Input System shenanigans aside, this involved a fair amount of work: pick up a key, open a lockbox, get a package gem, take it to a customer with a matching gem above their head, and deliver it. The code supports four package colours, so the system is not locked to one delivery type.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: "For good measure, the locked box becomes a block once collected, and the gem above the customer's head disappears once the delivery is completed.",
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Gameplay first, fancy later',
+        text: 'Animations, sound effects, and fancy levels are still waiting their turn. Right now the important job is proving the gameplay loop works before spending time polishing the presentation.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'As more functionality has been built into the game, the test level has started to expand, so it was time to add a quick function for the camera to follow the player. I am sure Unity has something built in, but a quick ',
+          },
+          {
+            text: 'CameraFollow2D',
+            code: true,
+          },
+          {
+            text: ' script of around 23 lines does the trick for now. I might migrate to Cinemachine later.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The main goal this morning was to build some ',
+          },
+          {
+            text: 'meanieSpawner',
+            code: true,
+          },
+          {
+            text: ' code. I was not worried about player/meanie collision at this point, but if good progress was made on the spawner, I was prepared to work on it.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'For the first version of meanies, the process is simple: they spawn, they move, and if they fall off the world they meet the same fate as the player. Maybe they need some intelligence later. The important part right now is that they spawn and move.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Meanie movement did not initially go quite as expected. The ground and wall collision needed some tweaking to stop the meanie from just flipping around on itself without actually moving. It turned out I had given the ground layer in the tilemap a tag called ',
+          },
+          {
+            text: 'groundLayer',
+            code: true,
+          },
+          {
+            text: ' instead of assigning an actual Layer. Once that was fixed, the meanies spawned and started moving without falling off the platform they spawned on.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Do we make some meanies dumb enough to fall into the death zones? That is probably a question for later today, not 04:20.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also added quick death zones around the level that cause the player to get whacked if they touch them. The lava floor and spike walls now use trigger colliders hooked into the existing respawn code.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-meanies-deathzones.png',
+        alt: 'Courier 16 test level showing the player, translucent HUD, collected keys, lockboxes, moving meanies, delivery customers with colour indicators, and lava and spike death zones.',
+        caption:
+          'Courier 16 now has camera follow, moving meanies, lockboxes, collected keys, colour-coded delivery customers, a translucent HUD, and death zones starting to shape the test level.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The screenshot shows lockboxes, the translucent HUD, meanies running around, and customers with package colour indicators above their heads. It is still very much a test level, but it is starting to look less like isolated mechanics and more like an actual game space.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Meaner Meanies',
+        text: 'Look further into meanie behaviour and player collision. A short safe-time window after respawn is also probably needed, otherwise the player could respawn straight back into trouble and get chain-whacked.',
+      },
+    ],
+  },
+  {
+    chapter: '008',
+    title: 'Menus, Pause, Spawners, and Sticky Feet',
+    date: '2026-06-03',
+    stage: 'UI cleanup, respawn structure, and movement fixes',
+    focus:
+      'Cleaning up the main menu and pause flow, adding proper player spawn and respawn points, and chasing down the player catching on platforms issue.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Yesterday afternoon turned into a properly epic session. I went ahead and completed the major game flow: key to unlock, unlock to pickup, pickup to deliver.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also added a safe timer for the player after they lose a life, which ties into the Game Over flow. Speaking of which, I revamped both the ',
+          },
+          {
+            text: 'mainMenu',
+            code: true,
+          },
+          {
+            text: ' and ',
+          },
+          {
+            text: 'gameOver',
+            code: true,
+          },
+          {
+            text: ' scenes. They are still not 100%, and eventually I want a scrolling game level behind the main menu, but they now feel much more like they belong to the same game.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Another small issue got cleared up too. After unlocking the package lockers, some of the replacement graphics were solid to the player while others were not. I made them all solid, which means they now block both the player and the meanies. For now, the player has to jump onto the opened locker to collect the package. Ultimately I want the package to fly towards the player and auto-collect, but that can wait.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Still on the list',
+        text: 'In-game graphic effects, the occasional player/platform catching issue, audio, animations, level completion and exit doors, more hazards, more meanies, level design, and in-game pause/quit all still need attention.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The focus now is to start picking one or two items at a time and getting them properly working, while also starting to shape the actual levels. The scary unknowns are shrinking. The work is becoming more about finishing, tuning, and making the game feel good.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'For the morning of 3rd June, the plan was to tackle the main menu ',
+          },
+          {
+            text: 'About',
+            strong: true,
+          },
+          {
+            text: ' and ',
+          },
+          {
+            text: 'Quit',
+            strong: true,
+          },
+          {
+            text: ' buttons, add an in-game pause menu, and take another look at the player sticking on platforms.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The About modal turned out not to be a huge deal. I may even be starting to understand this Unity UI Toolkit stuff. It is still not something I would want to do as a full-time job, but progress is progress.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'After that, I decided to implement the in-game pause menu, which should put the main GUI requirements mostly to bed. Of course, that means they will probably be up and around causing havoc like Gremlins fed after midnight by tomorrow. Still, the pause menu is useful already. I see so many tweak points while playtesting, and being able to pause makes it much easier to jot things down instead of trying to remember them while dodging tiny pink menaces.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'The scary unknowns are shrinking. The work is becoming more about finishing, tuning, and making the game feel good.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'While tracking down the player getting caught on platforms bug, I realized I had never actually made a proper ',
+          },
+          {
+            text: 'playerSpawner',
+            code: true,
+          },
+          {
+            text: ' object. I had mostly just thrown the player into the scene and carried on. I thought creating the spawner/respawn structure would be a quick ten-minute task, but a little bad planning on my part, plus ',
+          },
+          {
+            text: 'Egotist',
+            em: true,
+          },
+          {
+            text: ' playing on Amazon Music, distracted me from the job at hand. Got it working in the end though.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The new setup is cleaner. A level can have a ',
+          },
+          {
+            text: 'playerSpawner',
+            code: true,
+          },
+          {
+            text: ' for the initial start location, and larger levels can also have ',
+          },
+          {
+            text: 'playerRespawnPoint',
+            code: true,
+          },
+          {
+            text: ' objects so the player does not get sent all the way back to the start after getting whacked near the end of a long route.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The sticking issue still did not fully go away at first, so I built a Windows version to check whether it was just Unity being awkward in the Editor or a real issue. The build still flaked out in the same way, so it was a true gameplay problem rather than editor nonsense.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'In the end, I changed the player over from a box collider to a capsule collider. That appears to have resolved the issue, so I suspect the sharp corners of the box collider were catching on the platform edges. Platformer collision is one of those things that sounds simple right up until the player starts behaving like they have sticky feet.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'No screenshot yet',
+        text: 'No screenshot for this entry yet. I may add one later, especially once the new Level 01 starts looking less like a cleanup operation and more like an actual first level.',
+      },
+      {
+        type: 'next',
+        title: 'Level 01 Takes Shape',
+        text: 'Start rebuilding Level 01 intentionally using the cleaned-up player spawn setup, pause menu, working score/lives/game over loop, and improved player collision. After that, move toward level completion, exit doors, and more deliberate hazard/meanie placement.',
+      },
+    ],
+  },
+  {
+    chapter: '009',
+    title: 'Backgrounds, Meanie Variants, and Weather Warnings',
+    date: '2026-06-04',
+    stage: 'Level building, atmosphere, and spawner polish',
+    focus:
+      'Starting the real Level 01, adding meanie variety, locking the background to the camera, and introducing environmental warnings.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Yesterday after the daily entry was written, I went ahead and started working on the new Level 01. Level design is likely to be one of the hardest parts of the development process, because now all the systems need to stop being test pieces and start becoming an actual game.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The goals today are not overly difficult: start making a new level that can ship with the game rather than the test bed I have been using, add some more meanie types to the mix, and start thinking about in-game environmental factors that can affect the player.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'The level is slowly changing from a test bed full of working parts into something that actually feels like Courier 16.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I already have a spawner that can change a number of things that might eventually affect the player, but for now those systems are mostly tied to writing logs and posting HUD notices. The foundation is there, even if the actual wind, rain, snow, heat, and other nonsense still needs to be built properly.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The ',
+          },
+          {
+            text: 'meanieSpawner',
+            code: true,
+          },
+          {
+            text: ' was not much of a headache. It only needed a quick code update with some spawn options, so now a spawner can either use one fixed meanie prefab or randomly select from a list of meanie types. That gives me much more flexibility when placing meanies in levels.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'While thinking about meanies, I also designed a new future idea: ',
+          },
+          {
+            text: 'slowplayMeanieSpawner',
+            code: true,
+          },
+          {
+            text: '. The idea is that it triggers after a configured amount of time if the player is not moving quickly enough. The spawned meanie would be immune to almost everything except the player and player-fired projectiles, and it would be able to fly over the environment. That one is only a design note for now, but it feels like a good way to add pressure later without forcing it into the early levels.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Anyway, the updated ',
+          },
+          {
+            text: 'meanieSpawner',
+            code: true,
+          },
+          {
+            text: ' was not a huge deal in the end. I can now have a spawner release one specific meanie or select one from a list. The meanie variants themselves will need a little TLC later, but the spawning side is doing what it needs to do.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Next on the list was getting the gameplay background to behave like a static image. I added a background to the level earlier and it moved along with everything else. It looked great, but it was not the look I wanted. I wanted the level to scroll while the clouds stayed locked behind everything.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Turns out that was easier than expected. I added the background image as a child of the Main Camera, and now it stays static while the level scrolls over it. That one change immediately gave the world a lot more depth. The game stopped looking like sprites floating in blue soup and started looking more like an actual place.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-weather-backgrounds-meanies.png',
+        alt: 'Courier 16 gameplay showing the static cloud background, weather alert notice, HUD, pickups, platforms, and multiple meanie types.',
+        caption:
+          'The new static cloud background, environmental warning notice, and meanie variants make the level feel much more alive.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also implemented the ',
+          },
+          {
+            text: 'environmentalSpawner',
+            code: true,
+          },
+          {
+            text: '. Right now it warns of an impending environmental impact and then fires off a HUD notice. I was thinking that warm and sunny followed by snow seemed unlikely, then I remembered where I live and realized that is entirely possible.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The environmental messages should not fire too often. A few times per level is probably enough. Maybe five minutes between events, maybe less, maybe more. It is one of those things that will need to be tested and tweaked once real levels exist.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Notice priority will matter',
+        text: 'Environmental notices should not stomp all over important gameplay notices. If a blizzard warning is coming in, but the player just delivered a package or opened the exit route, the gameplay message probably needs priority. A notice queue or priority system is now on the tweak list.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'At this point the systems are starting to support level design instead of getting in the way of it. The meanie spawners are more flexible, the background gives the scene depth, and the environmental spawner gives the game world a bit of personality even before the actual weather mechanics exist.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Back to Level Design',
+        text: 'Continue shaping the new Level 01 using the cleaned-up player spawner, checkpoint system, finish door, meanie variants, static background, and environmental warning system. The next big job is making the level feel intentional rather than like a test arena.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
