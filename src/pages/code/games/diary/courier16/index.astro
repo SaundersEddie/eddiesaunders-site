@@ -1567,6 +1567,122 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '010',
+    title: 'Level Two, Scene Leaks, and Lava Baths',
+    date: '2026-06-05',
+    stage: 'Level transitions and cleanup',
+    focus:
+      'Testing movement between Level 01 and Level 02, fixing additive scene leftovers, and cleaning up lockbox collision behaviour.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Today was a shorter session, but still productive. I made a rough ',
+          },
+          {
+            text: 'level_02',
+            code: true,
+          },
+          {
+            text: ' just to make sure movement between levels was working properly. The good news is that the actual transition from Level 01 to Level 02 worked, with only a minor hiccup that was quickly resolved.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The less good news was that Level 02 started showing a bunch of tiles and objects I definitely had not placed there. At first I was not sure whether they were artifacts from Level 01, some odd prefab problem, or another bug hiding in the level loading flow. Level loading in Unity is well established, so my first assumption was that I had done something daft somewhere. Usually a safe bet.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-level02-scene-cleanup.png',
+        alt: 'Courier 16 showing Level 02 with the static cloud background, HUD, platforms, lockboxes, customers, and level objects during scene transition testing.',
+        caption:
+          'Testing Level 02 and the level-to-level flow uncovered some leftover spawned objects from the previous level.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That took a while to track down. Rather than building Level 02 completely from scratch, I copied Level 01 and started replacing elements. While testing, some items began showing up as ',
+          },
+          {
+            text: 'Clone',
+            code: true,
+          },
+          {
+            text: ' objects in the Level 02 scene. That pointed toward spawned objects from the previous level surviving the level swap and turning up where they had no business being.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The issue turned out to be tied to objects being spawned into the persistent gameplay scene instead of belonging to the level scene that created them. Once Level 01 unloaded, those spawned objects were still hanging around. Very Scooby-Doo. Less than ideal.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I cleaned up the code so spawned objects are moved into the correct level scene, and I also removed some older prefabs in Level 01 that had already been replaced by newer versions. After that, the level transition came out clean. It does not leave a huge amount of time for anything else today, but that was a good problem to get out of the way. At least until Level 03 decides to have opinions.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'The game is now moving between levels, but Unity made sure I paid the toll first.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also tweaked the lockboxes. When a lockbox is opened, it becomes a solid box. That is fine in principle, but a few times the collision detection pushed me off the edge of a platform and into a wonderful fiery lava bath. Not exactly the premium delivery experience Courier 16 is aiming for.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The fix was to adjust the lockbox prefab setup. Each lockbox now uses two ',
+          },
+          {
+            text: 'BoxCollider2D',
+            code: true,
+          },
+          {
+            text: ' components: a smaller solid collider around the actual box, and a larger trigger collider for the interaction area. That means the player can interact with the lockbox without standing inside the space that later becomes solid.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Since making that change, I have not been shoved into a meanie or launched into a lava bath while unlocking a box. That feels like progress, even if it is the kind of progress that mostly involves stopping Unity from physically mugging the player.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: "Today's cleanup win",
+        text: 'Level-to-level loading now behaves properly, spawned objects stay with the correct level scene, and lockboxes no longer shove the player into nearby danger when they switch to their opened state.',
+      },
+      {
+        type: 'next',
+        title: 'Back to Level Building',
+        text: 'Continue shaping Level 01 and Level 02 now that the transition flow is working cleanly. I might start work on meanie behaviour too.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
