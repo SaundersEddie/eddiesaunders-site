@@ -1683,6 +1683,106 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+chapter: "011",
+title: "Cleanup Day, Floating Meanies, and Animated Goblins",
+date: "2026-06-06",
+stage: "Project cleanup and small polish wins",
+focus: "Cleaning up visible rough edges, adding route notices, random backgrounds, fixing meanie prefab behaviour, and proving animation works.",
+blocks: [
+{
+type: "paragraph",
+content: [
+{
+text: "Very short entry today. I was not really planning on coding this morning, but a few things had been bothering me and I wanted to fix them so the project could keep moving forward. I would like Courier 16 complete sometime soon, which means some of these little rough edges need to stop hanging around."
+}
+]
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Today was mostly level design and project cleanup. There are still plenty of things to work through, including audio, animations, backgrounds, meanie cleanup, player firing, and camera settings, but today was about picking off the obvious stuff I could see and fix quickly."
+}
+]
+},
+{
+type: "paragraph",
+content: [
+{
+text: "First up, I set the level notification board to announce when a route becomes active. So now when a level loads, the HUD can display something like ",
+},
+{
+text: "ROUTE 01 ACTIVE",
+code: true
+},
+{
+text: ". Not exactly a world-changing feature, but it is one of those little feel-good touches that makes the game flow clearer during testing."
+}
+]
+},
+{
+type: "figure",
+src: "/images/games/courier-16/courier16-floating-snail-flying-saw.png",
+alt: "Courier 16 showing a test level with a floating snail meanie and a saw meanie before prefab cleanup.",
+caption: "Cleanup day included dealing with meanies that had apparently decided platforms were optional."
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Next was the background image. I now have the gameplay background selected randomly from a list when the game starts. This may eventually change to specific backgrounds for specific levels, but for now the concept is proven and the background changes when a new run begins."
+}
+]
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Then came the meanies. Some of the prefab variants decided they wanted to simply waltz across the screen without a care in the world about platforms, walls, or basic personal responsibility. That was an easy fix in the end: I had not set the ground or wall check objects properly on those variants."
+}
+]
+},
+{
+type: "paragraph",
+content: [
+{
+text: "Once the ground and wall checks were fixed, the meanies behaved as expected again. That then led into a small animation rabbit hole, because once I had the prefabs open it made sense to see if I could get one of them animating. That worked too, so the underlying animation pipeline is now proven."
+}
+]
+},
+{
+type: "pullquote",
+text: "Some of the meanies had apparently decided platforms were optional."
+},
+{
+type: "paragraph",
+content: [
+{
+text: "I still have other meanies to add into the loop, but because they are not directly spawned when the level loads, I can resolve those later. The important thing for today was proving that animated meanie prefabs can be created, assigned, spawned, and still behave properly."
+}
+]
+},
+{
+type: "paragraph",
+content: [
+{
+text: "I also updated the manager that decides whether a level has been completed or not. There were a few remnants of older code affecting the HUD notice, which meant the game could act like a delivery route was complete before all required deliveries had actually been made. That was resolved, eventually, by yelling at the computer."
+}
+]
+},
+{
+type: "note",
+title: "Cleanup wins",
+text: "Route active notices now work, backgrounds can be randomly selected, meanie prefabs have had their ground and wall checks fixed, animation has been proven on a meanie prefab, and the level objective HUD messaging is behaving properly again."
+},
+{
+type: "next",
+title: "Back to Level Design",
+text: "Continue shaping Level 01 and Level 02, then start deciding which cleanup items become real gameplay features and which ones stay on the tweak list until the core levels are stronger."
+}
+]
+},
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
