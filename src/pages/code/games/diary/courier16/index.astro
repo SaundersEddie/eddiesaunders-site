@@ -1684,105 +1684,216 @@ const courierEntries: DiaryEntry[] = [
     ],
   },
   {
-chapter: "011",
-title: "Cleanup Day, Floating Meanies, and Animated Goblins",
-date: "2026-06-06",
-stage: "Project cleanup and small polish wins",
-focus: "Cleaning up visible rough edges, adding route notices, random backgrounds, fixing meanie prefab behaviour, and proving animation works.",
-blocks: [
-{
-type: "paragraph",
-content: [
-{
-text: "Very short entry today. I was not really planning on coding this morning, but a few things had been bothering me and I wanted to fix them so the project could keep moving forward. I would like Courier 16 complete sometime soon, which means some of these little rough edges need to stop hanging around."
-}
-]
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Today was mostly level design and project cleanup. There are still plenty of things to work through, including audio, animations, backgrounds, meanie cleanup, player firing, and camera settings, but today was about picking off the obvious stuff I could see and fix quickly."
-}
-]
-},
-{
-type: "paragraph",
-content: [
-{
-text: "First up, I set the level notification board to announce when a route becomes active. So now when a level loads, the HUD can display something like ",
-},
-{
-text: "ROUTE 01 ACTIVE",
-code: true
-},
-{
-text: ". Not exactly a world-changing feature, but it is one of those little feel-good touches that makes the game flow clearer during testing."
-}
-]
-},
-{
-type: "figure",
-src: "/images/games/courier-16/courier16-floating-snail-flying-saw.png",
-alt: "Courier 16 showing a test level with a floating snail meanie and a saw meanie before prefab cleanup.",
-caption: "Cleanup day included dealing with meanies that had apparently decided platforms were optional."
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Next was the background image. I now have the gameplay background selected randomly from a list when the game starts. This may eventually change to specific backgrounds for specific levels, but for now the concept is proven and the background changes when a new run begins."
-}
-]
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Then came the meanies. Some of the prefab variants decided they wanted to simply waltz across the screen without a care in the world about platforms, walls, or basic personal responsibility. That was an easy fix in the end: I had not set the ground or wall check objects properly on those variants."
-}
-]
-},
-{
-type: "paragraph",
-content: [
-{
-text: "Once the ground and wall checks were fixed, the meanies behaved as expected again. That then led into a small animation rabbit hole, because once I had the prefabs open it made sense to see if I could get one of them animating. That worked too, so the underlying animation pipeline is now proven."
-}
-]
-},
-{
-type: "pullquote",
-text: "Some of the meanies had apparently decided platforms were optional."
-},
-{
-type: "paragraph",
-content: [
-{
-text: "I still have other meanies to add into the loop, but because they are not directly spawned when the level loads, I can resolve those later. The important thing for today was proving that animated meanie prefabs can be created, assigned, spawned, and still behave properly."
-}
-]
-},
-{
-type: "paragraph",
-content: [
-{
-text: "I also updated the manager that decides whether a level has been completed or not. There were a few remnants of older code affecting the HUD notice, which meant the game could act like a delivery route was complete before all required deliveries had actually been made. That was resolved, eventually, by yelling at the computer."
-}
-]
-},
-{
-type: "note",
-title: "Cleanup wins",
-text: "Route active notices now work, backgrounds can be randomly selected, meanie prefabs have had their ground and wall checks fixed, animation has been proven on a meanie prefab, and the level objective HUD messaging is behaving properly again."
-},
-{
-type: "next",
-title: "Back to Level Design",
-text: "Continue shaping Level 01 and Level 02, then start deciding which cleanup items become real gameplay features and which ones stay on the tweak list until the core levels are stronger."
-}
-]
-},
+    chapter: '011',
+    title: 'Cleanup Day, Floating Meanies, and Animated Goblins',
+    date: '2026-06-06',
+    stage: 'Project cleanup and small polish wins',
+    focus:
+      'Cleaning up visible rough edges, adding route notices, random backgrounds, fixing meanie prefab behaviour, and proving animation works.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Very short entry today. I was not really planning on coding this morning, but a few things had been bothering me and I wanted to fix them so the project could keep moving forward. I would like Courier 16 complete sometime soon, which means some of these little rough edges need to stop hanging around.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Today was mostly level design and project cleanup. There are still plenty of things to work through, including audio, animations, backgrounds, meanie cleanup, player firing, and camera settings, but today was about picking off the obvious stuff I could see and fix quickly.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'First up, I set the level notification board to announce when a route becomes active. So now when a level loads, the HUD can display something like ',
+          },
+          {
+            text: 'ROUTE 01 ACTIVE',
+            code: true,
+          },
+          {
+            text: '. Not exactly a world-changing feature, but it is one of those little feel-good touches that makes the game flow clearer during testing.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-floating-snail-flying-saw.png',
+        alt: 'Courier 16 showing a test level with a floating snail meanie and a saw meanie before prefab cleanup.',
+        caption:
+          'Cleanup day included dealing with meanies that had apparently decided platforms were optional.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Next was the background image. I now have the gameplay background selected randomly from a list when the game starts. This may eventually change to specific backgrounds for specific levels, but for now the concept is proven and the background changes when a new run begins.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Then came the meanies. Some of the prefab variants decided they wanted to simply waltz across the screen without a care in the world about platforms, walls, or basic personal responsibility. That was an easy fix in the end: I had not set the ground or wall check objects properly on those variants.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Once the ground and wall checks were fixed, the meanies behaved as expected again. That then led into a small animation rabbit hole, because once I had the prefabs open it made sense to see if I could get one of them animating. That worked too, so the underlying animation pipeline is now proven.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Some of the meanies had apparently decided platforms were optional.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I still have other meanies to add into the loop, but because they are not directly spawned when the level loads, I can resolve those later. The important thing for today was proving that animated meanie prefabs can be created, assigned, spawned, and still behave properly.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also updated the manager that decides whether a level has been completed or not. There were a few remnants of older code affecting the HUD notice, which meant the game could act like a delivery route was complete before all required deliveries had actually been made. That was resolved, eventually, by yelling at the computer.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Cleanup wins',
+        text: 'Route active notices now work, backgrounds can be randomly selected, meanie prefabs have had their ground and wall checks fixed, animation has been proven on a meanie prefab, and the level objective HUD messaging is behaving properly again.',
+      },
+      {
+        type: 'next',
+        title: 'Back to Level Design',
+        text: 'Continue shaping Level 01 and Level 02, then start deciding which cleanup items become real gameplay features and which ones stay on the tweak list until the core levels are stronger.',
+      },
+    ],
+  },
+  {
+    chapter: '012',
+    title: 'Auto Collect, Camera Bounds, and Monster Sprites',
+    date: '2026-06-06',
+    stage: 'Code cleanup, playtesting, and build checks',
+    focus:
+      'Cleaning up code, improving HUD notice priority, adding package auto-collect, testing camera bounds, and checking Windows/Web builds.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'First task this morning was a general code cleanup. There were still debug logs all over the place, along with a few variable names that needed tidying up. Nothing glamorous, but exactly the sort of thing that starts to matter once the project gets past the pure prototype stage.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also made further tweaks to message priority. The environmental warning system works, but I may still need to create better clarification that an environmental change is coming. On a busy level it could be easy to miss notifications on the HUD, so that will need more playtesting before I decide how fancy the notice system needs to be.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Next up was package collection. I added code so the package now auto-collects after a lockbox opens. No more running over to it and pressing the interact button just to pick it up. The package pops up, then moves toward the player, which feels much better and avoids the awkward business of jumping onto an opened box to grab it.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I added a few parameters so I can adjust the package speed, pop height, and collection distance. Initial tests feel pretty good. It may need changing again once I add sound effects, but the basic flow is much more old-school platformer now. During testing I may also see if the delivery itself should be automated instead of requiring a button press.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'The package now pops out and flies toward the player, which feels much more like an old-school platformer pickup.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also added a quick camera bounds system. This means I should not have to fill the outside of every level with loads of padding just to stop the camera from showing ugly empty space. The levels will still need some padding, but nothing like before. Each level can now define its own camera area, which should make level design much cleaner.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'There was plenty of playtesting this morning, including both a Windows build and a Web build to see how things looked outside the editor.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The Windows build looked like it came straight out of the 8-bit era. The 64x64 sprites were absolute monsters, so some camera and scale tweaking is required. Overall though, given the scope of Courier 16 as a demo game to show and learn techniques, if the biggest issue is chunky graphics, then the project is doing its job.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The next game on my list will be built for its planned formats much earlier in the process. That way desktop, web, and whatever else I target can be tested before I am already deep into systems, levels, and sprite choices.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The Web build took long enough that my hair nearly fell out waiting for it. When it finally completed, full screen had the same huge-graphics problem as the Windows version. I am sure there are settings I can adjust to make it look significantly better, but for now it is another note on the playtest and polish list.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'While playtesting, I also decided to see what would happen if I hit another platform from a great height. The answer was: I fell straight through it. It did not take a life, which is good, but it is still something else to investigate and fix. Platformers are apparently a machine for generating edge cases. Literally.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Build test notes',
+        text: 'Windows and Web builds both revealed that the game currently looks much chunkier outside the editor than expected. Courier 16 can live with that as a demo project, but future games need desktop and web scale testing much earlier.',
+      },
+      {
+        type: 'note',
+        title: "Today's cleanup wins",
+        text: 'Code cleanup continued, HUD notice priority improved, packages now auto-collect, camera bounds are working, and both Windows and Web builds were tested for scale and presentation issues.',
+      },
+      {
+        type: 'next',
+        title: 'Firing and More Cleanup',
+        text: "Tomorrow's code session will likely involve more cleanup and possibly implementing player firing. For today, the remaining focus is finishing out animations and continuing to smooth the rough edges found during playtesting.",
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
