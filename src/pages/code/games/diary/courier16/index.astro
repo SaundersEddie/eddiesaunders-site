@@ -1894,6 +1894,106 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '013',
+    title: 'Fire Button, Fireballs, and Chunky Movement',
+    date: '2026-06-09',
+    stage: 'Player attack prototype and input cleanup',
+    focus:
+      'Implementing player firing, rethinking the control layout, testing projectile behaviour, and noting movement smoothness issues.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Took the bull by the horns today and implemented a fire button. This is going to change the button requirements, because usually the A Button and Space Bar are used for firing, but right now they are set up for jumping.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The current control thinking is: Controller A Button and Space for fire, Controller Right Trigger and Enter for jump, and Controller B Button and E for the action/interact button. That should make firing feel more natural once combat becomes a bigger part of the game.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The Kenney.nl pack I am using has what appears to be a fireball, so that can be used as the first projectile graphic. I will need to add a small animation to the fireball eventually, but for now all it has to do is launch properly and prove the attack flow works.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The code for this worked quite well. I did notice that firing a projectile and then catching up with it allowed the player to use it as a launchpad for a jump. That is not really intended, and it should be a quick fix, but who knows, I may end up using that little bugette as a feature later.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'I may end up using that little bugette as a feature later.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: "Historically I have always had challenges when using Unity's new Input System, although once I got my head around the concept it is actually quite an easy system to use. The code added to the player controller was quick and relatively painless, and outside of me somehow whacking my ",
+          },
+          {
+            text: 'OnJump',
+            code: true,
+          },
+          {
+            text: ' code, it worked out of the box.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also noted that the player movement feels very chunky when moving around, so that needs investigation. First order of business will be testing on alternate machines in case it is just this one acting up, before I start tearing into movement code that may not actually be the problem.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Movement investigation',
+        text: 'Player movement currently feels chunky. Things to check include alternate machine testing, Rigidbody2D interpolation, camera smoothing, fixed timestep settings, build performance, and whether the issue is editor-specific or present in Windows/Web builds.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I should probably get cracking on the player animations next, along with implementing some weather effects. Rain still feels like the easiest first weather effect, because it can begin as a visual layer before turning into any kind of gameplay system.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: "On a slightly different note, I started thinking about the next game after Courier 16. That one will be more of a shoot 'em up with an old-school feel, and it will likely become both a diary and a vlog on YouTube. As with Courier 16, the source code will be released once the game is complete.",
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: "Today's gameplay win",
+        text: 'The player can now fire a projectile, the attack input is wired through the new Input System, and the control layout is starting to shift toward the final gameplay setup.',
+      },
+      {
+        type: 'next',
+        title: 'Animations, Weather, and Movement Feel',
+        text: 'Next up is investigating the chunky movement feel, continuing player and projectile animation work, and starting the first version of rain as a visual weather effect.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
