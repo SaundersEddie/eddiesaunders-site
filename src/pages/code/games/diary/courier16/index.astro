@@ -1994,6 +1994,106 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '014',
+    title: 'Animated Fireballs, Rain Effects, and Unity Gremlins',
+    date: '2026-06-10',
+    stage: 'Projectile polish and first weather effect',
+    focus:
+      'Animating the player projectile, tuning fireball movement, creating the first rain effect, and setting up weather control for future levels.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Today actually started with fighting with VS Code to get C++ working. As I ultimately want to do some things with Unreal Engine, I figured I should start learning a little C++. I have not dug into it too deeply yet, but it already appears there are some subtle differences. For the life of me, though, I could not get VS Code working nicely with C++, so I installed Visual Studio 2026 Community Edition instead. It worked, but I aged about 10 years waiting on the install.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Back to Courier16.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: "As I got busy with other items after yesterday's session, today was about getting the player firing animation working. I was originally going to code the projectile rotation, but that felt like it would add another layer of complexity, so I decided to fire up the image in Aseprite and handle the animation frames there.",
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: "As much as I like Aseprite, it took far longer than I would have expected to make a simple 4-frame animation. Logically, to me, I should be able to make my frames, click a frame, do what I need to do, click the next frame, do what I need to do, and save it. Instead, I fought with it for a good 30 minutes before finding that I had to uncheck a default setting. That seems odd. I am sure someone is going to say, 'Eddie, no, you just need to do this and that' which is fine. Noted: create my own sprite editor/animator one day.",
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Noted: create my own sprite editor/animator one day.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Anyway, that is all working now. The player fires a projectile and an animated fireball hauls across the screen. I increased the projectile move speed so the player is no longer able to catch up with it and use it as a platform.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-fireball-rain-weather-effect.png',
+        alt: 'Courier16 gameplay showing the player firing animated fireballs while a rain weather effect falls across the level.',
+        caption:
+          'Animated fireballs and the first rain pass working together in Courier16.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Moving on to the weather effects, the first one is rain. It took a little while to get set up, and ultimately each weather effects controller will need to be configured by the level being loaded because levels vary in size. One size is not going to fit all here.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Unity must have had a case of the Wednesday blues. I created a controller with serialized fields, and while Unity would add the script to the object, it decided the serialized fields should not be visible. The quick fix was to add a new nonsense serialized field, which appears to have forced Unity to recompile or reserialize the component properly. Premium nonsense, but it worked.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Unity gremlin of the day',
+        text: 'WeatherEffectController was attached correctly, but the serialized fields did not appear in the Inspector until a temporary serialized test field was added. After that, Unity refreshed the component and the real fields appeared.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'We now have rain. Next up is tying it into the EnvironmentalSpawner properly and adding water splashes, but that is for another day.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: "Today's gameplay win",
+        text: 'The player projectile is now animated, moves fast enough to prevent accidental platform behaviour, and the first visual weather effect is running in-game.',
+      },
+      {
+        type: 'next',
+        title: 'Environmental Weather Hookup',
+        text: 'Next up is connecting the rain effect to the EnvironmentalSpawner so weather warnings can trigger StartRain and StopRain automatically, then adding simple splash effects for platforms and ground contact.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
