@@ -2094,6 +2094,100 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '015',
+    title: 'Rain Splashes, Half Bricks, and Meanies Fighting Back',
+    date: '2026-06-11',
+    stage: 'Weather polish and enemy projectile combat',
+    focus:
+      'Adding player rain splash effects, connecting weather notifications, implementing meanie projectiles, and proving the game can now push back hard enough to cause a loss.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: "Spent some time yesterday afternoon adding various water splashing particle systems around the place, including at the player's feet. I am not 100% convinced I like the rain sparkles on the ground, but I will run with it for a while. At the very least, it is a nice particle effect setup that folks can learn from.",
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I tied in the notification system so the weather displayed matches the notification. Right now that is easy because it is just a rain effect. Snow will likely be tougher, especially if I want buildup or a stronger connection to the level visuals. There will also need to be some effect on player control due to weather eventually.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Today was get-the-meanies-firing-back mode. There is a brick graphic I can use, and while animating it did not look too good, the single-frame brick works perfectly well as a projectile. I also need to think more about meanieSpawner locations, the number of meanies, and how frequently they spawn. Platform patrols are good, but the game also needs some meanies that roam around the level.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'For a while I thought I had broken the firing mechanism. It turned out I had simply forgotten to tie the ',
+          },
+          {
+            text: 'meanieProjectileSpawner',
+            code: true,
+          },
+          {
+            text: ' into the code. Once that was fixed, the meanies were firing half bricks around the place faster than a yobbo. I even lost a game. This is good.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'The meanies were firing half bricks around the place faster than a yobbo.',
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-rain-firefight.png',
+        alt: 'Courier16 gameplay showing rain, player fireballs, meanie brick projectiles, pickups, HUD notices, and active enemies.',
+        caption:
+          'Player and meanie projectiles crossing the screen during the first working rain effect.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'There is still some work to be done. When meanies change direction, the projectile spawn point needs to flip as well, but that can wait. The goal this morning was simply to make the meanies fire things, and that part is working.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Of course, I also noticed that it was raining in game while a Heat Warning was visible, so that needs investigation. The weather effect and the environmental notice system are connected, but the actual state still needs to match the specific message being displayed.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Combat milestone',
+        text: 'Meanies can now fire projectiles, the player can be hit by them, and the game can now be lost through normal enemy pressure rather than only through hazards or direct collisions.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Tomorrow I may look into player animation. There are still many minor things I want to add, but the main goal is to get the core game loop running, and that loop now exists: collect, deliver, avoid hazards, fight back, survive enemy pressure, and reach the exit.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Animation and Weather State Cleanup',
+        text: 'Next up is likely player animation, weather message/state cleanup, and eventually flipping the meanie projectile spawn point when meanies change direction.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
