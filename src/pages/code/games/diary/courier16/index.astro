@@ -2188,6 +2188,136 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '016',
+    title: 'Weather Events, Rain Cleanup, and Projectile Direction',
+    date: '2026-06-12',
+    stage: 'Weather state cleanup and enemy projectile fixes',
+    focus:
+      'Converting environmental messages into event types, fixing rain particle cleanup, and correcting meanie projectile direction when patrol enemies turn around.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Started to look at the environmental spawner side of things today. I decided to make this an event type system, and so far this appears to work. The main idea is that the displayed message and the actual weather effect should match, rather than just firing random text at the HUD and hoping the game state makes sense.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The rain weather event mostly behaved, although once it spawned the rain-hitting-the-ground particle effect, it decided it was not going to turn that effect off. This turned out to be an oversight on my part. I had created the particle box, but had never copied it into the Weather Effect Controller so it could be stopped along with the rest of the rain effects.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That was a quick and relatively painless fix. The weather stack now has the main rain effect, the player foot splash effect, and the ground splash particle effect all starting and stopping together.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Weather cleanup',
+        text: 'Environmental events now better separate message type from weather effect. Rain starts from the rain event, other environmental messages no longer incorrectly trigger rain, and all rain-related particle systems are stopped by the WeatherEffectController.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Next on the list was investigating the ',
+          },
+          {
+            text: 'meanieProjectileSpawner',
+            code: true,
+          },
+          {
+            text: '. The way the meanies work now is that they have a primary sprite with three empty objects to the side: ',
+          },
+          {
+            text: 'GroundCheck',
+            code: true,
+          },
+          {
+            text: ', ',
+          },
+          {
+            text: 'WallCheck',
+            code: true,
+          },
+          {
+            text: ', and ',
+          },
+          {
+            text: 'meanieProjectileSpawner',
+            code: true,
+          },
+          {
+            text: '.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Right now I have a script named ',
+          },
+          {
+            text: 'MeaniePatrol',
+            code: true,
+          },
+          {
+            text: ', and when that flips the meanie, it also flips the check objects. So my first thought was that it should be as simple as making sure the ',
+          },
+          {
+            text: 'meanieProjectileSpawner',
+            code: true,
+          },
+          {
+            text: ' flips as well.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/I-Blame-Myself.jpg',
+        alt: 'A Ghostbusters meme showing the caption I Blame Myself, used after discovering the meanie projectile spawn point was correct but the projectile direction code was not updating.',
+        caption:
+          'The projectile spawner was flipping correctly. The projectile direction was not. I blame myself.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Well, it turns out everything was flipping correctly. The entire prefab flips, and the projectile spawner is part of that prefab. Someone had simply never added the code to change the projectile direction when the meanie flipped.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Added and updated the code so the shooter reads the current patrol direction and launches the projectile that way. Now everyone is firing projectiles all over the place, but importantly, they are firing them in the correct direction.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Combat cleanup',
+        text: 'Meanie projectile spawners were already flipping correctly with the prefab. The missing piece was making MeanieShooter use the current MeaniePatrol direction instead of always firing from right to left.',
+      },
+      {
+        type: 'next',
+        title: 'Player Animation and Enemy Tuning',
+        text: 'Next up is likely player animation, shooter timing balance, and deciding which meanies should patrol, shoot, or roam around the level.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
