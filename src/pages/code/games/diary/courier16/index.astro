@@ -2318,6 +2318,83 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '017',
+    title: 'Player Animation, Cartwheels, and Missing Customers',
+    date: '2026-06-13',
+    stage: 'Player animation integration',
+    focus:
+      'Replacing the static player sprite with an animated moving player while preserving all existing gameplay components and prefab behaviour.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Worked on the primary player movement animation today. This turned out to be a hefty task, because I needed to make sure everything matched the original player sprite setup, only now with an Animator attached.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The animation itself was not the hard part. The real work was making sure the animated player prefab still had all the important gameplay pieces attached: movement, input, respawning, lives, score, inventories, projectile spawning, and the weather foot effects.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I forgot to set my Z freeze constraints, so the player decided cartwheels were the way to go. Then, because of a default gravity scale of 1, jumping sent the player straight through the world. I also managed to break the customers. This was not code-related; it was me removing things I thought we did not need. Nothing major, only their graphics.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Nothing major, only their graphics.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'About halfway through the coding session, Unity decided to use about 16 GB of RAM, only around two-thirds of my available memory. I am not sure what was going on, because it usually peaks around 5–6 GB, but it caused quite a stir for the laptop and needed a reboot. Once rebooted, everything started behaving as expected again.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Unity gremlin of the day',
+        text: 'The player animation work was mostly prefab and component alignment rather than code. Missing Rigidbody2D constraints, default gravity values, and removed customer graphics caused more trouble than the actual Animator setup.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The moving player animation is now working. I still need to tweak the animation speed so it better matches the player movement speed, but that should mostly be a case of adjusting the animation samples.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Tomorrow I will start on a flying meanie, mainly to encourage the player to keep moving. The core loop already works, so now it is about adding enough pressure and variety to make the levels feel alive.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: "Today's gameplay win",
+        text: 'The player now has a working movement animation while keeping the existing gameplay systems intact.',
+      },
+      {
+        type: 'next',
+        title: 'Flying Meanie Pressure',
+        text: 'Next up is building the first flying meanie so the player has another reason to move through the level instead of waiting safely on platforms.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
