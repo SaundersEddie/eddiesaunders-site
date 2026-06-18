@@ -2395,6 +2395,164 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '018',
+    title: 'Level Tweaks, Source Release, and What Courier16 Has Taught Me',
+    date: '2026-06-14',
+    stage: 'Cleanup, source release preparation, and project reflection',
+    focus:
+      'Tweaking Level 01, preparing the project for freeware source release, reflecting on lessons learned, and shifting the diary schedule as development moves into cleanup and smaller feature work.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Spent a few minutes this morning tweaking Level 01. Courier16 is a simple learning game, and it is not perfect, but the code will be getting released this week as freeware source so the community can have at it while I continue development.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'At this point, the game is functional. The main loop works: collect keys, open lockboxes, collect packages, deliver them to customers, avoid hazards, fight meanies, survive enemy projectiles, deal with weather events, and reach the exit. There is still plenty to clean up, but this is no longer just a scattered prototype. It is now a playable little game.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: "A big part of this project has been learning how Unity's 2D systems fit together in a real game rather than in isolated tutorials. Tilemaps have been one of the biggest lessons. Getting the grid, tile size, colliders, platform layout, camera bounds, hazards, and level structure working together has been a major part of making Courier16 feel like an actual game.",
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'What Courier16 has taught me so far',
+        text: 'The project has covered Unity tilemaps, additive level loading, UI Toolkit HUDs and menus, the new Input System, player spawning and respawning, delivery objectives, animated sprites, projectile combat, enemy spawners, weather effects, particle systems, camera bounds, and the many small prefab mistakes that come with building a real game instead of a test scene.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The source release is not intended to present Courier16 as a perfect framework. It is a working learning project. Folks should be able to open it, read the code, modify the systems, replace the art, build their own levels, and use the ideas for their own needs. That is really the point of releasing it.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Work will continue, but not at the pace seen recently. I will likely move the diary entries to Monday, Wednesday, and Friday now that the project is in cleanup and small feature mode. Daily entries were useful while the game systems were changing rapidly, but from here on it makes more sense to post fewer updates with more substance.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Future plans',
+        text: 'Future work includes larger levels, more thoughtful enemy placement, a flying meanie to push the player along, more player animation polish, weather gameplay effects, better level progression, more route variety, and a cleaner public source release package.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The next major gameplay item is likely the flying meanie. The ground patrol meanies and shooter meanies already create pressure, but a flying enemy should help stop the player from camping safely and encourage movement through the route.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Source Release and Flying Meanie',
+        text: 'Next up is preparing the repository for freeware source release, checking the README and asset notes, continuing the Level 01 and Level 02 layout pass, and starting the first version of a flying meanie.',
+      },
+    ],
+  },
+  {
+    chapter: '019',
+    title: 'Flying Meanie, Terminator Bees, and Source Release Reality',
+    date: '2026-06-18',
+    stage: 'Flying enemy prototype and pressure testing',
+    focus:
+      'Adding the first flying meanie, testing player pressure, fixing projectile collision, and reassessing the source release timeline.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Took a day off yesterday to work on a few other things, so this is a slightly late diary entry.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Tweaked Level 01 this morning to add a new flying meanie. The ultimate goal for this meanie is for it to wait around until the player does nothing, then launch itself and track the player down. Basically, a pressure enemy designed to stop the player from camping safely in one place for too long.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Implemented the first step of that meanie, and the bloody thing chased me around the map like the Terminator after Sarah Connor. I also noticed it could not be destroyed by my player fireball, so that needed fixing. The fewer Terminator types in this game, the better.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'The bloody thing chased me around the map like the Terminator after Sarah Connor.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'A quick update to the player projectile fixed the issue, and now the flying meanie can be blasted properly. I still got carved up pretty quickly, but conceptually we now have a functional flying pressure enemy.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Flying meanie first pass',
+        text: 'The existing MeanieSpawner can spawn the flying meanie, the flying meanie can chase the player, it damages the player on collision, it can be destroyed by the player fireball, and it respawns correctly through the existing spawner system.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The fine details can be fixed up in the final game. Personally, I prefer to get everything working before fine tuning, and that is quite possible on a game of this size where I am both developing and testing. It is likely very different on larger games with QA teams and dedicated testers.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Tomorrow I will dig a little more into the flying meanie. I already recalibrated its tracking time to give the player a little more leeway, but it still carved me up. That is probably a good sign, as long as it can be tuned into pressure rather than cheap punishment.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Design direction',
+        text: 'The flying meanie is intended as a pressure sprite: annoying enough to make the player move, but not so aggressive that it becomes unfair. The current chase behaviour works, but it needs timing and speed tuning.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I lost some time this week due to one issue or another, so the source release will likely move to next week now. It depends what I can get done today and tomorrow while it is raining.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Flying Meanie Tuning and Source Prep',
+        text: "Next up is tuning the flying meanie's chase behaviour, deciding where it belongs in the level progression, continuing Level 01 and Level 02 cleanup, and preparing the project for freeware source release.",
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
