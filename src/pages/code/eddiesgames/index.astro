@@ -1,99 +1,268 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import "../../../styles/pages/code.css";
+
+const projectLinks = [
+  {
+    label: "Visit eddiesgames.xyz",
+    href: "https://eddiesgames.xyz",
+  },
+  {
+    label: "Games hub",
+    href: "/code/games/",
+  },
+];
+
+const liveGames = [
+  {
+    title: "REDACTED",
+    type: "Word / grid game",
+    status: "Live",
+    text: "A compact word-hunt style browser game built around daily play, score sharing, and quick sessions.",
+  },
+  {
+    title: "MATCH",
+    type: "Memory game",
+    status: "Live",
+    text: "A classic pairs game with difficulty modes, move tracking, timing, and daily leaderboard support.",
+  },
+  {
+    title: "REACTION",
+    type: "Timing game",
+    status: "Live",
+    text: "A precision-focused reaction game designed for quick attempts, clean feedback, and repeat plays.",
+  },
+  {
+    title: "SEQUENCE",
+    type: "Memory pattern game",
+    status: "Live",
+    text: "A Simon-style repeat-the-pattern game with responsive layout work and score handling.",
+  },
+  {
+    title: "SHIFT",
+    type: "Puzzle game",
+    status: "Live",
+    text: "A slide, merge, and survive puzzle game with daily and random modes.",
+  },
+  {
+    title: "Sudoku",
+    type: "Logic puzzle",
+    status: "Live / evolving",
+    text: "A browser Sudoku project connected to the larger Python and Unity Sudoku experiments.",
+  },
+  {
+    title: "LETTERLOCK",
+    type: "Word puzzle",
+    status: "New",
+    text: "A newer word puzzle added to the collection as the site continues to expand beyond the original launch games.",
+  },
+];
+
+const techNotes = [
+  {
+    title: "Astro frontend",
+    text: "The site is built as a lightweight Astro project so the games and writeups can stay fast, simple, and easy to maintain.",
+  },
+  {
+    title: "Vanilla browser games",
+    text: "Each game is intentionally small and browser-friendly, with no install step and no account requirement.",
+  },
+  {
+    title: "Cloudflare hosting",
+    text: "Cloudflare Pages handles hosting and deployment, while Cloudflare Workers and D1 support API routes and daily score storage.",
+  },
+  {
+    title: "Daily play structure",
+    text: "Several games are built around daily scoring, replayability, and shareable results without forcing users into a heavy platform.",
+  },
+];
 ---
 
 <BaseLayout
   title="Building eddiesgames.xyz | Eddie Saunders"
-  description="A project writeup about eddiesgames.xyz, small browser games, Cloudflare hosting, daily scoreboards, Sudoku across platforms, and future game plans."
+  description="A project writeup about eddiesgames.xyz, small browser games, Cloudflare hosting, daily scoreboards, Sudoku across platforms, LETTERLOCK, and future game plans."
 >
   <section class="page-hero code-hero">
     <p class="eyebrow">Project writeup</p>
     <h1>Building eddiesgames.xyz</h1>
     <p>
-      Small browser games, daily scores, Cloudflare hosting, and one Sudoku
-      project that refused to stay on one platform.
+      A growing home for small browser games, daily scoreboards, quick puzzle
+      loops, Cloudflare-backed APIs, and the occasional idea that starts small
+      before quietly becoming a project with opinions.
     </p>
+
+    <div class="project-links">
+      {projectLinks.map((link) => (
+        <a
+          href={link.href}
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
   </section>
 
-  <section class="article-page">
-    <article class="article-content">
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Project overview</p>
       <h2>What is eddiesgames.xyz?</h2>
-
       <p>
-        eddiesgames.xyz is my home for small browser games: quick to play,
-        easy to share, and built without making players create accounts,
-        hand over personal data, or download anything.
+        eddiesgames.xyz is my home for small browser games: quick to play, easy
+        to share, and built without making players create accounts, hand over
+        personal data, or download anything.
       </p>
+    </div>
 
+    <div class="project-grid">
+      <article class="project-card">
+        <p class="project-type">Purpose</p>
+        <h3>Playable small games</h3>
+        <p>
+          The site is part game collection, part development lab. Each game gives
+          me a practical way to work through game logic, UI layout, score
+          handling, deployment, and the tiny details that only appear once real
+          people start poking buttons.
+        </p>
+        <span>Active</span>
+      </article>
+
+      <article class="project-card">
+        <p class="project-type">Approach</p>
+        <h3>Small loops, real lessons</h3>
+        <p>
+          The games are deliberately compact. That keeps the scope under control
+          while still creating real problems to solve: responsive layouts, daily
+          state, scoring rules, leaderboards, testing, and deployment.
+        </p>
+        <span>Practical</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Current games</p>
+      <h2>The growing game lineup</h2>
       <p>
-        The site is part game collection, part development lab. Each game gives
-        me a way to work through game logic, responsive layouts, score handling,
-        Cloudflare deployment, and the kind of tiny details that only show up
-        once real people start poking buttons.
+        The site started with a small set of browser games and is growing into a
+        more deliberate collection. Newer additions like LETTERLOCK help expand
+        the range beyond the original launch set.
       </p>
+    </div>
 
-      <h2>Why Cloudflare?</h2>
+    <div class="project-grid">
+      {liveGames.map((game) => (
+        <article class="project-card">
+          <p class="project-type">{game.type}</p>
+          <h3>{game.title}</h3>
+          <p>{game.text}</p>
+          <span>{game.status}</span>
+        </article>
+      ))}
+    </div>
+  </section>
 
+  <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Technical shape</p>
+      <h2>How the site is built</h2>
       <p>
-        I chose Cloudflare because the project needed to stay lean. The games
-        do not need a giant backend or a pile of infrastructure. They need fast
-        hosting, simple deploys, lightweight API routes, and a small database
-        for daily scores.
+        The goal is not to build a giant platform. The goal is to keep the stack
+        lean enough that creating and deploying new games stays realistic.
       </p>
+    </div>
 
+    <div class="project-grid">
+      {techNotes.map((note) => (
+        <article class="project-card">
+          <p class="project-type">Build note</p>
+          <h3>{note.title}</h3>
+          <p>{note.text}</p>
+          <span>In use</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+    <section class="project-showcase">
+    <div class="project-showcase-heading">
+      <p class="eyebrow">Project notes</p>
+      <h2>What this project is teaching me</h2>
       <p>
-        Cloudflare Pages handles the hosting, GitHub handles the deployment
-        flow, and Cloudflare D1 gives the project a practical place to store
-        daily leaderboard data.
+        eddiesgames.xyz is not just a place to park games. It is a practical
+        way to test small game ideas, deployment choices, backend patterns, and
+        whether a tiny browser game can still feel finished.
       </p>
+    </div>
 
-      <h2>Current games</h2>
+    <div class="project-grid">
+      <article class="project-card">
+        <p class="project-type">Hosting</p>
+        <h3>Why Cloudflare?</h3>
+        <p>
+          I chose Cloudflare because the project needed to stay lean. The games
+          do not need a giant backend or a pile of infrastructure. They need fast
+          hosting, simple deploys, lightweight API routes, and a practical
+          database for daily scores.
+        </p>
+        <p>
+          Cloudflare Pages handles the static site and game hosting. Workers give
+          the project a clean place for small APIs, and D1 provides storage for
+          daily leaderboard data.
+        </p>
+        <span>Lean stack</span>
+      </article>
 
-      <p>
-        The site already includes several games, including REDACTED, MATCH,
-        REACTION, SEQUENCE, SHIFT, and Sudoku. Each one is designed around a
-        short-session loop, daily scoring, or quick replayability.
-      </p>
+      <article class="project-card">
+        <p class="project-type">Learning track</p>
+        <h3>Sudoku got out of hand</h3>
+        <p>
+          Sudoku turned into a larger project than expected, which is exactly why
+          it has been useful. There is a Python version for puzzle generation,
+          validation, solving, and testing. There is a browser version for
+          eddiesgames.xyz. There is also a Unity version being built and tested
+          across WebGL, Windows, and macOS.
+        </p>
+        <p>
+          That sounds like overkill, and it is. But it is useful overkill because
+          the same puzzle exposes different problems in Python, the browser, and
+          Unity.
+        </p>
+        <span>Useful overkill</span>
+      </article>
 
-      <h2>Sudoku across platforms</h2>
+      <article class="project-card">
+        <p class="project-type">Monetisation</p>
+        <h3>Banner ads or no banner ads?</h3>
+        <p>
+          The site has room for banner ads, but that does not mean ads need to be
+          switched on immediately. The better order is to build the games, polish
+          the experience, get enough traffic to justify the tradeoff, and only
+          then decide whether ads make sense.
+        </p>
+        <p>
+          Nobody needs a billboard in an empty field.
+        </p>
+        <span>Later</span>
+      </article>
 
-      <p>
-        Sudoku turned into a larger project than expected, which is exactly why
-        it has been useful. There is a Python version for puzzle generation,
-        validation, solving, and testing. There is a web version for
-        eddiesgames.xyz. There is also a Unity version in progress, with WebGL
-        and mobile builds planned.
-      </p>
-
-      <p>
-        That sounds like overkill, and it is. But it is useful overkill. The
-        same puzzle exposes different problems in Python, the browser, and
-        Unity: logic, UI, input, validation, layout, testing, and platform
-        deployment.
-      </p>
-
-      <h2>Banner ads or no banner ads?</h2>
-
-      <p>
-        The site has space for banner ads, but that does not mean ads need to
-        be switched on immediately. The better order is to build the games,
-        polish the experience, get enough traffic to justify the tradeoff, and
-        only then decide whether ads make sense.
-      </p>
-
-      <p>
-        Nobody needs a billboard in an empty field.
-      </p>
-
-      <h2>What comes next?</h2>
-
-      <p>
-        The plan is simple: more games, better polish, stronger writeups, and a
-        growing library of small projects that are actually playable. The site
-        should become a proper destination, not just a folder of demos wearing a
-        domain name.
-      </p>
-    </article>
+      <article class="project-card">
+        <p class="project-type">Next steps</p>
+        <h3>What comes next?</h3>
+        <p>
+          The next step is to keep improving the games that already exist, add
+          new small games where they make sense, and use the site as a practical
+          home for playable work.
+        </p>
+        <p>
+          The aim is not just to have a folder of demos wearing a domain name.
+          The aim is to make eddiesgames.xyz feel like a proper destination for
+          small, finished, playable experiments.
+        </p>
+        <span>Ongoing</span>
+      </article>
+    </div>
   </section>
 </BaseLayout>
