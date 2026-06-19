@@ -17,6 +17,9 @@
     ),
     var(--surface);
 }
+
+/* Main creations category cards */
+
 .creations-area-card {
   display: flex;
   flex-direction: column;
@@ -33,6 +36,196 @@ a.creations-area-card:focus-visible {
     background 160ms ease,
     transform 160ms ease;
 }
+
+/* 3D printing feature layout */
+
+.creations-feature-section {
+  width: min(100% - 3rem, 1100px);
+  margin: 3rem auto 0;
+}
+
+.creations-feature-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Left blurb panel */
+
+.creations-feature-copy {
+  padding: 42px;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(238, 243, 240, 0.9)
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(35, 92, 116, 0.1),
+      transparent 24rem
+    ),
+    var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.creations-feature-copy h2 {
+  max-width: 620px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin-top: 18px;
+}
+
+.creations-feature-copy p {
+  max-width: 680px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.creations-feature-copy .eyebrow {
+  margin: 0;
+}
+
+/* Right latest column */
+
+.creations-feature-cards {
+  display: grid;
+  gap: 14px;
+}
+
+.section-header.compact {
+  padding: 0 18px 4px;
+}
+
+.section-header.compact h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-top: 14px;
+}
+
+.section-header.compact p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 14px;
+}
+
+.mini-card-list {
+  display: grid;
+  gap: 14px;
+}
+
+.creation-mini-card {
+  padding: 24px;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.creation-mini-card h3 {
+  font-size: 1.35rem;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-top: 10px;
+}
+
+.creation-mini-card p:not(.creation-card-category) {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 14px;
+}
+
+/* Archive section */
+
+.creations-archive-section {
+  width: min(100% - 3rem, 1100px);
+  margin: 38px auto 0;
+  padding-top: 38px;
+  border-top: 1px solid var(--line);
+}
+
+.section-content {
+  width: 100%;
+}
+
+.section-header {
+  max-width: 820px;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin-top: 14px;
+}
+
+.section-header p {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 18px;
+}
+
+.creation-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.creation-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 24px;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.creation-card h3 {
+  font-size: 1.35rem;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-top: 10px;
+}
+
+.creation-card p:not(.creation-card-category) {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 14px;
+}
+
+.creation-card-category {
+  color: var(--warm);
+  font-size: 0.74rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.creation-card-link {
+  align-self: flex-start;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  margin-top: auto;
+  padding: 6px 10px;
+  text-decoration: none;
+}
+
+/* Existing featured creations section */
 
 .featured-creations {
   border-top: 1px solid var(--line);
@@ -127,8 +320,34 @@ a.creations-area-card:focus-visible {
   padding: 6px 10px;
 }
 
+/* Responsive */
+
+@media (max-width: 900px) {
+  .creations-feature-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header.compact {
+    padding: 0;
+  }
+}
+
 @media (max-width: 760px) {
+  .creation-card-grid,
   .featured-creations-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .creations-feature-section,
+  .creations-archive-section {
+    width: min(100% - 2rem, 1100px);
+  }
+
+  .creations-feature-copy,
+  .creation-mini-card,
+  .creation-card {
+    padding: 22px;
   }
 }

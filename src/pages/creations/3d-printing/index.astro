@@ -1,18 +1,151 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import "../../../styles/pages/creations.css";
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/pages/creations.css';
+
+const latestDesigns = [
+  {
+    title: 'Coming Soon',
+    category: 'New design',
+    description:
+      'New 3D printed designs, prototypes, and useful prints will appear here as they are documented.',
+    href: '#',
+  },
+  {
+    title: 'Prototype Notes',
+    category: 'In progress',
+    description:
+      'Early design tests, failed prints, useful lessons, and anything that needs another pass before becoming a finished creation.',
+    href: '#',
+  },
+];
+
+const olderDesigns = [
+  {
+    title: 'Design Archive Coming Soon',
+    category: 'Archive',
+    description:
+      'Older 3D printed creations will live here once they have photos, notes, and enough detail to be worth keeping.',
+    href: '#',
+  },
+];
 ---
 
 <BaseLayout
-  title="3D Printing | Eddie Saunders"
-  description="Created and 3D printed products, market pieces, Etsy items, and custom creations."
+  title='3D Printing | Eddie Saunders'
+  description='Created and 3D printed products, market pieces, Etsy items, and custom creations.'
 >
-  <section class="page-hero creations-hero">
-    <p class="eyebrow">Creations</p>
+  <section class='page-hero creations-hero'>
+    <p class='eyebrow'>Creations</p>
     <h1>3D Printing</h1>
     <p>
       Handmade goods, market pieces, Etsy items, custom products, and practical
-      things made to sell. This section is still being shaped.
+      things made to sell.
     </p>
+  </section>
+
+  <section class='creations-feature-section'>
+    <div class='creations-feature-layout'>
+      <div class='creations-feature-copy'>
+        <p class='eyebrow'>Design / Print / Test</p>
+        <h2>
+          Useful prints, practical experiments, and the occasional plastic
+          nonsense
+        </h2>
+
+        <p>
+          3D printing is one of my favorite ways to turn a rough idea into
+          something real without waiting six months, ordering weird parts, or
+          pretending the first version will be perfect.
+        </p>
+
+        <p>
+          Most of what I make starts as a practical problem: a bracket, a
+          holder, a jig, a shop helper, a small replacement part, or an idea
+          that needs to exist in the real world before I can decide whether it
+          is useful or ridiculous. Sometimes it is both. That is part of the
+          fun.
+        </p>
+
+        <p>
+          This page collects my 3D printing notes, experiments, useful prints,
+          failed attempts, design lessons, and finished creations. Some projects
+          are functional, some are decorative, and some are just me seeing what
+          happens when plastic, patience, and stubbornness are put in the same
+          room.
+        </p>
+
+        <p>
+          The goal is simple: design useful things, print them, test them,
+          improve them, and share what I learned along the way.
+        </p>
+      </div>
+
+      <aside
+        class='creations-feature-cards'
+        aria-labelledby='latest-prints-heading'
+      >
+        <div class='section-header compact'>
+          <p class='eyebrow'>Latest</p>
+          <h2 id='latest-prints-heading'>New Designs</h2>
+          <p>
+            Fresh prints, current prototypes, and designs that are being cleaned
+            up for proper notes.
+          </p>
+        </div>
+
+        <div class='mini-card-list'>
+          {
+            latestDesigns.map((design) => (
+              <article class='creation-mini-card'>
+                <p class='creation-card-category'>{design.category}</p>
+                <h3>{design.title}</h3>
+                <p>{design.description}</p>
+
+                {design.href !== '#' && (
+                  <a href={design.href} class='creation-card-link'>
+                    View design
+                  </a>
+                )}
+              </article>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class='creations-archive-section'>
+    <div class='section-content'>
+      <div class='section-header'>
+        <p class='eyebrow'>Archive</p>
+        <h2>Older 3D Printed Designs</h2>
+        <p>
+          Finished and semi-finished designs will collect here as the 3D
+          printing library grows. Some will be polished creations, some will be
+          prototypes, and some will be useful little gremlins that earned their
+          place.
+        </p>
+      </div>
+
+      <div class='creation-card-grid'>
+        {
+          olderDesigns.map((design) => (
+            <article class='creation-card'>
+              <div>
+                <p class='creation-card-category'>{design.category}</p>
+                <h3>{design.title}</h3>
+                <p>{design.description}</p>
+              </div>
+
+              {design.href !== '#' && (
+                <a href={design.href} class='creation-card-link'>
+                  View design
+                </a>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </div>
   </section>
 </BaseLayout>
