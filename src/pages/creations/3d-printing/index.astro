@@ -4,27 +4,39 @@ import '../../../styles/pages/creations.css';
 
 const latestDesigns = [
   {
-    title: 'Coming Soon',
-    category: 'New design',
+    title: '3D Printed Bag Clips',
+    category: 'Useful print',
+    material: 'PLA',
+    designTime: 'About 20 minutes',
     description:
-      'New 3D printed designs, prototypes, and useful prints will appear here as they are documented.',
-    href: '#',
-  },
-  {
-    title: 'Prototype Notes',
-    category: 'In progress',
-    description:
-      'Early design tests, failed prints, useful lessons, and anything that needs another pass before becoming a finished creation.',
-    href: '#',
+      'A quick utility print designed after my workshop clamps kept being borrowed for keeping bags closed.',
+    uses: ['Coffee bags', 'Dog treats', 'Chips', 'Frozen foods'],
+    images: [
+      {
+        src: '/images/creations/3d-printing/bag-clips/bag-clip-white.JPG',
+        alt: 'White 3D printed bag clip holding a tortilla chip bag closed',
+        caption: 'A white PLA bag clip doing exactly what it was made for.',
+      },
+      {
+        src: '/images/creations/3d-printing/bag-clips/bag-clip-green.JPG',
+        alt: 'Green 3D printed bag clip holding a tortilla chip bag closed',
+        caption: 'Same design, different color, still saving my actual clamps from snack duty.',
+      },
+      {
+        src: '/images/creations/3d-printing/bag-clips/bag-clip-set.JPG',
+        alt: 'Set of colorful 3D printed bag clips standing in a holder',
+        caption: 'A small batch of PLA clips with a simple storage base.',
+      },
+    ],
   },
 ];
 
 const olderDesigns = [
   {
-    title: 'Design Archive Coming Soon',
+    title: 'Older Designs Coming Soon',
     category: 'Archive',
     description:
-      'Older 3D printed creations will live here once they have photos, notes, and enough detail to be worth keeping.',
+      'Older 3D printed creations will live here once the latest section starts filling up.',
     href: '#',
   },
 ];
@@ -38,79 +50,123 @@ const olderDesigns = [
     <p class='eyebrow'>Creations</p>
     <h1>3D Printing</h1>
     <p>
-      Handmade goods, market pieces, Etsy items, custom products, and practical
-      things made to sell.
+      Useful prints, practical experiments, prototypes, and the occasional bit
+      of plastic nonsense.
     </p>
   </section>
 
   <section class='creations-feature-section'>
-    <div class='creations-feature-layout'>
-      <div class='creations-feature-copy'>
-        <p class='eyebrow'>Design / Print / Test</p>
-        <h2>
-          Useful prints, practical experiments, and the occasional plastic
-          nonsense
-        </h2>
+    <div class='creations-feature-copy'>
+      <p class='eyebrow'>Design / Print / Test</p>
+      <h2>
+        Useful prints, practical experiments, and the occasional plastic
+        nonsense
+      </h2>
 
-        <p>
-          3D printing is one of my favorite ways to turn a rough idea into
-          something real without waiting six months, ordering weird parts, or
-          pretending the first version will be perfect.
-        </p>
+      <p>
+        3D printing is one of my favorite ways to turn a rough idea into
+        something real without waiting six months, ordering weird parts, or
+        pretending the first version will be perfect.
+      </p>
 
-        <p>
-          Most of what I make starts as a practical problem: a bracket, a
-          holder, a jig, a shop helper, a small replacement part, or an idea
-          that needs to exist in the real world before I can decide whether it
-          is useful or ridiculous. Sometimes it is both. That is part of the
-          fun.
-        </p>
+      <p>
+        Most of what I make starts as a practical problem: a bracket, a holder,
+        a jig, a shop helper, a small replacement part, or an idea that needs to
+        exist in the real world before I can decide whether it is useful or
+        ridiculous. Sometimes it is both. That is part of the fun.
+      </p>
 
-        <p>
-          This page collects my 3D printing notes, experiments, useful prints,
-          failed attempts, design lessons, and finished creations. Some projects
-          are functional, some are decorative, and some are just me seeing what
-          happens when plastic, patience, and stubbornness are put in the same
-          room.
-        </p>
+      <p>
+        This page collects my 3D printing notes, experiments, useful prints,
+        failed attempts, design lessons, and finished creations. Some projects
+        are functional, some are decorative, and some are just me seeing what
+        happens when plastic, patience, and stubbornness are put in the same
+        room.
+      </p>
 
+      <p>
+        The goal is simple: design useful things, print them, test them, improve
+        them, and share what I learned along the way.
+      </p>
+    </div>
+  </section>
+
+  <section class='creations-latest-section' aria-labelledby='latest-prints-heading'>
+    <div class='section-content'>
+      <div class='section-header'>
+        <p class='eyebrow'>Latest</p>
+        <h2 id='latest-prints-heading'>Latest 3D Printed Designs</h2>
         <p>
-          The goal is simple: design useful things, print them, test them,
-          improve them, and share what I learned along the way.
+          Fresh prints, current prototypes, and useful designs as they are
+          documented.
         </p>
       </div>
 
-      <aside
-        class='creations-feature-cards'
-        aria-labelledby='latest-prints-heading'
-      >
-        <div class='section-header compact'>
-          <p class='eyebrow'>Latest</p>
-          <h2 id='latest-prints-heading'>New Designs</h2>
-          <p>
-            Fresh prints, current prototypes, and designs that are being cleaned
-            up for proper notes.
-          </p>
-        </div>
-
-        <div class='mini-card-list'>
-          {
-            latestDesigns.map((design) => (
-              <article class='creation-mini-card'>
+      <div class='print-design-list'>
+        {
+          latestDesigns.map((design) => (
+            <article class='print-design-card'>
+              <div class='print-design-content'>
                 <p class='creation-card-category'>{design.category}</p>
                 <h3>{design.title}</h3>
-                <p>{design.description}</p>
 
-                {design.href !== '#' && (
-                  <a href={design.href} class='creation-card-link'>
-                    View design
-                  </a>
-                )}
-              </article>
-            ))
-          }
-        </div>
-      </aside>
+                <p class='print-design-summary'>{design.description}</p>
+
+                <div class='print-design-meta' aria-label='Design details'>
+                  <span>Material: {design.material}</span>
+                  <span>Design time: {design.designTime}</span>
+                </div>
+
+                <p>
+                  This was one of those small workshop wins that started with a
+                  simple problem: people kept stealing my clamps to keep bags
+                  closed.
+                </p>
+
+                <p>
+                  Coffee bags, dog treats, chips, frozen food, tortilla chips —
+                  somehow they all needed a clip, and somehow my regular clamps
+                  kept vanishing into the kitchen. So instead of sacrificing
+                  more workshop gear to the snack cupboard, I designed a
+                  dedicated set of 3D printed bag clips.
+                </p>
+
+                <p>
+                  The design took about 20 minutes and is printed in PLA. The
+                  shape is intentionally simple: wide enough to grip a folded
+                  bag, curved enough to make it easy to grab, and chunky enough
+                  that it does not feel flimsy in daily use.
+                </p>
+
+                <p>
+                  These are not complicated prints, and that is the whole point.
+                  They solve a real problem, print quickly, and are useful
+                  immediately.
+                </p>
+
+                <div class='print-use-list' aria-label='Used for'>
+                  {
+                    design.uses.map((use) => (
+                      <span>{use}</span>
+                    ))
+                  }
+                </div>
+              </div>
+
+              <div class='print-design-images'>
+                {
+                  design.images.map((image) => (
+                    <figure class='print-design-image'>
+                      <img src={image.src} alt={image.alt} loading='lazy' />
+                      <figcaption>{image.caption}</figcaption>
+                    </figure>
+                  ))
+                }
+              </div>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
 
@@ -120,10 +176,8 @@ const olderDesigns = [
         <p class='eyebrow'>Archive</p>
         <h2>Older 3D Printed Designs</h2>
         <p>
-          Finished and semi-finished designs will collect here as the 3D
-          printing library grows. Some will be polished creations, some will be
-          prototypes, and some will be useful little gremlins that earned their
-          place.
+          As the latest section fills up, older designs will move here so the
+          page stays easy to browse.
         </p>
       </div>
 

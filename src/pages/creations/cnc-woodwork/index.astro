@@ -1,18 +1,209 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import "../../../styles/pages/creations.css";
+
+const latestProjects = [
+  {
+    title: "CNC Cedar Card Suit Snack Tray",
+    category: "CNC / Woodworking",
+    material: "Live edge cedar and walnut",
+    machine: "OneFinity Journeyman X50",
+    status: "In progress",
+    finish: "Poly on the cedar tray, Odie’s Oil on the walnut bowls",
+    description:
+      "A live-edge cedar snack tray with walnut card suit bowls, designed for card players, snack people, and anyone who appreciates useful wood nonsense.",
+    uses: ["Snack tray", "Card table tray", "Etsy product test", "CNC finish experiment"],
+    images: [
+      {
+        src: "/images/creations/cnc-woodworking/card-suit-board-before.JPG",
+        alt: "CNC carved card suit tray before final finishing",
+        caption:
+          "The tray before final finish, with the walnut card suit bowls sitting proud against the live-edge cedar.",
+      },
+      {
+        src: "/images/creations/cnc-woodworking/card-suit-board-after.JPG",
+        alt: "CNC carved card suit tray after finish has been applied",
+        caption:
+          "After finish, the cedar color deepens and the card suits blend more naturally into the board.",
+      },
+    ],
+  },
+];
+
+const olderProjects = [
+  {
+    title: "Older CNC & Woodworking Projects Coming Soon",
+    category: "Archive",
+    description:
+      "Older CNC and woodworking pieces will live here once the latest section starts filling up.",
+    href: "#",
+  },
+];
 ---
 
 <BaseLayout
-  title="CNC - Woodwork | Eddie Saunders"
-  description="CNC & woodworked handmade products, market pieces, Etsy items, and custom creations."
+  title="CNC & Woodworking | Eddie Saunders"
+  description="CNC and woodworking projects, handmade products, market pieces, Etsy items, and custom creations."
 >
   <section class="page-hero creations-hero">
     <p class="eyebrow">Creations</p>
     <h1>CNC & Woodworking</h1>
     <p>
-      Handmade goods, market pieces, Etsy items, custom products, and practical
-      things made to sell. This section is still being shaped.
+      CNC-cut pieces, handmade goods, shop experiments, market products, Etsy
+      ideas, and whatever happens when wood, tools, and questionable confidence
+      meet in the same room.
     </p>
+  </section>
+
+  <section class="creations-feature-section">
+    <div class="creations-feature-copy">
+      <p class="eyebrow">Cut / Sand / Finish</p>
+      <h2>
+        CNC projects, woodworking experiments, and useful things made from
+        stubborn bits of timber
+      </h2>
+
+      <p>
+        This section collects my CNC and woodworking projects, from practical
+        shop-made items to finished pieces intended for markets, Etsy, gifts, or
+        just because the board looked too good to ignore.
+      </p>
+
+      <p>
+        Some projects start with a clear plan. Others start with a leftover
+        board, an offcut, or a piece of wood that has been sitting around long
+        enough to make me feel judged.
+      </p>
+
+      <p>
+        The process is usually simple: design the idea, cut it, sand it, finish
+        it, find the problems, then decide whether it is good enough to sell,
+        gift, improve, or quietly pretend never happened.
+      </p>
+
+      <p>
+        This is where those builds, tests, lessons, and finished pieces will
+        live.
+      </p>
+    </div>
+  </section>
+
+  <section class="creations-latest-section" aria-labelledby="latest-cnc-heading">
+    <div class="section-content">
+      <div class="section-header">
+        <p class="eyebrow">Latest</p>
+        <h2 id="latest-cnc-heading">Latest CNC & Woodworking Project</h2>
+        <p>
+          Current builds, finish tests, market pieces, and useful woodworking
+          ideas as they move from rough stock to finished item.
+        </p>
+      </div>
+
+      <div class="print-design-list">
+        {
+          latestProjects.map((project) => (
+            <article class="print-design-card">
+              <div class="print-design-content">
+                <p class="creation-card-category">{project.category}</p>
+                <h3>{project.title}</h3>
+
+                <p class="print-design-summary">{project.description}</p>
+
+                <div class="print-design-meta" aria-label="Project details">
+                  <span>Material: {project.material}</span>
+                  <span>Machine: {project.machine}</span>
+                  <span>Status: {project.status}</span>
+                </div>
+
+                <p>
+                  This project started with a live-edge cedar board I picked up
+                  cheap from a vendor in Wilmington, NC, and some walnut offcuts
+                  I already had hanging around the shop.
+                </p>
+
+                <p>
+                  The idea was simple enough: use the cedar as the tray body,
+                  carve the playing card suits, and make walnut bowls for the
+                  inserts. It felt like a good fit for card players, game
+                  nights, snack tables, or anyone who wants something a little
+                  more interesting than another plain tray.
+                </p>
+
+                <p>
+                  The tray was cut on the OneFinity Journeyman X50, which is
+                  very much the big boy machine for this kind of work. The cedar
+                  tray gets a poly finish, while the walnut bowls get Odie’s Oil
+                  to bring out the darker grain.
+                </p>
+
+                <p>
+                  This one is still in progress and waiting on final finish
+                  before I decide whether it heads to Etsy. So far, it is doing
+                  exactly what a good prototype should do: showing what works,
+                  what needs cleaning up, and whether the idea has legs.
+                </p>
+
+                <p>
+                  Finish note: {project.finish}.
+                </p>
+
+                <div class="print-use-list" aria-label="Project uses">
+                  {
+                    project.uses.map((use) => (
+                      <span>{use}</span>
+                    ))
+                  }
+                </div>
+              </div>
+
+              <div class="print-design-images">
+                {
+                  project.images.map((image) => (
+                    <figure class="print-design-image creation-wide-image">
+                      <img src={image.src} alt={image.alt} loading="lazy" />
+                      <figcaption>{image.caption}</figcaption>
+                    </figure>
+                  ))
+                }
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="creations-archive-section">
+    <div class="section-content">
+      <div class="section-header">
+        <p class="eyebrow">Archive</p>
+        <h2>Older CNC & Woodworking Projects</h2>
+        <p>
+          As this section grows, older builds will move here so the newest
+          project can stay featured without turning the page into a scroll
+          punishment.
+        </p>
+      </div>
+
+      <div class="creation-card-grid">
+        {
+          olderProjects.map((project) => (
+            <article class="creation-card">
+              <div>
+                <p class="creation-card-category">{project.category}</p>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+              </div>
+
+              {project.href !== "#" && (
+                <a href={project.href} class="creation-card-link">
+                  View project
+                </a>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </div>
   </section>
 </BaseLayout>

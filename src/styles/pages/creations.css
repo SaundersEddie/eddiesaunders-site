@@ -351,3 +351,120 @@ a.creations-area-card:focus-visible {
     padding: 22px;
   }
 }
+
+/* 3D printing latest design list */
+
+.creations-latest-section {
+  width: min(100% - 3rem, 1100px);
+  margin: 38px auto 0;
+  padding-top: 38px;
+  border-top: 1px solid var(--line);
+}
+
+.print-design-list {
+  display: grid;
+  gap: 24px;
+}
+
+.print-design-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.print-design-content h3 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin-top: 12px;
+}
+
+.print-design-content p {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 16px;
+}
+
+.print-design-summary {
+  font-size: 1.05rem;
+}
+
+.print-design-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.print-design-meta span,
+.print-use-list span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+  padding: 8px 11px;
+}
+
+.print-use-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.print-design-images {
+  display: grid;
+  gap: 14px;
+}
+
+.print-design-image {
+  overflow: hidden;
+  border: 1px solid rgba(216, 212, 204, 0.82);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.print-design-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.print-design-image figcaption {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  padding: 12px 14px;
+}
+
+@media (max-width: 900px) {
+  .print-design-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .creations-latest-section {
+    width: min(100% - 2rem, 1100px);
+  }
+
+  .print-design-card {
+    padding: 18px;
+  }
+}
+
+/* Wide images for CNC and woodworking project photos */
+
+.creation-wide-image img {
+  aspect-ratio: 16 / 9;
+}
