@@ -2553,6 +2553,98 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '020',
+    title: 'Menu Dioramas, Transparent UI, and Flying Meanie Tuning',
+    date: '2026-06-20',
+    stage: 'Menu presentation polish and gameplay balance',
+    focus:
+      'Adding animated menu-level backdrops behind the main menu and game over screens, tuning the flying meanie, and considering floating score popups.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Today was some GUI work. I wanted a dummy level with moving meanies behind the mainMenu and gameOver scenes, so the screens feel connected to the game world rather than being static UI panels.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'A dummy menu level was generated, I threw some code together, made a backgroundLoader prefab, attached the script, copied the loader into the main menu, pressed play, and was greeted with... nothing. Just the mainMenu scene.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'It turned out I had surrounded the menu with a solid color. The background level was loading correctly, but the UI was sitting over it like a big opaque blanket. A quick color change and transparency tweak fixed that, and suddenly the menu level was visible behind the UI.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-gameover-menu-diorama.png',
+        alt: 'Courier16 game over screen with a decorative menu level and moving meanies visible behind the UI card.',
+        caption:
+          'The game over screen now uses a live menu-level backdrop, making the UI feel connected to the game world.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I modified the camera size to 10, adjusted the loader setup, and things are starting to come together. The concept is proven. The next step is to make three or so menuLevels and have one randomly selected when the menu or game over screen loads.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'None of the levels displayed in the menu are real levels, of course. They are just little dioramas built to look alive behind the UI. But who knows what you might find?',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Menu backdrop system',
+        text: 'The mainMenu and gameOver scenes can now load a decorative menuLevel scene additively behind the UI. The backgroundLoader prefab handles the scene loading, while the UI uses transparency so the level and moving meanies remain visible.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also spent a little time modifying the settings on the flying meanie. It was still too aggressive, and one of the biggest challenges in gameplay is getting the balance right. Nobody has time to be getting violated every 20 seconds by a meanie.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Nobody has time to be getting violated every 20 seconds by a meanie.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also thought a little about doing floating points as the player scores. Something like a retro arcade score popup that spawns above the player or delivery point, floats upward, fades away, and then disappears. It might work, it might not, but it feels like the right sort of visual feedback for Courier16.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Floating score idea',
+        text: 'Use small number sprites from the tileset to create floating score popups for deliveries, pickups, meanie hits, or level completion. The popup should spawn near the action, float upward, fade out, and destroy itself after a short lifetime.',
+      },
+      {
+        type: 'next',
+        title: 'Random Menu Levels and Score Popups',
+        text: 'Next up is creating a few menuLevel variants, randomly selecting one for the menu and game over screens, continuing flying meanie balance, and experimenting with retro floating score popups.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
