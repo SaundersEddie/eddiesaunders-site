@@ -2645,6 +2645,93 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '021',
+    title: 'Floating Points and Retro Score Feedback',
+    date: '2026-06-21',
+    stage: 'Gameplay feedback polish',
+    focus:
+      'Adding scrolling score popups when the player earns points, using sprite digits that spawn, rise, fade, and disappear.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Not a crazy diary entry today, but definitely a significant one. This morning was spent adding scrolling points when the player scores.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'There are two obvious ways to do this. The score popup can spawn at the player location when they score, or it can spawn from the place where the score was earned, such as above a meanie after shooting it.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'For right now I am spawning the points at the player location. That keeps the first version simple, consistent, and easy to test. If it feels better later to show points above pickups, dropoffs, or dead meanies, I can change that after playing the game for a while.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-floating-score-popup.png',
+        alt: 'Courier16 gameplay showing a floating score popup above the player after scoring.',
+        caption:
+          'The score popup now builds retro digit sprites on the fly, floats upward, fades out, and leaves the real HUD score updated.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The first run of the script worked. The score appeared on screen, which is always a good start. The next update was to make it move out of the way of the player and fade out. There were some minor spacing issues with the digits, but those were resolved fairly quickly.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Floating score system',
+        text: 'The score popup uses individual digit sprites to build the score value on the fly. The popup then scrolls upward, fades out, and destroys itself, giving Courier16 a very retro arcade feel.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The next job was to implement it properly into the game. This is where I will decide how I really want everything displayed, but the first real test was simple: make the score appear when picking up a key.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That worked perfectly. I picked up a key, the 100 points appeared by the player, scrolled upward, and vanished. That tiny bit of feedback makes the scoring feel far more alive than just changing the HUD number in the corner.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'After that I added the same score popup behaviour to the other scoring items, and it worked. The system is now in place and doing what it needs to do.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'A tiny floating 100 makes the score feel earned instead of silently changing in the corner.',
+      },
+      {
+        type: 'next',
+        title: 'Playtesting Popup Placement',
+        text: 'Next I need to play for a few hours and decide whether score popups should always appear above the player, appear above the thing that awarded the points, or use a combination of both depending on the score event.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
