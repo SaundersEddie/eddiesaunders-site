@@ -18,42 +18,49 @@ const liveGames = [
     title: "REDACTED",
     type: "Word / grid game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/redacted",
     text: "A compact word-hunt style browser game built around daily play, score sharing, and quick sessions.",
   },
   {
     title: "MATCH",
     type: "Memory game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/match",
     text: "A classic pairs game with difficulty modes, move tracking, timing, and daily leaderboard support.",
   },
   {
     title: "REACTION",
     type: "Timing game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/reaction",
     text: "A precision-focused reaction game designed for quick attempts, clean feedback, and repeat plays.",
   },
   {
     title: "SEQUENCE",
     type: "Memory pattern game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/sequence",
     text: "A Simon-style repeat-the-pattern game with responsive layout work and score handling.",
   },
   {
     title: "SHIFT",
     type: "Puzzle game",
     status: "Live",
+    href: "https://eddiesgames.xyz/play/shift",
     text: "A slide, merge, and survive puzzle game with daily and random modes.",
   },
   {
-    title: "Sudoku",
+    title: "SUDOKU",
     type: "Logic puzzle",
     status: "Live / evolving",
+    href: "https://eddiesgames.xyz/play/sudoku",
     text: "A browser Sudoku project connected to the larger Python and Unity Sudoku experiments.",
   },
   {
     title: "LETTERLOCK",
     type: "Word puzzle",
     status: "New",
+    href: "https://eddiesgames.xyz/play/letterlock",
     text: "A newer word puzzle added to the collection as the site continues to expand beyond the original launch games.",
   },
 ];
@@ -154,12 +161,18 @@ const techNotes = [
 
     <div class="project-grid">
       {liveGames.map((game) => (
-        <article class="project-card">
+        <a
+          class="project-card project-card-link"
+          href={game.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Play ${game.title} on eddiesgames.xyz`}
+        >
           <p class="project-type">{game.type}</p>
           <h3>{game.title}</h3>
           <p>{game.text}</p>
           <span>{game.status}</span>
-        </article>
+        </a>
       ))}
     </div>
   </section>
