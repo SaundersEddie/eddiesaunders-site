@@ -2732,6 +2732,99 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '022',
+    title: 'Sound Effects, Random Dioramas, and Controlled Cleanup',
+    date: '2026-06-24',
+    stage: 'Audio feedback, presentation polish, and project organization',
+    focus:
+      'Adding the first SFX pass, enabling random menu and game over background levels, and beginning a careful feature-folder cleanup.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Today I started implementing some SFX. I have not had time to work on custom effects or music yet, so I downloaded the digital audio sound pack from Kenney.nl.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'One thing to bear in mind with Kenney audio assets is that they are in .ogg format. For mobile use they may need converting to .mp3, which I found out the hard way.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'After a little bit of playing around in code, I created an audio controller script. The goal was simple: let me assign effects in the Inspector and trigger them wherever I need them, without having to rename every audio file or drive myself mad under headphones.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Audio controller',
+        text: 'The GameAudioController lets me assign clips in the Inspector and call simple methods such as GameAudioController.Instance?.PlayPackagePickup(); from gameplay scripts. It is not a perfect setup, but it does the job and keeps the SFX pass moving.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The difference was immediate. Sound effects bring the game to life. Even simple pickup, delivery, fireball, and damage sounds make Courier16 feel far more like a real game than a silent prototype.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I did hear the player life lost sound too many times courtesy of the flying meanie, though. That thing still needs serious tweaking. Nobody needs a tiny airborne menace repeatedly announcing that it has ruined your day.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Sound effects bring the game to life.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also updated the mainMenu and gameOver scenes to pick a random background level to play behind the UI. I had left the system hardcoded during proof of concept, but now the concept is proven, the loader can randomly select from the available menu backdrop scenes.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Random menu backdrops',
+        text: 'The background loader now supports multiple menu-level scene names and randomly selects one to load additively behind the mainMenu and gameOver UI.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Finally, I spent a little time looking at folder structure. There is a lot of refactoring to do in terms of where scripts are sitting. I prefer to keep things contained in their own little world, so Player would have its own folder with subfolders for scripts, animations, prefabs, and related assets.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I am not going to risk the wrath of Unity by moving everything at once. Unity is generally stable, but controlled file moves are a far better option than dragging 200 items around and hoping the project gods are in a generous mood.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Tuning and Small Controlled Moves',
+        text: 'Next up is continuing to tweak SFX during playtesting, calming down the flying meanie, adding more menu backdrop variations, and slowly reorganizing project folders one feature at a time.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
