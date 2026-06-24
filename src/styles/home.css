@@ -258,3 +258,38 @@
   margin-top: 1.5rem;
   width: fit-content;
 }
+
+.hero-card-extra {
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+  padding-top: 28px;
+}
+
+.hero-card-extra h3 {
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
+  margin-top: 8px;
+}
+
+.hero-card-extra p:not(.card-kicker) {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+.hero-card-extra .button {
+  margin-top: 18px;
+}
+
+.hero-card-extra .button.secondary {
+  background: transparent;
+  border: 1px solid rgba(35, 92, 116, 0.28);
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.hero-card-extra .button.secondary:hover {
+  background: rgba(35, 92, 116, 0.08);
+  transform: translateY(-1px);
+}
+

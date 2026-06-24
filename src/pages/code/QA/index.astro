@@ -9,6 +9,18 @@ const featuredTools = [
     status: "In progress",
     text: "A local desktop tool concept for turning images into transparent-background PNGs, with future GUI and SVG workflow ideas.",
   },
+  {
+    title: "Python Audio Converter",
+    type: "Python / Audio tool",
+    status: "In progress",
+    text: "A small Python command-line utility for converting individual audio files or entire folders of game audio into mobile-friendly formats using FFmpeg.",
+    links: [
+      {
+        label: "Repo",
+        href: "https://github.com/SaundersEddie/audio-convert",
+      },
+    ],
+  },
 ];
 
 const pythonTools = [
@@ -129,6 +141,21 @@ const plannedTools = [
           <p class="project-type">{item.type}</p>
           <h3>{item.title}</h3>
           <p>{item.text}</p>
+
+          {item.links && (
+            <div class="project-links">
+              {item.links.map((link) => (
+                <a
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+
           <span>{item.status}</span>
         </article>
       ))}
