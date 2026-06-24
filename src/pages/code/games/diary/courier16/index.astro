@@ -2825,6 +2825,91 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '023',
+    title: 'Audio Conversion, Folder Cleanup, and the Flying Meanie Problem',
+    date: '2026-06-25',
+    stage: 'Tooling, project organization, and gameplay balance',
+    focus:
+      'Building a small .ogg to .mp3 converter, continuing the controlled folder refactor, and rethinking the flying meanie as a timed annoyance rather than a constant threat.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'This is an extra diary entry, as it is not Thursday, but it is an important one.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I spent a little time last night coding up a .ogg to .mp3 converter. Yes, I know there are loads of them online, but uploading and downloading files just to convert audio can be a royal pain at times.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The converter lets me handle one file at a time or process entire folders. While it is not critical for Courier16 right now, it is important for upcoming games where I already have .ogg files and may want a quick local conversion workflow.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Small tools matter',
+        text: 'The .ogg to .mp3 converter is not a big game feature, but it removes friction from the audio pipeline. Sometimes a small local utility is worth building simply because it keeps future work moving.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also spent some time continuing to refactor the folder layout. The game levels now have their own folder. I kept the primary scenes in the main scenes folder for sanity, because that is where people will look first. There is no point rocking that boat just to satisfy a folder structure idea.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'So far the refactor has been seamless with no hiccups. I did a full Windows build just to make sure, and that ran without issue. I will try the Mac version later. No mobile version though, no plans on making Courier16 a mobile game.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Controlled refactor',
+        text: 'The project cleanup is being handled one contained move at a time. Move a small area, let Unity reimport, test the game, build if needed, and only then call it good.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also played with the flying meanie a little more. I am starting to think it should be more of a temporary annoyance than a permanent hunter. A timed behaviour may work better: after about 30 seconds, it disappears rather than constantly chasing the player around the level.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'That task is going onto the Thursday morning list. Today was only meant to be a quick session for folder structure and some supporting tooling, so I am not going to fall into a flying meanie rabbit hole just yet.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Sometimes a small local utility is worth building simply because it keeps future work moving.',
+      },
+      {
+        type: 'next',
+        title: 'Timed Flying Meanie',
+        text: 'Next up is testing whether the flying meanie works better as a timed pressure mechanic: annoying for a short window, then gone, instead of being a constant airborne menace.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
