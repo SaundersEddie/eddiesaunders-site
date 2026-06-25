@@ -2917,6 +2917,105 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '024',
+    title: 'Diary Cleanup, Sticky Navigation, Flying Meanie Balance, and Wind',
+    date: '2026-06-26',
+    stage:
+      'Website cleanup, gameplay balance, environmental effects, and build checks',
+    focus:
+      'Improving the Courier16 diary page, tuning the flying meanie, continuing folder organization, confirming Windows and macOS builds, and adding the first wind gameplay effect.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'First order of operation today: fix up the diary page on the website. It is huge now, which was always going to happen once the entries started stacking up.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I suspect I will make more significant changes to how Diary of a Game is displayed for the next game, maybe writing one week at a time and using a modal for display. For Courier16, though, the fix was simpler. The entry list is now far easier to navigate, and each entry has a back to top button.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Diary page cleanup',
+        text: 'The Courier16 diary index now highlights the latest entry, keeps recent entries easy to reach, compresses older entries into an archive-style list, and includes back to top links at the end of each entry.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Next item was a sticky navbar. That was nothing more than changing the .site-header styling, but it makes the long diary pages much nicer to use. The first background attempt looked awful because it created a visible strip across the screen depending on where the reader had scrolled, so the header now stays cleaner and lighter.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Gameplay wise, it was time to fix the flying meanie. Ultimately I changed the respawn time and moved the flying meanie spawn point to a different area of the level. That appears to have worked quite well. It could still get busy on a larger level, but that is fine as long as everything does not become overwhelming.',
+          },
+        ],
+      },
+      {
+        type: 'pullquote',
+        text: 'Pressure is good. Being mugged by a flying meanie every few seconds is not.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I also performed some more folder organization and tested the game afterwards. Everything is looking good with no obvious issues, and both Windows and macOS builds complete and run.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Build check',
+        text: 'After the latest folder organization pass, both Windows and macOS builds completed successfully and worked as expected.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I added the first wind effect on the player. This was not too bad. Right now the wind only goes one way and does not affect player jumping, but when it triggers it does work, blowing the player around while they are on platforms.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Wind effect first pass',
+        text: 'The wind event now has a gameplay effect. When triggered, it applies a horizontal push to the player. It is still a simple first version, but it proves that environmental events can affect gameplay rather than only posting HUD messages.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Next on the environmental list may be extreme heat, or maybe lightning during rain. Heat could affect player movement or stamina, while lightning might fit nicely as a rain-based hazard or warning event.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Really, at this point the game works. We can play through from the start until we run out of lives. One of the next issues to look at before I go on vacation is what happens when we reach the end of the levels.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'End of Game Flow',
+        text: 'Next up is deciding what happens when the player reaches the end of the available Courier16 levels: a completion screen, a loop back to menu, a placeholder ending, or a simple end-of-demo message before the vacation pause.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
