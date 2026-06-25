@@ -1,14 +1,18 @@
+html {
+  scroll-padding-top: 96px;
+}
+
 .site-shell {
   width: min(100% - 32px, var(--max-width));
   margin: 0 auto;
 }
 
 .site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 28px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  backdrop-filter: blur(14px);
 }
 
 .brand {

@@ -2853,21 +2853,21 @@ const courierEntries: DiaryEntry[] = [
         type: 'paragraph',
         content: [
           {
-            text: "The converter lets me handle one file at a time or process entire folders. While it is not critical for Courier16 right now, it is important for upcoming games where I already have .ogg files and may want a quick local conversion workflow. I have added the converter to the ",
+            text: 'The converter lets me handle one file at a time or process entire folders. While it is not critical for Courier16 right now, it is important for upcoming games where I already have .ogg files and may want a quick local conversion workflow. I have added the converter to the ',
           },
           {
-            text: "Automation Section",
-            href: "/code/QA/"
+            text: 'Automation Section',
+            href: '/code/QA/',
           },
           {
-            text: " section of the site."
-          }
+            text: ' section of the site.',
+          },
         ],
       },
       {
-        type: "note",
-        title: "Small tools matter",
-        text: "The .ogg to .mp3 converter is not a big game feature, but it removes friction from the audio pipeline. I have added it to the QA/tools section of the site so it can be reused for future game projects."
+        type: 'note',
+        title: 'Small tools matter',
+        text: 'The .ogg to .mp3 converter is not a big game feature, but it removes friction from the audio pipeline. I have added it to the QA/tools section of the site so it can be reused for future game projects.',
       },
       {
         type: 'paragraph',
@@ -2921,15 +2921,25 @@ const courierEntries: DiaryEntry[] = [
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
 
-const latestEntry = courierEntries[courierEntries.length - 1];
-const indexedEntries = [...courierEntries].reverse();
+// const latestEntry = courierEntries[courierEntries.length - 1];
+// const indexedEntries = [...courierEntries].reverse();
+
+const getEntryTimestamp = (entry: DiaryEntry) => new Date(entry.date).getTime();
+
+const indexedEntries = [...courierEntries].sort(
+  (a, b) => getEntryTimestamp(b) - getEntryTimestamp(a),
+);
+
+const latestEntry = indexedEntries[0];
+const recentEntries = indexedEntries.slice(1, 6);
+const archiveEntries = indexedEntries.slice(6);
 ---
 
 <BaseLayout
   title='Courier 16 Diary | Eddie Saunders'
   description='Build diary for Courier 16, a game development project by Eddie Saunders.'
 >
-  <section class='page-hero code-hero'>
+  <section id='courier16-top' class='page-hero code-hero'>
     <p class='eyebrow'>Diary of a Game</p>
     <h1>Courier 16</h1>
     <p>
@@ -2950,8 +2960,8 @@ const indexedEntries = [...courierEntries].reverse();
       </p>
     </div>
 
-    <div class='project-grid'>
-      <article class='project-card'>
+    <div class='project-grid diary-overview-grid'>
+      <article class='project-card diary-latest-card'>
         <p class='project-type'>Latest entry</p>
         <h3>
           Chapter {latestEntry.chapter}: {latestEntry.title}
@@ -2969,13 +2979,13 @@ const indexedEntries = [...courierEntries].reverse();
         <span>{latestEntry.focus}</span>
       </article>
 
-      <article class='project-card'>
-        <p class='project-type'>Entry index</p>
-        <h3>Courier 16 chapters</h3>
+      <article class='project-card diary-recent-card'>
+        <p class='project-type'>Recent entries</p>
+        <h3>Latest build notes</h3>
 
-        <div class='diary-index-list'>
+        <div class='diary-index-list diary-recent-list'>
           {
-            indexedEntries.map((entry) => (
+            recentEntries.map((entry) => (
               <a href={`#${getEntryId(entry)}`}>
                 <span>
                   {entry.date} · Chapter {entry.chapter}
@@ -2987,6 +2997,32 @@ const indexedEntries = [...courierEntries].reverse();
         </div>
       </article>
     </div>
+
+    {
+      archiveEntries.length > 0 && (
+        <article class='diary-archive-card'>
+          <div class='diary-archive-heading'>
+            <div>
+              <p class='project-type'>Archive</p>
+              <h3>Earlier Courier 16 chapters</h3>
+            </div>
+            <span>{archiveEntries.length} older entries</span>
+          </div>
+
+          <div class='diary-archive-list'>
+            {archiveEntries.map((entry) => (
+              <a href={`#${getEntryId(entry)}`}>
+                <span class='diary-archive-chapter'>
+                  Chapter {entry.chapter}
+                </span>
+                <strong>{entry.title}</strong>
+                <span class='diary-archive-date'>{entry.date}</span>
+              </a>
+            ))}
+          </div>
+        </article>
+      )
+    }
   </section>
 
   <section class='development-log'>
@@ -3092,6 +3128,9 @@ const indexedEntries = [...courierEntries].reverse();
                 return null;
               })}
             </div>
+            <footer class='diary-entry__footer'>
+              <a href='#courier16-top'>Back to top ↑</a>
+            </footer>
           </article>
         ))
       }
