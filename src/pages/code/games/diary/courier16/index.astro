@@ -3016,6 +3016,110 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '025',
+    title: 'Back from Bermuda and All Routes Complete',
+    date: '2026-07-06',
+    stage:
+      'Post-vacation restart, end-of-level flow, and source release preparation',
+    focus:
+      'Returning to Courier16 after vacation, playtesting the current build, adding an all-routes-complete state, and preparing the repository for public source release.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'After returning from a peaceful and relaxing week in Bermuda spent sightseeing and reading up on some of the new Unreal Engine news, including Verse, this is a much shorter entry for today.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Anyway, it is time to start focusing on Courier16 again. First order of the day was simple: play the game for a while and get reacquainted with where everything stands. The gameplay running in the background on the mainMenu and gameOver screens still looks good.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Because Courier16 is only going to have a handful of levels, the game needs a proper message when the player completes all available routes. The existing game over scene already works well visually, especially with the animated background level behind it, so it made sense to reuse that screen rather than create another scene just for completion.',
+          },
+        ],
+      },
+      {
+        type: 'figure',
+        src: '/images/games/courier-16/courier16-all-routes-complete.png',
+        alt: 'Courier16 all routes complete screen showing the final score with the animated menu-level backdrop behind it.',
+        caption:
+          'Courier16 now has a proper all-routes-complete state using the existing game over scene and animated backdrop.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'I am not a fan of simply restarting from Level 1 with tougher meanies for this project. Will I do a game with that kind of loop one day? Yes, because it is a useful structure for many arcade-style games. It is not for Courier16 though. Maybe that belongs in the next Diary of a Game.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The code for this rule was easy enough to implement. If the finish door has another route assigned, it loads the next level. If there is no next route, the game loads the existing gameOver scene in an all-routes-complete mode and changes the title and subtitle text accordingly.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Completion flow',
+        text: 'Courier16 now distinguishes between running out of lives and completing all available routes. Both states use the same end screen, but the title and subtitle change depending on why the player reached it.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Everything looks really good. I think the next area to look at is audio, especially music. I already have some sound effects from Kenney.nl, but adding music will let me introduce that side of the code properly as well.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Here is the Git repository for anyone who wants to play with the code. It will be made public as soon as I find where I put my cell phone authenticator.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'The Courier16 GitHub repository is available here: ',
+          },
+          {
+            text: 'github.com/SaundersEddie/courier16',
+            href: 'https://github.com/SaundersEddie/courier16',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'From a code perspective, there are no restrictions. Do what you need with it. Please check with Kenney.nl for the asset license terms before reusing or redistributing those assets.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Music and Audio Structure',
+        text: 'Next up is looking at music support, adding a simple music controller, deciding where menu and gameplay music should play, and continuing to check the source release package before the repository goes public.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
