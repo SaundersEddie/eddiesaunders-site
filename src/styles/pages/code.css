@@ -137,6 +137,7 @@
   background: rgba(255, 255, 255, 0.76);
   box-shadow: var(--shadow);
   padding: 24px;
+  min-height: 100%;
 }
 
 a.project-card:hover {
@@ -175,7 +176,7 @@ a.project-card:hover {
   color: var(--accent);
   font-size: 0.78rem;
   font-weight: 900;
-  margin-top: auto;
+  margin-top: 18px;
   padding: 6px 10px;
 }
 

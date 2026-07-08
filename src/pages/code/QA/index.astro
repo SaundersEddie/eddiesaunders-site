@@ -9,18 +9,6 @@ const featuredTools = [
     status: "In progress",
     text: "A local desktop tool concept for turning images into transparent-background PNGs, with future GUI and SVG workflow ideas.",
   },
-  {
-    title: "Python Audio Converter",
-    type: "Python / Audio tool",
-    status: "In progress",
-    text: "A small Python command-line utility for converting individual audio files or entire folders of game audio into mobile-friendly formats using FFmpeg.",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/SaundersEddie/audio-convert",
-      },
-    ],
-  },
 ];
 
 const pythonTools = [
@@ -28,7 +16,7 @@ const pythonTools = [
     title: "Python Sudoku Generator",
     type: "Python / Testing",
     status: "Active",
-    text: "A puzzle generation, solving, validation, and test pipeline for creating reliable Sudoku boards.",
+    text: "A puzzle generation, validation, and test pipeline for creating reliable Sudoku boards.",
     links: [
       {
         label: "Repo",
@@ -37,10 +25,16 @@ const pythonTools = [
     ],
   },
   {
-    title: "Social Media Post Generator",
-    type: "Python / Content tool",
+    title: "Eddie's Content Tools",
+    type: "Python / Facebook drafting tool",
     status: "Active",
-    text: "A practical content helper for turning project notes into cleaner social posts, descriptions, and reusable copy.",
+    text: "A local Python tool for creating sourced Facebook draft posts from date-based historical data.",
+    links: [
+      {
+        label: "Repo",
+        href: "https://github.com/SaundersEddie/eddies-content-tools",
+      },
+    ],
   },
   {
     title: "Weather Summary Tool",
@@ -141,21 +135,6 @@ const plannedTools = [
           <p class="project-type">{item.type}</p>
           <h3>{item.title}</h3>
           <p>{item.text}</p>
-
-          {item.links && (
-            <div class="project-links">
-              {item.links.map((link) => (
-                <a
-                  href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          )}
-
           <span>{item.status}</span>
         </article>
       ))}
