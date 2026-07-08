@@ -3120,6 +3120,74 @@ const courierEntries: DiaryEntry[] = [
       },
     ],
   },
+  {
+    chapter: '026',
+    title: 'Menu Music, Audio Cleanup, and the Road to Testing',
+    date: '2026-07-08',
+    stage: 'Audio polish, asset organization, and transition toward testing',
+    focus:
+      'Adding menu and game over music, consolidating audio assets, and recognizing that the core Courier16 systems are now in place.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Yesterday I created a quick piece of audio for the mainMenu and gameOver screens. It is about thirty seconds long, not the best work in the world, but it has a retro feel with slight Eurobeat undertones. That was implemented today.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'This was also a perfect time to bring the audio assets together under one folder. Sound effects had already started to come together, and now the game also has a simple music layer for the menu and end screens.',
+          },
+        ],
+      },
+      {
+        type: 'note',
+        title: 'Audio structure',
+        text: 'Rather than disturbing the existing sound effects controller, the menu and game over music were handled separately. That keeps the working SFX system stable while giving the project a clean place for background music.',
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'To my knowledge, this was the last of the core items that needed to be added. Technically, Courier16 is now ready for testing and level generation. There will absolutely be gameplay tweaks, fixes, and possibly a few new features, but the main structure of the game is now working.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'In the space of a few months, Courier16 has gone from concept to a working game. The next steps will mostly be done on the fly as I get time: building more levels, testing the flow, adjusting difficulty, and tightening anything that feels rough.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'This diary is not concluded, but updates will probably become less frequent from here. The project has moved out of daily core-system building and into the slower, more practical stage of testing, level creation, polish, and cleanup.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            text: 'Of course, you are free to send me emails and messages. For quicker responses, I will be honest: fire me a message on Facebook. I only check emails every other day or so.',
+          },
+        ],
+      },
+      {
+        type: 'next',
+        title: 'Testing and Level Generation',
+        text: 'Next up is testing the full game flow, creating the remaining levels, checking difficulty, and making sure the project holds together as a complete playable Courier16 build.',
+      },
+    ],
+  },
 ];
 
 const getEntryId = (entry: DiaryEntry) => `chapter-${entry.chapter}`;
