@@ -9,6 +9,8 @@ const latestDesigns = [
     material: 'PLA',
     designTime: 'About 10–15 minutes',
     videoUrl: 'https://youtube.com/shorts/N8sHC7B3SuU?feature=share',
+    etsyUrl:
+      'https://www.etsy.com/listing/4498146938/3d-printed-door-handle-tag-custom-text',
     description:
       'A quick custom door hanger made in Bambu Studio using basic shapes, a negative cylinder cutout, and raised decorative parts.',
     uses: [
@@ -166,11 +168,6 @@ const olderDesigns = [
                   <p>{paragraph}</p>
                 ))}
 
-                {/* <div class='print-design-meta' aria-label='Design details'>
-                  <span>Material: {design.material}</span>
-                  <span>Design time: {design.designTime}</span>
-                </div> */}
-
                 {design.videoUrl && (
                   <a
                     href={design.videoUrl}
@@ -179,6 +176,17 @@ const olderDesigns = [
                     rel='noopener noreferrer'
                   >
                     YouTube Short
+                  </a>
+                )}
+
+                {design.etsyUrl && (
+                  <a
+                    href={design.etsyUrl}
+                    class='print-video-link'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    View Etsy Listing
                   </a>
                 )}
 
