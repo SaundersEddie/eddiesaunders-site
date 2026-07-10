@@ -4,6 +4,41 @@ import '../../../styles/pages/creations.css';
 
 const latestDesigns = [
   {
+    title: 'Quick Door Hangers in Bambu Studio',
+    category: 'Beginner design',
+    material: 'PLA',
+    designTime: 'About 10–15 minutes',
+    videoUrl: 'https://youtu.be/YOUR_SHORT_URL',
+    description:
+      'A quick custom door hanger made in Bambu Studio using basic shapes, a negative cylinder cutout, and raised decorative parts.',
+    uses: [
+      'Pet room signs',
+      'Office doors',
+      'Maker spaces',
+      'Seasonal hangers',
+    ],
+    body: [
+      'This was a quick 3D printed door hanger project made directly in Bambu Studio. The idea was simple: start with a basic shape, cut out the door handle opening, add a raised design, and print something useful without needing to jump into full CAD software.',
+      'The hanger body was made from a cube sized at 80 × 170 × 5mm. I used 5mm thickness for the video because I was also recording a time-lapse on the X1C and wanted the print to have a bit more presence. For regular use, you could probably get away with 3mm thick and save some print time and filament.',
+      'The door handle opening was made with a negative cylinder sized at 53 × 53 × 20mm. I usually leave negative parts unmerged while I am prototyping because the slicer removes them during slicing anyway. For a final polished file, merging things properly is probably the cleaner route.',
+      'After the base shape was set, I selected the main cube, added a part, and loaded in a paw print .3mf file. Adding it as part of the main object makes it easy to position the paw print on the hanger while keeping it raised from the surface.',
+      'Once the layout was done, it was just a quick slice and print. That is the nice thing about this kind of project: once the basic shape works, you can make all kinds of versions with text, flags, pet themes, office signs, holiday designs, or whatever else you feel like messing with.',
+      'This is a good beginner-friendly print because it shows how much you can do with basic shapes and a little experimentation. Nothing fancy, no overthinking, just plastic doing something useful. Imagine that.',
+    ],
+    images: [
+      {
+        src: '/images/creations/3d-printing/door-hangers/door-hangers-bambu-studio.png',
+        alt: 'Several custom 3D printed door hanger designs laid out in Bambu Studio',
+        caption: 'A few quick door hanger variations laid out in Bambu Studio.',
+      },
+      {
+        src: '/images/creations/3d-printing/door-hangers/paw-print-door-hanger.JPG',
+        alt: 'Black 3D printed door hanger with a raised brown paw print hanging on a door knob',
+        caption: 'The finished paw print hanger doing its job on the door.',
+      },
+    ],
+  },
+  {
     title: '3D Printed Bag Clips',
     category: 'Useful print',
     material: 'PLA',
@@ -11,6 +46,12 @@ const latestDesigns = [
     description:
       'A quick utility print designed after my workshop clamps kept being borrowed for keeping bags closed.',
     uses: ['Coffee bags', 'Dog treats', 'Chips', 'Frozen foods'],
+    body: [
+      'This was one of those small workshop wins that started with a simple problem: people kept stealing my clamps to keep bags closed.',
+      'Coffee bags, dog treats, chips, frozen food, tortilla chips — somehow they all needed a clip, and somehow my regular clamps kept vanishing into the kitchen. So instead of sacrificing more workshop gear to the snack cupboard, I designed a dedicated set of 3D printed bag clips.',
+      'The design took about 20 minutes and is printed in PLA. The shape is intentionally simple: wide enough to grip a folded bag, curved enough to make it easy to grab, and chunky enough that it does not feel flimsy in daily use.',
+      'These are not complicated prints, and that is the whole point. They solve a real problem, print quickly, and are useful immediately.',
+    ],
     images: [
       {
         src: '/images/creations/3d-printing/bag-clips/bag-clip-white.JPG',
@@ -20,7 +61,8 @@ const latestDesigns = [
       {
         src: '/images/creations/3d-printing/bag-clips/bag-clip-green.JPG',
         alt: 'Green 3D printed bag clip holding a tortilla chip bag closed',
-        caption: 'Same design, different color, still saving my actual clamps from snack duty.',
+        caption:
+          'Same design, different color, still saving my actual clamps from snack duty.',
       },
       {
         src: '/images/creations/3d-printing/bag-clips/bag-clip-set.JPG',
@@ -91,7 +133,10 @@ const olderDesigns = [
     </div>
   </section>
 
-  <section class='creations-latest-section' aria-labelledby='latest-prints-heading'>
+  <section
+    class='creations-latest-section'
+    aria-labelledby='latest-prints-heading'
+  >
     <div class='section-content'>
       <div class='section-header'>
         <p class='eyebrow'>Latest</p>
@@ -117,51 +162,41 @@ const olderDesigns = [
                   <span>Design time: {design.designTime}</span>
                 </div>
 
-                <p>
-                  This was one of those small workshop wins that started with a
-                  simple problem: people kept stealing my clamps to keep bags
-                  closed.
-                </p>
+                {design.body.map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
 
-                <p>
-                  Coffee bags, dog treats, chips, frozen food, tortilla chips —
-                  somehow they all needed a clip, and somehow my regular clamps
-                  kept vanishing into the kitchen. So instead of sacrificing
-                  more workshop gear to the snack cupboard, I designed a
-                  dedicated set of 3D printed bag clips.
-                </p>
+                <div class='print-design-meta' aria-label='Design details'>
+                  <span>Material: {design.material}</span>
+                  <span>Design time: {design.designTime}</span>
+                </div>
 
-                <p>
-                  The design took about 20 minutes and is printed in PLA. The
-                  shape is intentionally simple: wide enough to grip a folded
-                  bag, curved enough to make it easy to grab, and chunky enough
-                  that it does not feel flimsy in daily use.
-                </p>
-
-                <p>
-                  These are not complicated prints, and that is the whole point.
-                  They solve a real problem, print quickly, and are useful
-                  immediately.
-                </p>
+                {design.videoUrl && (
+                  <p>
+                    <a
+                      href={design.videoUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      Watch the YouTube Short
+                    </a>
+                  </p>
+                )}
 
                 <div class='print-use-list' aria-label='Used for'>
-                  {
-                    design.uses.map((use) => (
-                      <span>{use}</span>
-                    ))
-                  }
+                  {design.uses.map((use) => (
+                    <span>{use}</span>
+                  ))}
                 </div>
               </div>
 
               <div class='print-design-images'>
-                {
-                  design.images.map((image) => (
-                    <figure class='print-design-image'>
-                      <img src={image.src} alt={image.alt} loading='lazy' />
-                      <figcaption>{image.caption}</figcaption>
-                    </figure>
-                  ))
-                }
+                {design.images.map((image) => (
+                  <figure class='print-design-image'>
+                    <img src={image.src} alt={image.alt} loading='lazy' />
+                    <figcaption>{image.caption}</figcaption>
+                  </figure>
+                ))}
               </div>
             </article>
           ))
