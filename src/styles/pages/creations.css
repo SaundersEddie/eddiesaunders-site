@@ -325,6 +325,35 @@ a.creations-area-card:focus-visible {
   border-top: 1px solid var(--line);
 }
 
+.print-video-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid rgba(0, 76, 104, 0.24);
+  border-radius: 999px;
+  background: #fff;
+  color: #004c68;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.print-video-link:hover,
+.print-video-link:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(0, 76, 104, 0.06);
+  border-color: rgba(0, 76, 104, 0.4);
+  text-decoration: none;
+}
+
 .print-design-list {
   display: grid;
   gap: 24px;

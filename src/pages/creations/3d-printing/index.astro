@@ -166,21 +166,20 @@ const olderDesigns = [
                   <p>{paragraph}</p>
                 ))}
 
-                <div class='print-design-meta' aria-label='Design details'>
+                {/* <div class='print-design-meta' aria-label='Design details'>
                   <span>Material: {design.material}</span>
                   <span>Design time: {design.designTime}</span>
-                </div>
+                </div> */}
 
                 {design.videoUrl && (
-                  <p>
-                    <a
-                      href={design.videoUrl}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      Watch the YouTube Short
-                    </a>
-                  </p>
+                  <a
+                    href={design.videoUrl}
+                    class='print-video-link'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    YouTube Short
+                  </a>
                 )}
 
                 <div class='print-use-list' aria-label='Used for'>
