@@ -1,96 +1,103 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import "../../../styles/pages/code.css";
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/pages/code.css';
 
 const projectLinks = [
   {
-    label: "Visit eddiesgames.xyz",
-    href: "https://eddiesgames.xyz",
+    label: 'Visit eddiesgames.xyz',
+    href: 'https://eddiesgames.xyz',
   },
   {
-    label: "Games hub",
-    href: "/code/games/",
+    label: 'Games hub',
+    href: '/code/games/',
   },
 ];
 
 const liveGames = [
   {
-    title: "REDACTED",
-    type: "Word / grid game",
-    status: "Play Now",
-    href: "https://eddiesgames.xyz/play/redacted",
-    text: "A compact word-hunt style browser game built around daily play, score sharing, and quick sessions.",
+    title: 'REDACTED',
+    type: 'Word / grid game',
+    status: 'Play Now',
+    href: 'https://eddiesgames.xyz/play/redacted',
+    text: 'A compact word-hunt style browser game built around daily play, score sharing, and quick sessions.',
   },
   {
-    title: "MATCH",
-    type: "Memory game",
-    status: "Play Now",
-    href: "https://eddiesgames.xyz/play/match",
-    text: "A classic pairs game with difficulty modes, move tracking, timing, and daily leaderboard support.",
+    title: 'MATCH',
+    type: 'Memory game',
+    status: 'Play Now',
+    href: 'https://eddiesgames.xyz/play/match',
+    text: 'A classic pairs game with difficulty modes, move tracking, timing, and daily leaderboard support.',
   },
   {
-    title: "REACTION",
-    type: "Timing game",
-    status: "Play Now",
-    href: "https://eddiesgames.xyz/play/reaction",
-    text: "A precision-focused reaction game designed for quick attempts, clean feedback, and repeat plays.",
+    title: 'REACTION',
+    type: 'Timing game',
+    status: 'Play Now',
+    href: 'https://eddiesgames.xyz/play/reaction',
+    text: 'A precision-focused reaction game designed for quick attempts, clean feedback, and repeat plays.',
   },
   {
-    title: "SEQUENCE",
-    type: "Memory pattern game",
-    status: "Play Now",
-    href: "https://eddiesgames.xyz/play/sequence",
-    text: "A Simon-style repeat-the-pattern game with responsive layout work and score handling.",
+    title: 'SEQUENCE',
+    type: 'Memory pattern game',
+    status: 'Play Now',
+    href: 'https://eddiesgames.xyz/play/sequence',
+    text: 'A Simon-style repeat-the-pattern game with responsive layout work and score handling.',
   },
   {
-    title: "SHIFT",
-    type: "Puzzle game",
-    status: "Play Now",
-    href: "https://eddiesgames.xyz/play/shift",
-    text: "A slide, merge, and survive puzzle game with daily and random modes.",
+    title: 'SHIFT',
+    type: 'Puzzle game',
+    status: 'Play Now',
+    href: 'https://eddiesgames.xyz/play/shift',
+    text: 'A slide, merge, and survive puzzle game with daily and random modes.',
   },
   {
-    title: "SUDOKU",
-    type: "Logic puzzle",
-    status: "Live / evolving",
-    href: "https://eddiesgames.xyz/play/sudoku",
-    text: "A browser Sudoku project connected to the larger Python and Unity Sudoku experiments.",
+    title: 'SUDOKU',
+    type: 'Logic puzzle',
+    status: 'Live / evolving',
+    href: 'https://eddiesgames.xyz/play/sudoku',
+    text: 'A browser Sudoku project connected to the larger Python and Unity Sudoku experiments.',
   },
   {
-    title: "LETTERLOCK",
-    type: "Word puzzle",
-    status: "Play Now",
-    href: "https://eddiesgames.xyz/play/letterlock",
-    text: "A newer word puzzle added to the collection as the site continues to expand beyond the original launch games.",
+    title: 'LETTERLOCK',
+    type: 'Word puzzle',
+    status: 'Play Now',
+    href: 'https://eddiesgames.xyz/play/letterlock',
+    text: 'A newer word puzzle added to the collection as the site continues to expand beyond the original launch games.',
+  },
+  {
+    title: 'PEGS',
+    type: 'Peg Solitaire',
+    status: 'Play Now',
+    href: 'https://eddiesgames.xyz/play/pegs',
+    text: 'Classic peg solitaire game, new boards coming soon!',
   },
 ];
 
 const techNotes = [
   {
-    title: "Astro frontend",
-    text: "The site is built as a lightweight Astro project so the games and writeups can stay fast, simple, and easy to maintain.",
+    title: 'Astro frontend',
+    text: 'The site is built as a lightweight Astro project so the games and writeups can stay fast, simple, and easy to maintain.',
   },
   {
-    title: "Vanilla browser games",
-    text: "Each game is intentionally small and browser-friendly, with no install step and no account requirement.",
+    title: 'Vanilla browser games',
+    text: 'Each game is intentionally small and browser-friendly, with no install step and no account requirement.',
   },
   {
-    title: "Cloudflare hosting",
-    text: "Cloudflare Pages handles hosting and deployment, while Cloudflare Workers and D1 support API routes and daily score storage.",
+    title: 'Cloudflare hosting',
+    text: 'Cloudflare Pages handles hosting and deployment, while Cloudflare Workers and D1 support API routes and daily score storage.',
   },
   {
-    title: "Daily play structure",
-    text: "Several games are built around daily scoring, replayability, and shareable results without forcing users into a heavy platform.",
+    title: 'Daily play structure',
+    text: 'Several games are built around daily scoring, replayability, and shareable results without forcing users into a heavy platform.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Building eddiesgames.xyz | Eddie Saunders"
-  description="A project writeup about eddiesgames.xyz, small browser games, Cloudflare hosting, daily scoreboards, Sudoku across platforms, LETTERLOCK, and future game plans."
+  title='Building eddiesgames.xyz | Eddie Saunders'
+  description='A project writeup about eddiesgames.xyz, small browser games, Cloudflare hosting, daily scoreboards, Sudoku across platforms, LETTERLOCK, and future game plans.'
 >
-  <section class="page-hero code-hero">
-    <p class="eyebrow">Project writeup</p>
+  <section class='page-hero code-hero'>
+    <p class='eyebrow'>Project writeup</p>
     <h1>Building eddiesgames.xyz</h1>
     <p>
       A growing home for small browser games, daily scoreboards, quick puzzle
@@ -98,22 +105,24 @@ const techNotes = [
       before quietly becoming a project with opinions.
     </p>
 
-    <div class="project-links">
-      {projectLinks.map((link) => (
-        <a
-          href={link.href}
-          target={link.href.startsWith("http") ? "_blank" : undefined}
-          rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-        >
-          {link.label}
-        </a>
-      ))}
+    <div class='project-links'>
+      {
+        projectLinks.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
   </section>
 
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Project overview</p>
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Project overview</p>
       <h2>What is eddiesgames.xyz?</h2>
       <p>
         eddiesgames.xyz is my home for small browser games: quick to play, easy
@@ -122,21 +131,21 @@ const techNotes = [
       </p>
     </div>
 
-    <div class="project-grid">
-      <article class="project-card">
-        <p class="project-type">Purpose</p>
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Purpose</p>
         <h3>Playable small games</h3>
         <p>
-          The site is part game collection, part development lab. Each game gives
-          me a practical way to work through game logic, UI layout, score
+          The site is part game collection, part development lab. Each game
+          gives me a practical way to work through game logic, UI layout, score
           handling, deployment, and the tiny details that only appear once real
           people start poking buttons.
         </p>
         <span>Active</span>
       </article>
 
-      <article class="project-card">
-        <p class="project-type">Approach</p>
+      <article class='project-card'>
+        <p class='project-type'>Approach</p>
         <h3>Small loops, real lessons</h3>
         <p>
           The games are deliberately compact. That keeps the scope under control
@@ -148,9 +157,9 @@ const techNotes = [
     </div>
   </section>
 
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Current games</p>
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Current games</p>
       <h2>The growing game lineup</h2>
       <p>
         The site started with a small set of browser games and is growing into a
@@ -159,27 +168,29 @@ const techNotes = [
       </p>
     </div>
 
-    <div class="project-grid">
-      {liveGames.map((game) => (
-        <a
-          class="project-card project-card-link"
-          href={game.href}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`Play ${game.title} on eddiesgames.xyz`}
-        >
-          <p class="project-type">{game.type}</p>
-          <h3>{game.title}</h3>
-          <p>{game.text}</p>
-          <span>{game.status}</span>
-        </a>
-      ))}
+    <div class='project-grid'>
+      {
+        liveGames.map((game) => (
+          <a
+            class='project-card project-card-link'
+            href={game.href}
+            target='_blank'
+            rel='noreferrer'
+            aria-label={`Play ${game.title} on eddiesgames.xyz`}
+          >
+            <p class='project-type'>{game.type}</p>
+            <h3>{game.title}</h3>
+            <p>{game.text}</p>
+            <span>{game.status}</span>
+          </a>
+        ))
+      }
     </div>
   </section>
 
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Technical shape</p>
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Technical shape</p>
       <h2>How the site is built</h2>
       <p>
         The goal is not to build a giant platform. The goal is to keep the stack
@@ -187,82 +198,82 @@ const techNotes = [
       </p>
     </div>
 
-    <div class="project-grid">
-      {techNotes.map((note) => (
-        <article class="project-card">
-          <p class="project-type">Build note</p>
-          <h3>{note.title}</h3>
-          <p>{note.text}</p>
-          <span>In use</span>
-        </article>
-      ))}
+    <div class='project-grid'>
+      {
+        techNotes.map((note) => (
+          <article class='project-card'>
+            <p class='project-type'>Build note</p>
+            <h3>{note.title}</h3>
+            <p>{note.text}</p>
+            <span>In use</span>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-    <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Project notes</p>
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Project notes</p>
       <h2>What this project is teaching me</h2>
       <p>
-        eddiesgames.xyz is not just a place to park games. It is a practical
-        way to test small game ideas, deployment choices, backend patterns, and
+        eddiesgames.xyz is not just a place to park games. It is a practical way
+        to test small game ideas, deployment choices, backend patterns, and
         whether a tiny browser game can still feel finished.
       </p>
     </div>
 
-    <div class="project-grid">
-      <article class="project-card">
-        <p class="project-type">Hosting</p>
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Hosting</p>
         <h3>Why Cloudflare?</h3>
         <p>
           I chose Cloudflare because the project needed to stay lean. The games
-          do not need a giant backend or a pile of infrastructure. They need fast
-          hosting, simple deploys, lightweight API routes, and a practical
+          do not need a giant backend or a pile of infrastructure. They need
+          fast hosting, simple deploys, lightweight API routes, and a practical
           database for daily scores.
         </p>
         <p>
-          Cloudflare Pages handles the static site and game hosting. Workers give
-          the project a clean place for small APIs, and D1 provides storage for
-          daily leaderboard data.
+          Cloudflare Pages handles the static site and game hosting. Workers
+          give the project a clean place for small APIs, and D1 provides storage
+          for daily leaderboard data.
         </p>
         <span>Lean stack</span>
       </article>
 
-      <article class="project-card">
-        <p class="project-type">Learning track</p>
+      <article class='project-card'>
+        <p class='project-type'>Learning track</p>
         <h3>Sudoku got out of hand</h3>
         <p>
-          Sudoku turned into a larger project than expected, which is exactly why
-          it has been useful. There is a Python version for puzzle generation,
-          validation, solving, and testing. There is a browser version for
-          eddiesgames.xyz. There is also a Unity version being built and tested
-          across WebGL, Windows, and macOS.
+          Sudoku turned into a larger project than expected, which is exactly
+          why it has been useful. There is a Python version for puzzle
+          generation, validation, solving, and testing. There is a browser
+          version for eddiesgames.xyz. There is also a Unity version being built
+          and tested across WebGL, Windows, and macOS.
         </p>
         <p>
-          That sounds like overkill, and it is. But it is useful overkill because
-          the same puzzle exposes different problems in Python, the browser, and
-          Unity.
+          That sounds like overkill, and it is. But it is useful overkill
+          because the same puzzle exposes different problems in Python, the
+          browser, and Unity.
         </p>
         <span>Useful overkill</span>
       </article>
 
-      <article class="project-card">
-        <p class="project-type">Monetisation</p>
+      <article class='project-card'>
+        <p class='project-type'>Monetisation</p>
         <h3>Banner ads or no banner ads?</h3>
         <p>
-          The site has room for banner ads, but that does not mean ads need to be
-          switched on immediately. The better order is to build the games, polish
-          the experience, get enough traffic to justify the tradeoff, and only
-          then decide whether ads make sense.
+          The site has room for banner ads, but that does not mean ads need to
+          be switched on immediately. The better order is to build the games,
+          polish the experience, get enough traffic to justify the tradeoff, and
+          only then decide whether ads make sense.
         </p>
-        <p>
-          Nobody needs a billboard in an empty field.
-        </p>
+        <p>Nobody needs a billboard in an empty field.</p>
         <span>Later</span>
       </article>
 
-      <article class="project-card">
-        <p class="project-type">Next steps</p>
+      <article class='project-card'>
+        <p class='project-type'>Next steps</p>
         <h3>What comes next?</h3>
         <p>
           The next step is to keep improving the games that already exist, add
