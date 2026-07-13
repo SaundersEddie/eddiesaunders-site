@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import '../../../../styles/pages/code.css';
+
+const focusAreas = [
+  {
+    title: 'Build the Game',
+    type: 'Development',
+    text: 'Small, focused game projects built from the first playable system through testing, polish, platform builds, and release.',
+  },
+  {
+    title: 'Create the Assets',
+    type: 'Graphics / Audio',
+    text: 'Practical workflows for creating and preparing graphics, music, sound effects, and other assets needed to finish the game.',
+  },
+  {
+    title: 'Share the Process',
+    type: 'Videos / Writeups',
+    text: 'Short lessons, longer development videos, project notes, repositories, and honest coverage of what worked and what absolutely did not.',
+  },
+];
+
+const currentProject = {
+  title: 'Bits & Bolts',
+  type: 'First OGaaT project',
+  status: 'Starting July 19',
+  text: 'A single-screen mobile game built for Android and iOS. Bits & Bolts will be the first complete One Grid at a Time project, covering the game itself along with graphics, audio, testing, mobile builds, and release preparation.',
+};
+---
+
+<BaseLayout
+  title='One Grid at a Time | Eddie Saunders'
+  description='One Grid at a Time follows the practical process of building focused games, development tools, graphics, audio, mobile builds, and finished releases.'
+>
+  <section class='page-hero code-hero ogaat-hero'>
+    <p class='eyebrow'>Code / Games / OGaaT</p>
+    <h1>One Grid at a Time</h1>
+    <p>
+      Building focused games one manageable system at a time — from the first
+      line of code through graphics, audio, testing, platform builds,
+      publishing, and all the broken bits in between.
+    </p>
+
+    <div class='project-links'>
+      <a
+        href='https://www.youtube.com/@onegridatatime'
+        target='_blank'
+        rel='noreferrer'
+      >
+        Watch on YouTube
+      </a>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>The idea</p>
+      <h2>Small enough to finish. Useful enough to share.</h2>
+
+      <p>
+        One Grid at a Time grew out of the development diary for Courier16.
+        Diary of a Game started as a way to document one project: the ideas,
+        design decisions, mistakes, fixes, progress, and lessons that came from
+        building the game in public.
+      </p>
+
+      <p>
+        As Courier16 developed, it became clear that the useful part was bigger
+        than a single diary. The code, tools, graphics, audio, testing, platform
+        builds, repositories, videos, and smaller lessons could all become part
+        of a repeatable development process.
+      </p>
+
+      <p>
+        One Grid at a Time is that process. Each project is kept focused enough
+        to finish, but complete enough to cover the real work involved in taking
+        a game from an early idea to a playable release.
+      </p>
+
+      <p>
+        Courier16 keeps its original Diary of a Game journal. Future projects,
+        beginning with Bits &amp; Bolts, will use the One Grid at a Time format
+        from the start.
+      </p>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Current project</p>
+      <h2>Starting with Bits &amp; Bolts</h2>
+      <p>
+        The first public OGaaT project is deliberately compact: one screen,
+        clear mechanics, mobile-first controls, and enough real development
+        problems to cover the complete journey from concept to release.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>{currentProject.type}</p>
+        <h3>{currentProject.title}</h3>
+        <p>{currentProject.text}</p>
+        <span>{currentProject.status}</span>
+      </article>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>What OGaaT covers</p>
+      <h2>More than just writing the code</h2>
+      <p>
+        Finishing a game means dealing with everything around the code too.
+        OGaaT follows those parts instead of quietly pretending they happened
+        off camera.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      {
+        focusAreas.map((item) => (
+          <article class='project-card'>
+            <p class='project-type'>{item.type}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

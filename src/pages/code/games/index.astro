@@ -1,21 +1,52 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import "../../../styles/pages/code.css";
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/pages/code.css';
 
-const featuredGames = [
+const featuredProjects = [
   {
-    title: "eddiesgames.xyz",
-    type: "Live game site",
-    status: "Active",
-    text: "The main home for small browser games, daily scoreboards, shareable results, and lightweight Cloudflare-backed APIs.",
+    title: 'eddiesgames.xyz',
+    type: 'Playable browser games',
+    status: 'Active',
+    text: 'Small browser games, daily scoreboards, shareable results, and lightweight Cloudflare-backed APIs.',
     links: [
       {
-        label: "Live Site",
-        href: "https://eddiesgames.xyz",
+        label: 'Live Site',
+        href: 'https://eddiesgames.xyz',
       },
       {
-        label: "Project Writeup",
-        href: "/code/eddiesgames/",
+        label: 'Project Writeup',
+        href: '/code/eddiesgames/',
+      },
+    ],
+  },
+  {
+    title: 'One Grid at a Time',
+    type: 'Game development series',
+    status: 'Launching July 19',
+    text: 'Building practical games one manageable system at a time, covering code, graphics, audio, mobile development, testing, publishing, and everything that breaks along the way.',
+    links: [
+      {
+        label: 'Explore OGaaT',
+        href: '/code/games/ogaat/',
+      },
+    ],
+  },
+];
+
+const currentProjects = [
+  {
+    title: 'Courier16',
+    type: 'Unity game project',
+    status: 'In progress',
+    text: 'A compact side-scrolling delivery platformer following the full development process from early prototype through levels, polish, WebGL, and release.',
+    links: [
+      {
+        label: 'Repo',
+        href: 'https://github.com/SaundersEddie/courier16',
+      },
+      {
+        label: 'Diary of a Game',
+        href: '/code/games/diary/courier16/',
       },
     ],
   },
@@ -23,177 +54,163 @@ const featuredGames = [
 
 const gameLabs = [
   {
-    title: "Python Sudoku",
-    type: "Logic / testing",
-    status: "Active",
-    text: "A Python puzzle generation, solving, validation, and testing project used to explore reliable Sudoku board creation.",
+    title: 'Sudoku Development',
+    type: 'Puzzle logic / Unity',
+    status: 'Active lab',
+    text: 'Sudoku generation, solving, validation, testing, responsive interfaces, and the lessons learned while taking the same puzzle system from Python into Unity.',
     links: [
       {
-        label: "Repo",
-        href: "https://github.com/SaundersEddie/python-sudoku",
+        label: 'Python Repo',
+        href: 'https://github.com/SaundersEddie/python-sudoku',
+      },
+      {
+        label: 'Unity Repo',
+        href: 'https://github.com/SaundersEddie/unity-sudoku',
       },
     ],
   },
   {
-    title: "Unity Sudoku",
-    type: "Unity",
-    status: "In progress",
-    text: "A Unity version using UI Toolkit and the new Input System, with WebGL and mobile layout lessons baked in the hard way.",
+    title: 'Audio Converter',
+    type: 'Game dev tool',
+    status: 'Active',
+    text: 'A small Python and FFmpeg helper for converting game audio assets into the formats I actually need, including MP3, WAV, OGG, M4A, AAC, and FLAC.',
     links: [
       {
-        label: "Repo",
-        href: "https://github.com/SaundersEddie/unity-sudoku",
+        label: 'Repo',
+        href: 'https://github.com/SaundersEddie/audio-convert',
       },
     ],
   },
-  {
-    title: "Godot Experiments",
-    type: "Game engine lab",
-    status: "Exploring",
-    text: "Small Godot tests and learning builds for comparing engine workflows against Unity.",
-  },
-  {
-    title: "Audio Converter",
-    type: "Game Dev Tool",
-    status: "Active",
-    text: "A tiny Python helper for the unglamorous bit of game dev: converting audio assets into the formats I actually need. Built around FFmpeg, with default .ogg to .mp3 conversion plus WAV, OGG, M4A, AAC, and FLAC output.",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/SaundersEddie/audio-convert",
-      },
-    ],
-  },
-];
-
-const gameNotes = [
- {
-    title: "Diary of a Game",
-    type: "Build notes",
-    status: "In progress",
-    href: "/code/games/diary/",
-    text: "Game-specific build diaries, dev logs, experiments, mistakes, fixes, progress notes, and the occasional questionable idea that somehow becomes playable.",
-  },
-  // {
-  //   title: "OGaaT YT",
-  //   type: "Video / dev log",
-  //   status: "Planned",
-  //   text: "Shorter game-dev progress posts and videos tied to experiments, prototypes, and build lessons.",
-  // },
 ];
 ---
 
 <BaseLayout
-  title="Games | Eddie Saunders"
-  description="Game projects, browser games, Sudoku experiments, Unity work, Godot notes, and game development writeups by Eddie Saunders."
+  title='Games | Eddie Saunders'
+  description='Playable browser games, Unity projects, development tools, and One Grid at a Time by Eddie Saunders.'
 >
-  <section class="page-hero code-hero">
-    <p class="eyebrow">Code / Games</p>
+  <section class='page-hero code-hero'>
+    <p class='eyebrow'>Code / Games</p>
     <h1>Games</h1>
     <p>
-      Browser games, puzzle logic, Unity prototypes, Godot experiments, retro-style
-      learning builds, and the build notes that come from breaking things properly.
+      Playable games, active development projects, practical tools, and One Grid
+      at a Time — building games without pretending everything worked on the
+      first attempt.
     </p>
   </section>
 
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Featured game project</p>
-      <h2>The main game site</h2>
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Games and development</p>
+      <h2>Play the games. Follow the builds.</h2>
       <p>
-        The central place for playable web games, daily scoreboards, and the
-        larger experiments that spin out from them.
+        The main game site and the development series covering how the projects
+        are designed, built, tested, broken, fixed, and eventually released.
       </p>
     </div>
 
-    <div class="project-grid">
-      {featuredGames.map((item) => (
-        <article class="project-card">
-          <p class="project-type">{item.type}</p>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-
-          <div class="project-links">
-            {item.links.map((link) => (
-              <a
-                href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          <span>{item.status}</span>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Build notes</p>
-      <h2>Posts, videos, and deeper writeups</h2>
-      <p>
-        This is where the longer explanations can live: what was built, why it
-        was built that way, what broke, and what got better after the smoke cleared.
-      </p>
-    </div>
-
-    <div class="project-grid">
-      {gameNotes.map((item) => {
-        const CardTag = item.href ? "a" : "article";
-
-        return (
-          <CardTag
-            class="project-card"
-            href={item.href || undefined}
-          >
-            <p class="project-type">{item.type}</p>
+    <div class='project-grid'>
+      {
+        featuredProjects.map((item) => (
+          <article class='project-card'>
+            <p class='project-type'>{item.type}</p>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+
+            {item.links && (
+              <div class='project-links'>
+                {item.links.map((link) => (
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={
+                      link.href.startsWith('http') ? 'noreferrer' : undefined
+                    }
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
             <span>{item.status}</span>
-          </CardTag>
-        );
-      })}
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <section class="project-showcase">
-    <div class="project-showcase-heading">
-      <p class="eyebrow">Game dev labs</p>
-      <h2>Engines, logic, and experiments</h2>
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Current game project</p>
+      <h2>Courier16</h2>
       <p>
-        Projects that are less about a single finished game and more about
-        solving the hard parts: generation, validation, input, layout, testing, and platform builds.
+        The active Unity project, with its repository and original Diary of a
+        Game development journal kept together in one place.
       </p>
     </div>
 
-    <div class="project-grid">
-      {gameLabs.map((item) => (
-        <article class="project-card">
-          <p class="project-type">{item.type}</p>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
+    <div class='project-grid'>
+      {
+        currentProjects.map((item) => (
+          <article class='project-card'>
+            <p class='project-type'>{item.type}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
 
-          {item.links && (
-            <div class="project-links">
+            <div class='project-links'>
               {item.links.map((link) => (
                 <a
                   href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
                 >
                   {link.label}
                 </a>
               ))}
             </div>
-          )}
 
-          <span>{item.status}</span>
-        </article>
-      ))}
+            <span>{item.status}</span>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Game dev labs</p>
+      <h2>Logic, tools, and experiments</h2>
+      <p>
+        Smaller projects focused on solving practical development problems,
+        including generation, validation, testing, asset preparation, input,
+        layout, and platform builds.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      {
+        gameLabs.map((item) => (
+          <article class='project-card'>
+            <p class='project-type'>{item.type}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+
+            <div class='project-links'>
+              {item.links.map((link) => (
+                <a
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <span>{item.status}</span>
+          </article>
+        ))
+      }
     </div>
   </section>
 </BaseLayout>

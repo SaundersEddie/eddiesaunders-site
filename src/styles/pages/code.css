@@ -699,3 +699,17 @@ a.project-card:hover {
   border-color: rgba(255, 204, 102, 0.8);
   color: #fff;
 }
+
+.ogaat-hero h1 {
+  max-width: none;
+  font-size: clamp(3rem, 6vw, 5rem);
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+@media (max-width: 800px) {
+  .ogaat-hero h1 {
+    max-width: 11ch;
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+}
