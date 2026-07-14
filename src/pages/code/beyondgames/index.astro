@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/pages/code.css';
+
+const projects = [
+  {
+    title: 'Audio Conversion Tool',
+    type: 'Python / FFmpeg utility',
+    status: 'Active',
+    text: 'A practical desktop utility for converting individual audio files or entire folders into the formats I actually need for games, websites, videos, and other media projects. It supports common formats including MP3, WAV, OGG, M4A, AAC, and FLAC, and is designed to make repeat conversions quicker and more consistent than handling files one at a time.',
+    links: [
+      {
+        label: 'GitHub Repo',
+        href: 'https://github.com/SaundersEddie/audio-convert',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title='Beyond Games | Eddie Saunders'
+  description='Practical software, utilities, automation, websites, and experiments built by Eddie Saunders beyond game development.'
+>
+  <section class='page-hero code-hero'>
+    <p class='eyebrow'>Code / Beyond Games</p>
+    <h1>Beyond Games</h1>
+    <p>
+      Practical software, utilities, websites, automation, and experiments built
+      to solve real problems outside game development.
+    </p>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Software projects</p>
+      <h2>Tools that earn their place</h2>
+      <p>
+        Projects are added here when they are usable, documented, and ready for
+        someone else to download, configure, and run.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      {
+        projects.map((item) => (
+          <article class='project-card'>
+            <p class='project-type'>{item.type}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+
+            <div class='project-links'>
+              {item.links.map((link) => (
+                <a
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <span>{item.status}</span>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

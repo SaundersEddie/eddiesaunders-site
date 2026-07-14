@@ -2,15 +2,15 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import '../../../styles/pages/code.css';
 
-const featuredProjects = [
+const gameProjects = [
   {
     title: 'eddiesgames.xyz',
     type: 'Playable browser games',
     status: 'Active',
-    text: 'Small browser games, daily scoreboards, shareable results, and lightweight Cloudflare-backed APIs.',
+    text: 'A growing collection of lightweight browser games with daily challenges, scoreboards, shareable results, and Cloudflare-backed APIs.',
     links: [
       {
-        label: 'Live Site',
+        label: 'Play the Games',
         href: 'https://eddiesgames.xyz',
       },
       {
@@ -22,8 +22,8 @@ const featuredProjects = [
   {
     title: 'One Grid at a Time',
     type: 'Game development series',
-    status: 'Launching July 19',
-    text: 'Building practical games one manageable system at a time, covering code, graphics, audio, mobile development, testing, publishing, and everything that breaks along the way.',
+    status: 'Active',
+    text: 'A practical series about building small, complete mobile games one project at a time, covering development, graphics, audio, testing, publishing, and everything that goes sideways along the way.',
     links: [
       {
         label: 'Explore OGaaT',
@@ -31,53 +31,19 @@ const featuredProjects = [
       },
     ],
   },
-];
-
-const currentProjects = [
   {
-    title: 'Courier16',
-    type: 'Unity game project',
-    status: 'In progress',
-    text: 'A compact side-scrolling delivery platformer following the full development process from early prototype through levels, polish, WebGL, and release.',
-    links: [
-      {
-        label: 'Repo',
-        href: 'https://github.com/SaundersEddie/courier16',
-      },
-      {
-        label: 'Diary of a Game',
-        href: '/code/games/diary/courier16/',
-      },
-    ],
-  },
-];
-
-const gameLabs = [
-  {
-    title: 'Sudoku Development',
-    type: 'Puzzle logic / Unity',
-    status: 'Active lab',
-    text: 'Sudoku generation, solving, validation, testing, responsive interfaces, and the lessons learned while taking the same puzzle system from Python into Unity.',
-    links: [
-      {
-        label: 'Python Repo',
-        href: 'https://github.com/SaundersEddie/python-sudoku',
-      },
-      {
-        label: 'Unity Repo',
-        href: 'https://github.com/SaundersEddie/unity-sudoku',
-      },
-    ],
-  },
-  {
-    title: 'Audio Converter',
-    type: 'Game dev tool',
+    title: 'Diary of a Game',
+    type: 'Development diary',
     status: 'Active',
-    text: 'A small Python and FFmpeg helper for converting game audio assets into the formats I actually need, including MP3, WAV, OGG, M4A, AAC, and FLAC.',
+    text: 'Longer-form development journals following individual games from early ideas and prototypes through systems, levels, testing, polish, and release.',
     links: [
       {
-        label: 'Repo',
-        href: 'https://github.com/SaundersEddie/audio-convert',
+        label: 'Explore the Diary',
+        href: '/code/games/diary/',
+      },
+      {
+        label: 'Courier16',
+        href: '/code/games/diary/courier16/',
       },
     ],
   },
@@ -86,110 +52,30 @@ const gameLabs = [
 
 <BaseLayout
   title='Games | Eddie Saunders'
-  description='Playable browser games, Unity projects, development tools, and One Grid at a Time by Eddie Saunders.'
+  description='Playable browser games, game development projects, One Grid at a Time, and Diary of a Game by Eddie Saunders.'
 >
   <section class='page-hero code-hero'>
     <p class='eyebrow'>Code / Games</p>
     <h1>Games</h1>
     <p>
-      Playable games, active development projects, practical tools, and One Grid
-      at a Time — building games without pretending everything worked on the
-      first attempt.
+      Playable games, active development projects, and honest development
+      journals covering what worked, what broke, and what had to be rebuilt.
     </p>
   </section>
 
   <section class='project-showcase'>
     <div class='project-showcase-heading'>
-      <p class='eyebrow'>Games and development</p>
+      <p class='eyebrow'>Game development</p>
       <h2>Play the games. Follow the builds.</h2>
       <p>
-        The main game site and the development series covering how the projects
-        are designed, built, tested, broken, fixed, and eventually released.
+        Browser games, mobile projects, and longer development diaries, kept
+        together without turning the page into a filing system from hell.
       </p>
     </div>
 
     <div class='project-grid'>
       {
-        featuredProjects.map((item) => (
-          <article class='project-card'>
-            <p class='project-type'>{item.type}</p>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-
-            {item.links && (
-              <div class='project-links'>
-                {item.links.map((link) => (
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={
-                      link.href.startsWith('http') ? 'noreferrer' : undefined
-                    }
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            )}
-
-            <span>{item.status}</span>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class='project-showcase'>
-    <div class='project-showcase-heading'>
-      <p class='eyebrow'>Current game project</p>
-      <h2>Courier16</h2>
-      <p>
-        The active Unity project, with its repository and original Diary of a
-        Game development journal kept together in one place.
-      </p>
-    </div>
-
-    <div class='project-grid'>
-      {
-        currentProjects.map((item) => (
-          <article class='project-card'>
-            <p class='project-type'>{item.type}</p>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-
-            <div class='project-links'>
-              {item.links.map((link) => (
-                <a
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-
-            <span>{item.status}</span>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class='project-showcase'>
-    <div class='project-showcase-heading'>
-      <p class='eyebrow'>Game dev labs</p>
-      <h2>Logic, tools, and experiments</h2>
-      <p>
-        Smaller projects focused on solving practical development problems,
-        including generation, validation, testing, asset preparation, input,
-        layout, and platform builds.
-      </p>
-    </div>
-
-    <div class='project-grid'>
-      {
-        gameLabs.map((item) => (
+        gameProjects.map((item) => (
           <article class='project-card'>
             <p class='project-type'>{item.type}</p>
             <h3>{item.title}</h3>

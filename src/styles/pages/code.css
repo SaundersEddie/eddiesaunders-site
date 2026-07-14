@@ -76,8 +76,8 @@
 .code-hero h1 {
   max-width: 13ch;
   font-size: clamp(3.8rem, 8vw, 7.5rem);
-  letter-spacing: -0.075em;
-  line-height: 0.9;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
 }
 
 .code-hero > p:not(.eyebrow) {
@@ -210,7 +210,7 @@ a.project-card:hover {
 }
 
 .code-area-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .code-area-card {
