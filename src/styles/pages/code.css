@@ -713,3 +713,11 @@ a.project-card:hover {
     font-size: clamp(3rem, 14vw, 5rem);
   }
 }
+
+.project-description p {
+  margin: 0 0 1rem;
+}
+
+.project-description p:last-child {
+  margin-bottom: 0;
+}

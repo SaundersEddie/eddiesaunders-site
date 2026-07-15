@@ -27,6 +27,27 @@ const projects = [
       },
     ],
   },
+    {
+    title: 'WMATA Status Dashboard',
+    type: 'Node.js, Express, React, TypeScript, Vite, Jest, Supertest, Nock, Playwright',
+    status: 'Active',
+    text: [
+      'A full-stack portfolio project that turns raw Washington Metro service data into a cleaner, easier-to-use status dashboard.', 
+      'The Node.js and Express backend fetches WMATA rail and accessibility data, normalizes inconsistent responses, classifies incidents, caches results, and exposes frontend-friendly API endpoints.',
+      'The React and TypeScript frontend presents Metro line status, service alerts, elevator and escalator outages, and planned or unplanned accessibility issues.',
+      'The project also includes backend unit and integration testing, mocked external API calls, and Playwright end-to-end tests for the frontend.',
+    ],
+      links: [
+      {
+        label: 'GitHub Repo Front End',
+        href: 'https://github.com/SaundersEddie/wmata-fe',
+      },
+      {
+        label: 'GitHub Repo Back End',
+        href: 'https://github.com/SaundersEddie/wmata-be',
+      },
+    ],
+  },
 ];
 ---
 
@@ -59,8 +80,13 @@ const projects = [
           <article class='project-card'>
             <p class='project-type'>{item.type}</p>
             <h3>{item.title}</h3>
-            <p>{item.text}</p>
-
+            <div class="project-description">
+            {
+              Array.isArray(item.text)
+                ? item.text.map((paragraph) => <p>{paragraph}</p>)
+                : <p>{item.text}</p>
+            }
+          </div>
             <div class='project-links'>
               {item.links.map((link) => (
                 <a
