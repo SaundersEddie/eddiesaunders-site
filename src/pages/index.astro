@@ -1,122 +1,132 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/home.css";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/home.css';
 
 const focusAreas = [
   {
-    title: "Code",
-    text: "Software projects, web experiments, small games, tools, and the occasional useful rabbit hole.",
-    href: "/code/",
+    title: 'Code',
+    text: 'Software projects, web experiments, small games, tools, and the occasional useful rabbit hole.',
+    href: '/code/',
   },
   {
-    title: "Creations",
-    text: "Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces from the workshop.",
-    href: "/creations/",
+    title: 'Creations',
+    text: 'Woodwork, 3D prints, laser projects, CNC experiments, and handmade pieces from the workshop.',
+    href: '/creations/',
   },
   {
-    title: "Music",
-    text: "Guitar builds, recordings, ideas, and music projects as they make their way out of the noise.",
-    href: "/music/",
+    title: 'Music',
+    text: 'Guitar builds, recordings, ideas, and music projects as they make their way out of the noise.',
+    href: '/music/',
   },
   {
-    title: "Garden",
-    text: "Backyard growing, seasonal notes, vegetables, experiments, and the small wins that make it worth doing.",
-    href: "/garden/",
+    title: 'Eddies Games',
+    text: 'Looking for my site with easy to play web games?',
+    href: 'https://eddiesgames.xyz',
+    external: true,
   },
 ];
 
 const featuredItems = [
-  "Serial numbered handmade product registry",
-  "Brindle Besties craft and workshop projects",
-  "eddiesgames.xyz browser games and coding experiments",
+  'Serial numbered handmade product registry',
+  'Brindle Besties craft and workshop projects',
+  'eddiesgames.xyz browser games and coding experiments',
 ];
 ---
 
 <BaseLayout>
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">Personal hub / workshop notebook / creative archive</p>
+  <section class='hero'>
+    <div class='hero-copy'>
+      <p class='eyebrow'>Personal hub / workshop notebook / creative archive</p>
 
       <h1>Eddie Saunders</h1>
 
-      <p class="hero-lede">
-        Code. Craft. Music. Garden. A home for the projects, notes, handmade work,
-        and numbered creations that do not fit neatly into one tidy box. 
+      <p class='hero-lede'>
+        Code. Craft. Music. Garden. A home for the projects, notes, handmade
+        work, and numbered creations that do not fit neatly into one tidy box.
       </p>
 
-      <div class="hero-actions">
-        <a class="button primary" href="/creations/">View Creations</a>
+      <div class='hero-actions'>
+        <a class='button primary' href='/creations/'>View Creations</a>
         <!-- <a class="button secondary" href="/registry/">Product Registry</a> -->
       </div>
     </div>
 
-    <aside class="hero-card" aria-label="Current focus">
-      <p class="card-kicker">Current focus</p>
+    <aside class='hero-card' aria-label='Current focus'>
+      <p class='card-kicker'>Current focus</p>
 
       <h2>Diary of a Game</h2>
 
       <p>
-        Follow the build of <strong>Courier 16</strong> from early prototype to playable release —
-        design notes, coding progress, mistakes, fixes, and small wins along the way.
+        Follow the build of <strong>Courier 16</strong> from early prototype to playable
+        release — design notes, coding progress, mistakes, fixes, and small wins along
+        the way.
       </p>
 
-      <a class="button primary" href="/code/games/diary/">
-        Read the Diary
-      </a>
+      <a class='button primary' href='/code/games/diary/'> Read the Diary </a>
 
-      <div class="hero-card-extra">
-        <p class="card-kicker">Small tool in progress</p>
+      <div class='hero-card-extra'>
+        <p class='card-kicker'>Small tool in progress</p>
 
         <h3>Python Audio Converter</h3>
 
         <p>
-          A quick Python utility for converting game audio files, including single-file
-          and folder-based <strong>.ogg</strong> to mobile-friendly format workflows.
+          A quick Python utility for converting game audio files, including
+          single-file and folder-based <strong>.ogg</strong> to mobile-friendly format
+          workflows.
         </p>
 
-        <a class="button secondary" href="/code/beyondgames/">
+        <a class='button secondary' href='/code/beyondgames/'>
           View Small Tools
         </a>
       </div>
     </aside>
   </section>
 
-  <section class="section">
-    <div class="section-heading">
-      <p class="eyebrow">Main areas</p>
+  <section class='section'>
+    <div class='section-heading'>
+      <p class='eyebrow'>Main areas</p>
       <h2>What lives here</h2>
     </div>
 
-    <div class="focus-grid">
-      {focusAreas.map((item) => (
-        <a class="focus-card" href={item.href}>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-          <span>Explore {item.title}</span>
-        </a>
-      ))}
+    <div class='focus-grid'>
+      {
+        focusAreas.map((item) => (
+          <a
+            class='focus-card'
+            href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+          >
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span>Explore {item.title}</span>
+          </a>
+        ))
+      }
     </div>
   </section>
 
-  <section class="split-section">
+  <section class='split-section'>
     <div>
-      <p class="eyebrow">Featured</p>
+      <p class='eyebrow'>Featured</p>
       <h2>Built, grown, played, written, or figured out the hard way.</h2>
     </div>
 
-    <div class="feature-list">
-      {featuredItems.map((item) => (
-        <article>
-          <span></span>
-          <p>{item}</p>
-        </article>
-      ))}
+    <div class='feature-list'>
+      {
+        featuredItems.map((item) => (
+          <article>
+            <span />
+            <p>{item}</p>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <section class="callout">
+  <section class='callout'>
     <div>
-      <p class="eyebrow">Next up</p>
+      <p class='eyebrow'>Next up</p>
       <h2>Product registry</h2>
       <p>
         A simple index for serial numbered handmade pieces, with materials,
@@ -124,6 +134,6 @@ const featuredItems = [
       </p>
     </div>
 
-    <a class="button primary" href="/registry/">Coming soon</a>
+    <a class='button primary' href='/registry/'>Coming soon</a>
   </section>
 </BaseLayout>

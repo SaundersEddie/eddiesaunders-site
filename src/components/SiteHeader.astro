@@ -1,25 +1,23 @@
 ---
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Code", href: "/code/" },
-  { label: "Creations", href: "/creations/" },
-  { label: "Aerial Notes", href: "/aerial/" },
-  { label: "Music", href: "/music/" },
-  { label: "Garden", href: "/garden/" },
-  { label: "Notes", href: "/notes/" },
-  { label: "Contact", href: "/contact/" },
+  { label: 'Home', href: '/' },
+  { label: 'Code', href: '/code/' },
+  { label: 'Creations', href: '/creations/' },
+  // { label: 'Aerial Notes', href: '/aerial/' },
+  { label: 'Music', href: '/music/' },
+  // { label: "Garden", href: "/garden/" },
+  // { label: 'Notes', href: '/notes/' },
+  { label: 'Contact', href: '/contact/' },
 ];
 ---
 
-<header class="site-header">
-  <a class="brand" href="/" aria-label="Eddie Saunders home">
-    <span class="brand-mark">ES</span>
-    <span class="brand-text">Eddie Saunders</span>
+<header class='site-header'>
+  <a class='brand' href='/' aria-label='Eddie Saunders home'>
+    <span class='brand-mark'>ES</span>
+    <span class='brand-text'>Eddie Saunders</span>
   </a>
 
-  <nav class="site-nav" aria-label="Main navigation">
-    {navItems.map((item) => (
-      <a href={item.href}>{item.label}</a>
-    ))}
+  <nav class='site-nav' aria-label='Main navigation'>
+    {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
   </nav>
 </header>
