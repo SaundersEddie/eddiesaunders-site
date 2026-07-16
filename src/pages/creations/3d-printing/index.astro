@@ -4,6 +4,7 @@ import '../../../styles/pages/creations.css';
 
 const latestDesigns = [
   {
+    id: 'quick-door-hangers-bambu-studio',
     title: 'Quick Door Hangers in Bambu Studio',
     category: 'Beginner design',
     material: 'PLA',
@@ -31,7 +32,8 @@ const latestDesigns = [
       {
         src: '/images/creations/3d-printing/door-hangers/door-hangers-bambu-studio.png',
         alt: 'Several custom 3D printed door hanger designs laid out in Bambu Studio',
-        caption: 'A few quick door hanger variations laid out in Bambu Studio.',
+        caption:
+          'A few quick door hanger variations laid out in Bambu Studio.',
       },
       {
         src: '/images/creations/3d-printing/door-hangers/paw-print-door-hanger.JPG',
@@ -40,7 +42,11 @@ const latestDesigns = [
       },
     ],
   },
+];
+
+const archivedDesigns = [
   {
+    id: '3d-printed-bag-clips',
     title: '3D Printed Bag Clips',
     category: 'Useful print',
     material: 'PLA',
@@ -49,7 +55,7 @@ const latestDesigns = [
       'https://www.etsy.com/listing/4505801454/reusable-sliding-bag-clips-3d-printed?variation0=6617469000',
     description:
       'A quick utility print designed after my workshop clamps kept being borrowed for keeping bags closed.',
-    uses: ['Coffee bags', 'Dog treats', 'Chips', 'Frozen foods'],
+    uses: ['Coffee bags', 'Dog treats', 'Chips', 'Snack Bags'],
     body: [
       'This was one of those small workshop wins that started with a simple problem: people kept stealing my clamps to keep bags closed.',
       'Coffee bags, dog treats, chips, frozen food, tortilla chips — somehow they all needed a clip, and somehow my regular clamps kept vanishing into the kitchen. So instead of sacrificing more workshop gear to the snack cupboard, I designed a dedicated set of 3D printed bag clips.',
@@ -77,15 +83,8 @@ const latestDesigns = [
   },
 ];
 
-const olderDesigns = [
-  {
-    title: 'Older Designs Coming Soon',
-    category: 'Archive',
-    description:
-      'Older 3D printed creations will live here once the latest section starts filling up.',
-    href: '#',
-  },
-];
+
+const archiveDesigns = [...latestDesigns, ...archivedDesigns];
 ---
 
 <BaseLayout
@@ -94,47 +93,13 @@ const olderDesigns = [
 >
   <section class='page-hero creations-hero'>
     <p class='eyebrow'>Creations</p>
+
     <h1>3D Printing</h1>
+
     <p>
       Useful prints, practical experiments, prototypes, and the occasional bit
       of plastic nonsense.
     </p>
-  </section>
-
-  <section class='creations-feature-section'>
-    <div class='creations-feature-copy'>
-      <p class='eyebrow'>Design / Print / Test</p>
-      <h2>
-        Useful prints, practical experiments, and the occasional plastic
-        nonsense
-      </h2>
-
-      <p>
-        3D printing is one of my favorite ways to turn a rough idea into
-        something real without waiting six months, ordering weird parts, or
-        pretending the first version will be perfect.
-      </p>
-
-      <p>
-        Most of what I make starts as a practical problem: a bracket, a holder,
-        a jig, a shop helper, a small replacement part, or an idea that needs to
-        exist in the real world before I can decide whether it is useful or
-        ridiculous. Sometimes it is both. That is part of the fun.
-      </p>
-
-      <p>
-        This page collects my 3D printing notes, experiments, useful prints,
-        failed attempts, design lessons, and finished creations. Some projects
-        are functional, some are decorative, and some are just me seeing what
-        happens when plastic, patience, and stubbornness are put in the same
-        room.
-      </p>
-
-      <p>
-        The goal is simple: design useful things, print them, test them, improve
-        them, and share what I learned along the way.
-      </p>
-    </div>
   </section>
 
   <section
@@ -144,7 +109,9 @@ const olderDesigns = [
     <div class='section-content'>
       <div class='section-header'>
         <p class='eyebrow'>Latest</p>
+
         <h2 id='latest-prints-heading'>Latest 3D Printed Designs</h2>
+
         <p>
           Fresh prints, current prototypes, and useful designs as they are
           documented.
@@ -154,9 +121,13 @@ const olderDesigns = [
       <div class='print-design-list'>
         {
           latestDesigns.map((design) => (
-            <article class='print-design-card'>
+            <article
+              id={design.id}
+              class='print-design-card project-article'
+            >
               <div class='print-design-content'>
                 <p class='creation-card-category'>{design.category}</p>
+
                 <h3>{design.title}</h3>
 
                 <p class='print-design-summary'>{design.description}</p>
@@ -201,8 +172,13 @@ const olderDesigns = [
 
               <div class='print-design-images'>
                 {design.images.map((image) => (
-                  <figure class='print-design-image'>
-                    <img src={image.src} alt={image.alt} loading='lazy' />
+                  <figure class='print-design-image creation-wide-image'>
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      loading='lazy'
+                    />
+
                     <figcaption>{image.caption}</figcaption>
                   </figure>
                 ))}
@@ -214,36 +190,104 @@ const olderDesigns = [
     </div>
   </section>
 
-  <section class='creations-archive-section'>
+  <section
+    class='creations-archive-section'
+    aria-labelledby='prints-archive-heading'
+  >
     <div class='section-content'>
       <div class='section-header'>
         <p class='eyebrow'>Archive</p>
-        <h2>Older 3D Printed Designs</h2>
+
+        <h2 id='prints-archive-heading'>3D Printing Design Archive</h2>
+
         <p>
-          As the latest section fills up, older designs will move here so the
-          page stays easy to browse.
+          Jump directly to a design below. Current and older prints will remain
+          available here as the archive grows.
         </p>
       </div>
 
-      <div class='creation-card-grid'>
+      <nav
+        class='project-archive-list'
+        aria-label='3D printing design archive'
+      >
         {
-          olderDesigns.map((design) => (
-            <article class='creation-card'>
-              <div>
-                <p class='creation-card-category'>{design.category}</p>
-                <h3>{design.title}</h3>
-                <p>{design.description}</p>
-              </div>
-
-              {design.href !== '#' && (
-                <a href={design.href} class='creation-card-link'>
-                  View design
-                </a>
-              )}
-            </article>
+          archiveDesigns.map((design) => (
+            <a href={`#${design.id}`}>{design.title}</a>
           ))
         }
-      </div>
+      </nav>
+
+      {
+        archivedDesigns.length > 0 && (
+          <div class='print-design-list'>
+            {archivedDesigns.map((design) => (
+              <article
+                id={design.id}
+                class='print-design-card project-article'
+              >
+                <div class='print-design-content'>
+                  <p class='creation-card-category'>{design.category}</p>
+
+                  <h3>{design.title}</h3>
+
+                  <p class='print-design-summary'>{design.description}</p>
+
+                  <div class='print-design-meta' aria-label='Design details'>
+                    <span>Material: {design.material}</span>
+                    <span>Design time: {design.designTime}</span>
+                  </div>
+
+                  {design.body.map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+
+                  {design.videoUrl && (
+                    <a
+                      href={design.videoUrl}
+                      class='print-video-link'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      YouTube Short
+                    </a>
+                  )}
+
+                  {design.etsyUrl && (
+                    <a
+                      href={design.etsyUrl}
+                      class='print-video-link'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      View Etsy Listing
+                    </a>
+                  )}
+
+                  <div class='print-use-list' aria-label='Used for'>
+                    {design.uses.map((use) => (
+                      <span>{use}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class='print-design-images'>
+                  {design.images.map((image) => (
+                    <figure class='print-design-image creation-wide-image'>
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        loading='lazy'
+                      />
+
+                      <figcaption>{image.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        )
+      }
     </div>
   </section>
 </BaseLayout>
