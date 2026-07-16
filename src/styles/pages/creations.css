@@ -443,8 +443,11 @@ a.creations-area-card:focus-visible {
 /* Wide images for CNC and woodworking project photos */
 
 .creation-wide-image img {
+  display: block;
+  width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--surface-soft);
 }
 
 /* Responsive */
