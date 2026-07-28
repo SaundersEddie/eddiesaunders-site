@@ -23,8 +23,21 @@ const focusAreas = [
 const currentProject = {
   title: 'Bits & Bolts',
   type: 'First OGaaT project',
-  status: 'Starting July 19',
-  text: 'A single-screen mobile game built for Android and iOS. Bits & Bolts will be the first complete One Grid at a Time project, covering the game itself along with graphics, audio, testing, mobile builds, and release preparation.',
+  status: 'In Process',
+  text: `Bits & Bolts is a single-screen mobile puzzle game being built in Unity
+    for Android and iOS. The project starts with a deliberately small gameplay
+    idea, but follows the complete development process rather than stopping at
+    a basic prototype.
+
+    The series covers project structure, Unity's newer Input System, UI Toolkit,
+    gameplay systems, graphics, music, sound effects, testing, mobile controls,
+    advertising space, platform builds, and the work required to prepare the
+    finished game for release.
+
+    Each stage is documented through practical videos, project notes, code
+    examples, and honest coverage of the decisions, mistakes, fixes, and
+    occasional disasters involved in finishing a real game.`,
+  youtubeUrl: 'https://www.youtube.com/@onegridatatime',
 };
 ---
 
@@ -100,33 +113,46 @@ const currentProject = {
       <article class='project-card'>
         <p class='project-type'>{currentProject.type}</p>
         <h3>{currentProject.title}</h3>
-        <p>{currentProject.text}</p>
-        <span>{currentProject.status}</span>
+
+        {
+          currentProject.text
+            .trim()
+            .split('\n\n')
+            .map((paragraph) => <p>{paragraph.trim()}</p>)
+        }
+
+        <div class='project-links'>
+          <span>{currentProject.status}</span>
+
+          <a href={currentProject.youtubeUrl} target='_blank' rel='noreferrer'>
+            Follow Bits &amp; Bolts on YouTube
+          </a>
+        </div>
       </article>
     </div>
-  </section>
 
-  <section class='project-showcase'>
-    <div class='project-showcase-heading'>
-      <p class='eyebrow'>What OGaaT covers</p>
-      <h2>More than just writing the code</h2>
-      <p>
-        Finishing a game means dealing with everything around the code too.
-        OGaaT follows those parts instead of quietly pretending they happened
-        off camera.
-      </p>
-    </div>
+    <section class='project-showcase'>
+      <div class='project-showcase-heading'>
+        <p class='eyebrow'>What OGaaT covers</p>
+        <h2>More than just writing the code</h2>
+        <p>
+          Finishing a game means dealing with everything around the code too.
+          OGaaT follows those parts instead of quietly pretending they happened
+          off camera.
+        </p>
+      </div>
 
-    <div class='project-grid'>
-      {
-        focusAreas.map((item) => (
-          <article class='project-card'>
-            <p class='project-type'>{item.type}</p>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))
-      }
-    </div>
+      <div class='project-grid'>
+        {
+          focusAreas.map((item) => (
+            <article class='project-card'>
+              <p class='project-type'>{item.type}</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
   </section>
 </BaseLayout>
