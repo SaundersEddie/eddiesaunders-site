@@ -1,0 +1,447 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import '../../../../styles/pages/code.css';
+
+const projectLinks = [
+  {
+    label: 'View on GitHub',
+    href: 'https://github.com/SaundersEddie/maze-muncher',
+  },
+  {
+    label: 'Games Hub',
+    href: '/code/games/',
+  },
+];
+
+const projectGoals = [
+  {
+    title: 'Small enough to finish',
+    text: 'The project is deliberately limited to one maze, focused mechanics, and a controlled feature list. Extra ideas can wait until the first complete version actually exists.',
+  },
+  {
+    title: 'Logic separated from rendering',
+    text: 'Movement, walls, pellet collection, scoring, lives, enemies, and game states are kept outside Pygame wherever practical so the important behaviour can be tested directly.',
+  },
+  {
+    title: 'Tests built alongside features',
+    text: 'Tests are added as each rule is introduced rather than being bolted onto the project after the game is already complete.',
+  },
+  {
+    title: 'Cross-platform development',
+    text: 'Maze Muncher is being developed for both macOS and Windows using Python 3.13 and Pygame Community Edition.',
+  },
+];
+
+const currentProgress = [
+  {
+    title: 'Board system',
+    text: 'The board supports rectangular layout validation, boundaries, walls, valid movement paths, pellet detection, pellet collection, and remaining-pellet counts.',
+  },
+  {
+    title: 'Player movement',
+    text: 'The player can move in four directions, enter valid tiles, remain in place when blocked by walls, and avoid moving outside the board.',
+  },
+  {
+    title: 'Automated testing',
+    text: 'Tests currently cover invalid boards, movement rules, wall collisions, pellet collection, duplicate collection, remaining pellet counts, and the required Python version.',
+  },
+  {
+    title: 'Development environments',
+    text: 'The project has been set up and tested on both macOS and Windows, with the same core game logic running independently of the graphical layer.',
+  },
+];
+
+const nextSteps = [
+  'Connect player movement, pellet collection, and scoring',
+  'Add power pellets',
+  'Add player lives',
+  'Create enemy movement and decision-making',
+  'Handle player and enemy collisions',
+  'Add win and game-over states',
+  'Connect the game logic to Pygame rendering',
+  'Add keyboard controls, audio, and final polish',
+];
+---
+
+<BaseLayout
+  title='Maze Muncher | Eddie Saunders'
+  description='Maze Muncher is a compact Python and Pygame arcade project built around controlled scope, separated game logic, and automated testing.'
+>
+  <section class='page-hero code-hero'>
+    <p class='eyebrow'>Code / Games / Maze Muncher</p>
+    <h1>Maze Muncher</h1>
+    <p>
+      A compact maze-chase game built in Python with Pygame Community Edition,
+      automated tests, and a deliberately controlled scope.
+    </p>
+
+    <div class='project-links'>
+      {
+        projectLinks.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Project overview</p>
+      <h2>A quick project that still does things properly</h2>
+      <p>
+        Maze Muncher started as a quick-fire coding project: something small
+        enough to finish, but substantial enough to include real game systems,
+        useful technical decisions, and meaningful automated tests.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>The idea</p>
+        <h3>Why build a maze game?</h3>
+        <p>
+          I wanted a project that was more interesting than a tiny programming
+          exercise, but nowhere near the size of another long-running game or
+          application.
+        </p>
+        <p>
+          A maze game was a good fit because even a small version needs player
+          movement, walls, collectibles, scoring, enemies, collisions, lives,
+          win conditions, and game-over states.
+        </p>
+        <p>
+          Those systems are familiar enough that the direction is immediately
+          understandable, but they still create plenty of useful programming and
+          testing problems.
+        </p>
+        <span>Controlled scope</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>The purpose</p>
+        <h3>A reset between larger projects</h3>
+        <p>
+          Maze Muncher also exists as a practical reset between bigger pieces of
+          work.
+        </p>
+        <p>
+          Sometimes the best way to avoid burning out on a serious project is to
+          build something smaller, focused, and slightly ridiculous.
+        </p>
+        <p>
+          The important part is that “quick project” does not mean throwing code
+          together and hoping nobody looks behind the curtain.
+        </p>
+        <span>Quick, not careless</span>
+      </article>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Technology choice</p>
+      <h2>Why Python?</h2>
+      <p>Python was chosen for one very practical reason: it was quick.</p>
+    </div>
+
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Speed</p>
+        <h3>Get from idea to code quickly</h3>
+        <p>
+          There was no need to spend days selecting an engine, building editor
+          tooling, creating scenes, configuring input packages, or setting up a
+          large project structure before anything could move around the screen.
+        </p>
+        <p>
+          Python made it possible to start with the game rules almost
+          immediately.
+        </p>
+        <span>Fast setup</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Framework</p>
+        <h3>Why Pygame Community Edition?</h3>
+        <p>
+          Pygame Community Edition provides the window, keyboard input,
+          rendering, audio, and frame timing needed for a small arcade game
+          without burying the project under a large engine.
+        </p>
+        <p>
+          It handles the presentation layer while regular Python modules handle
+          the core game behaviour.
+        </p>
+        <span>Practical tooling</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Architecture</p>
+        <h3>Game rules without the window</h3>
+        <p>
+          The board does not need to know how it is drawn. The player does not
+          need a graphical window to understand whether a wall is blocking
+          movement.
+        </p>
+        <p>
+          Pellet collection, scoring, lives, and enemy rules can all be tested
+          as normal Python behaviour before they are connected to graphics and
+          audio.
+        </p>
+        <span>Separated logic</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Decision</p>
+        <h3>The right tool for this project</h3>
+        <p>
+          Python was not selected because it was the most powerful technology
+          available.
+        </p>
+        <p>
+          It was selected because it was fast, familiar, practical, and more
+          than capable of handling the intended scope.
+        </p>
+        <span>Good enough wins</span>
+      </article>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Testing approach</p>
+      <h2>The game logic must be tested as it is built</h2>
+      <p>
+        Automated tests are not being saved for the end of the project. They are
+        being introduced alongside each new game rule.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Philosophy</p>
+        <h3>Test behaviour, not decoration</h3>
+        <p>
+          The tests focus on what the game should do: whether movement is
+          allowed, whether walls block the player, whether pellets disappear,
+          whether scores change, and whether win or game-over conditions are
+          reached.
+        </p>
+        <p>
+          Rendering tests will remain limited. The goal is to test the game
+          behaviour, not whether Pygame successfully drew a yellow circle.
+        </p>
+        <span>Behaviour first</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Benefits</p>
+        <h3>Problems stay small</h3>
+        <p>
+          Adding tests alongside each feature makes failures easier to locate
+          and prevents later systems from quietly breaking rules that already
+          worked.
+        </p>
+        <p>
+          It also forces the code to remain modular. If a basic movement rule
+          cannot be tested without opening a graphical window, the code is
+          probably too tightly coupled.
+        </p>
+        <span>Less mystery</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Coverage</p>
+        <h3>What will be tested?</h3>
+        <p>
+          The planned test coverage includes valid and invalid movement, wall
+          collision, pellet collection, scoring, player and enemy collisions,
+          remaining lives, enemy decisions, win states, and game-over states.
+        </p>
+        <span>Core systems</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Real-world value</p>
+        <h3>More than a game demo</h3>
+        <p>
+          Maze Muncher is also a practical demonstration of how game rules can
+          be separated from presentation code and tested like any other
+          application logic.
+        </p>
+        <p>
+          That makes the project useful beyond simply proving that something can
+          move around a maze.
+        </p>
+        <span>Testing showcase</span>
+      </article>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Versioning challenges</p>
+      <h2>Python 3.14 immediately joined the project</h2>
+      <p>
+        The first technical challenge appeared before the game had anything to
+        render.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Compatibility</p>
+        <h3>Why the project uses Python 3.13</h3>
+        <p>
+          The original environment used Python 3.14, but dependency
+          compatibility problems appeared during setup.
+        </p>
+        <p>
+          Rather than wasting the project on package troubleshooting, Maze
+          Muncher was pinned to Python 3.13, where Pygame Community Edition and
+          the testing tools could be installed consistently.
+        </p>
+        <span>Python 3.13</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Lesson</p>
+        <h3>Newest does not always mean useful</h3>
+        <p>
+          Using the newest language version sounds sensible until the
+          surrounding ecosystem has not caught up.
+        </p>
+        <p>
+          The project now declares its supported Python version clearly so the
+          same environment can be recreated on macOS, Windows, and automated
+          test systems.
+        </p>
+        <span>Repeatable setup</span>
+      </article>
+
+      <article class='project-card'>
+        <p class='project-type'>Scope control</p>
+        <h3>Do not let setup become the project</h3>
+        <p>
+          The point of Maze Muncher is to build and test a game, not spend a
+          week forcing an unsupported dependency combination to behave.
+        </p>
+        <p>
+          Moving back to Python 3.13 kept the project moving and reinforced the
+          original goal: make practical decisions and finish the thing.
+        </p>
+        <span>Keep moving</span>
+      </article>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Project goals</p>
+      <h2>What the project is trying to prove</h2>
+      <p>
+        Maze Muncher is intentionally small, but the development standards are
+        not.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      {
+        projectGoals.map((goal) => (
+          <article class='project-card'>
+            <p class='project-type'>Goal</p>
+            <h3>{goal.title}</h3>
+            <p>{goal.text}</p>
+            <span>Planned</span>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Current status</p>
+      <h2>What works so far</h2>
+      <p>
+        The project foundation and the first pieces of game logic are already in
+        place.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      {
+        currentProgress.map((item) => (
+          <article class='project-card'>
+            <p class='project-type'>Completed</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span>Working</span>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Next steps</p>
+      <h2>What comes next?</h2>
+      <p>
+        The next major step is to connect player movement, pellet collection,
+        and scoring into a complete gameplay loop.
+      </p>
+    </div>
+
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Development plan</p>
+        <h3>From tested rules to a playable game</h3>
+        <ul>
+          {nextSteps.map((step) => <li>{step}</li>)}
+        </ul>
+        <p>
+          The rendering is deliberately coming later. First the game needs to
+          know what it is doing; then it can draw a yellow circle doing it.
+        </p>
+        <span>In progress</span>
+      </article>
+    </div>
+  </section>
+
+  <section class='project-showcase'>
+    <div class='project-showcase-heading'>
+      <p class='eyebrow'>Browser version</p>
+      <h2>Will Maze Muncher go on eddiesgames.xyz?</h2>
+      <p>Possibly, but the Python version comes first.</p>
+    </div>
+
+    <div class='project-grid'>
+      <article class='project-card'>
+        <p class='project-type'>Current priority</p>
+        <h3>Finish the desktop game</h3>
+        <p>
+          eddiesgames.xyz is built around lightweight browser games that load
+          quickly and work without installation.
+        </p>
+        <p>
+          Maze Muncher is currently a desktop Pygame project, so putting it on
+          the site would require either a browser-compatible Python build or a
+          separate web version.
+        </p>
+        <p>
+          Once the desktop game is complete, a browser edition can be tested
+          properly. There is no point turning deployment into a second project
+          before the first project has ghosts.
+        </p>
+        <span>Maybe later</span>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
