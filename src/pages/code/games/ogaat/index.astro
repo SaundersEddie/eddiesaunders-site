@@ -39,6 +39,25 @@ const currentProject = {
     occasional disasters involved in finishing a real game.`,
   youtubeUrl: 'https://www.youtube.com/@onegridatatime',
 };
+
+const sharedProjects = [
+  {
+    title: 'Godot TextController',
+    type: 'Godot 4 / GDScript',
+    status: 'Available',
+    text: [
+      'A reusable, self-contained text controller created while working on Godot projects and old-school game presentation effects.',
+      'The controller supports left and right scrolling, horizontal and vertical bouncing, character-by-character sine-wave movement, static colors, two-color fades, and per-character color cycling.',
+      'Movement, text effects, and color effects are independent, so they can be combined to create everything from simple animated titles to proper C64-style sine-wave scrollers.',
+    ],
+    links: [
+      {
+        label: 'View on GitHub',
+        href: 'https://github.com/SaundersEddie/Godot-TextController',
+      },
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -65,7 +84,7 @@ const currentProject = {
     </div>
   </section>
 
-  <section class='project-showcase'>
+  <section class='project-showcase ogaat-section'>
     <div class='project-showcase-heading'>
       <p class='eyebrow'>The idea</p>
       <h2>Small enough to finish. Useful enough to share.</h2>
@@ -130,6 +149,45 @@ const currentProject = {
         </div>
       </article>
     </div>
+
+    <section class='project-showcase'>
+      <div class='project-showcase-heading'>
+        <p class='eyebrow'>Shared tools</p>
+        <h2>Useful bits worth keeping</h2>
+        <p>
+          Not everything built during a game project needs to stay buried inside
+          that game. Reusable systems and tools are cleaned up, documented, and
+          shared when they can be useful elsewhere.
+        </p>
+      </div>
+
+      <div class='project-grid'>
+        {
+          sharedProjects.map((item) => (
+            <article class='project-card'>
+              <p class='project-type'>{item.type}</p>
+              <h3>{item.title}</h3>
+
+              <div class='project-description'>
+                {item.text.map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+
+              <div class='project-links'>
+                {item.links.map((link) => (
+                  <a href={link.href} target='_blank' rel='noreferrer'>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+
+              <span>{item.status}</span>
+            </article>
+          ))
+        }
+      </div>
+    </section>
 
     <section class='project-showcase'>
       <div class='project-showcase-heading'>

@@ -31,6 +31,23 @@ const featuredItems = [
   'Brindle Besties craft and workshop projects',
   'eddiesgames.xyz browser games and coding experiments',
 ];
+
+const currentFocus = [
+  {
+    kicker: 'Small tool',
+    title: 'Python Audio Converter',
+    text: 'A practical Python utility for converting individual audio files or entire folders into the formats needed for games, websites, videos, and other media projects.',
+    linkText: 'View Audio Converter',
+    href: '/code/beyondgames/',
+  },
+  {
+    kicker: 'Godot tool',
+    title: 'Godot TextController',
+    text: 'A reusable Godot 4 text controller with scrolling, bouncing, sine-wave animation, fades, and per-character color effects — including some suitably old-school C64-style nonsense.',
+    linkText: 'View TextController',
+    href: '/code/games/ogaat/',
+  },
+];
 ---
 
 <BaseLayout>
@@ -54,30 +71,22 @@ const featuredItems = [
     <aside class='hero-card' aria-label='Current focus'>
       <p class='card-kicker'>Current focus</p>
 
-      <h2>Diary of a Game</h2>
+      <div class='hero-card-items'>
+        {
+          currentFocus.map((item) => (
+            <section class='hero-card-item'>
+              <p class='card-kicker'>{item.kicker}</p>
 
-      <p>
-        Follow the build of <strong>Courier 16</strong> from early prototype to playable
-        release — design notes, coding progress, mistakes, fixes, and small wins along
-        the way.
-      </p>
+              <h2>{item.title}</h2>
 
-      <a class='button primary' href='/code/games/diary/'> Read the Diary </a>
+              <p>{item.text}</p>
 
-      <div class='hero-card-extra'>
-        <p class='card-kicker'>Small tool in progress</p>
-
-        <h3>Python Audio Converter</h3>
-
-        <p>
-          A quick Python utility for converting game audio files, including
-          single-file and folder-based <strong>.ogg</strong> to mobile-friendly format
-          workflows.
-        </p>
-
-        <a class='button secondary' href='/code/beyondgames/'>
-          View Small Tools
-        </a>
+              <a class='button secondary' href={item.href}>
+                {item.linkText}
+              </a>
+            </section>
+          ))
+        }
       </div>
     </aside>
   </section>

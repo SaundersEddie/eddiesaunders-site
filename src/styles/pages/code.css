@@ -721,3 +721,7 @@ a.project-card:hover {
 .project-description p:last-child {
   margin-bottom: 0;
 }
+
+.ogaat-section .project-showcase-heading {
+  max-width: 78rem;
+}
